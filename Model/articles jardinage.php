@@ -8,8 +8,8 @@ class articles_jardinage {
     private float $PrixArticle;
     private int $QuantiteArticle;
 
-    public function __construct($IdArticle,$IdCategorie,$NomArticle,$ImageArticle,$Description,$PrixArticle,$QuantiteArticle){
-        $this->IdArticle=$IdArticle;
+    public function __construct($IdCategorie,$NomArticle,$ImageArticle,$Description,$PrixArticle,$QuantiteArticle){
+        //$this->IdArticle=$IdArticle;
         $this->IdCategorie=$IdCategorie;
         $this->NomArticle=$NomArticle;
         $this->ImageArticle=$ImageArticle;

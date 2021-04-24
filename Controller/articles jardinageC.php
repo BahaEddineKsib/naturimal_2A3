@@ -48,11 +48,11 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'INSERT INTO articlejardinage (IdArticle,IdCategorie,NomArticle,ImageArticle,Description,PrixArticle,QuantiteArticle) 
-                VALUES (:IdArticle,:IdCategorie, :NomArticle, :ImageArticle,:Description,:PrixArticle,:QuantiteArticle)'
+                    'INSERT INTO articlejardinage (IdCategorie,NomArticle,ImageArticle,Description,PrixArticle,QuantiteArticle) 
+                VALUES (:IdCategorie, :NomArticle, :ImageArticle,:Description,:PrixArticle,:QuantiteArticle)'
                 );
                 $query->execute([
-                'IdArticle' =>$Art->getIdArticle(),
+                //'IdArticle' =>$Art->getIdArticle(),
                 'IdCategorie' => $Art->getIdCategorieArticle(),
                  'NomArticle' => $Art->getNomArticle(),
                  'ImageArticle' => $Art->getImageArticle(),
@@ -69,7 +69,7 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'UPDATE articlejardinage SET IdArticle = :IdArticle,IdCategorie= :IdCategorie,NomArticle=:NomArticle,
+                    'UPDATE articlejardinage SET IdCategorie= :IdCategorie,NomArticle=:NomArticle,
                      ImageArticle=:ImageArticle,Description = :Description,PrixArticle=:PrixArticle,QuantiteArticle=:QuantiteArticle
                      WHERE IdArticle = :id'
                 );

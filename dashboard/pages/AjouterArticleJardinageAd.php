@@ -12,7 +12,7 @@ $article = null;
 // create an instance of the controller
 $articleC = new articles_jardinageC();
 if (
-    isset($_POST["IdArticle"]) &&
+    //isset($_POST["IdArticle"]) &&
     isset($_POST["IdCategorieArticle"]) &&
     isset($_POST["NomArticle"]) &&
     isset($_POST["ImageArticle"]) &&
@@ -21,7 +21,7 @@ if (
     isset ($_POST['QuantiteArticle'])
 ) {
         $article = new articles_jardinage(
-            $_POST['IdArticle'],
+           // $_POST['IdArticle'],
             $_POST['IdCategorieArticle'],
             $_POST['NomArticle'],
             $_POST['ImageArticle'],
@@ -58,8 +58,8 @@ if (
             <h3>Ajouter un article de jardinage</h3>
             <h4>Ajouter un article de jardinage à la base de données</h4>
             <fieldset>
-                <input placeholder="Id de l'article" type="text" tabindex="1" name="IdArticle" id="IdArticle" >
-            </fieldset>
+                <!--<input placeholder="Id de l'article" type="text" tabindex="1" name="IdArticle" id="IdArticle" >
+            </fieldset>-->
             <fieldset>
                 <input placeholder="Id categorie" type="text" tabindex="2" name="IdCategorieArticle" id="IdCategorieArticle" required>
             </fieldset>
