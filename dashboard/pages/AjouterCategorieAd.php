@@ -12,12 +12,12 @@ $categorie = null;
 // create an instance of the controller
 $categorieC = new categorieC();
 if (
-    isset($_POST["IdCategorie"]) &&
+   // isset($_POST["IdCategorie"]) &&
     isset($_POST["NomCategorie"]) &&
     isset($_POST["Description"]) 
 ) {
         $categorie = new categorie(
-            $_POST['IdCategorie'],
+           // $_POST['IdCategorie'],
             $_POST['NomCategorie'],
             $_POST['Description']
   
@@ -46,9 +46,9 @@ if (
             <h3>Ajouter une categorie</h3>
             <h4>Ajouter une categorie à la base de donnees</h4>
             
-            <fieldset>
+            <!--<fieldset>
               <input placeholder="Id Categorie" type="text" tabindex="1" name="IdCategorie" id="IdCategorie" readonly>
-            </fieldset>
+            </fieldset>-->
             <fieldset>
               <input placeholder="Nom de la categorie" type="text" tabindex="2" name="NomCategorie" id="NomCategorie" required>
             </fieldset>
@@ -59,7 +59,7 @@ if (
               <button name="submit" type="submit" value="submit" id="categorie submit">Submit</button>
             </fieldset>
             <fieldset>
-              <button formaction="AfficherCategoriesAd.php"><a href="AfficherArticleAd.php"></a>Cancel</button>
+              <button formaction="AfficherCategoriesAd.php"><a href="AfficherCategoriesAd.php"></a>Cancel</button>
             </fieldset>
           </form >         
         </div>

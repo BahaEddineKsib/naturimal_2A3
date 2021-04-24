@@ -4,8 +4,8 @@
         private string $NomCategorie;
         private string $Description;
 
-        public function __construct($IdCategorie, $NomCategorie,$Description){
-            $this->IdCategorie = $IdCategorie;
+        public function __construct($NomCategorie,$Description){
+           // $this->IdCategorie = $IdCategorie;
             $this->NomCategorie= $NomCategorie;
             $this->Description= $Description;
         }

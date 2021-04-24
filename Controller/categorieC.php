@@ -48,11 +48,11 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'INSERT INTO categorie (IdCategorie,NomCategorie,Description) 
-                VALUES (:IdCategorie, :NomCategorie, :Description)'
+                    'INSERT INTO categorie (NomCategorie,Description) 
+                VALUES ( :NomCategorie, :Description)'
                 );
                 $query->execute([
-                    'IdCategorie' => $Cat->getIdCategorie(),
+                   // 'IdCategorie' => $Cat->getIdCategorie(),
                      'NomCategorie' => $Cat->getNomCategorie(),
                  'Description' => $Cat->getDescriptionCategorie()
                 ]);
