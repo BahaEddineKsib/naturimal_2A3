@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="Style/AjoutAnimalStyle.css">
 </head>
 <body>
-    <form action="#">
+    <form action="CRUDanimal" method="POST">
+        <input type="hidden"  name="location" value="AjoutAnimal">
         <table border=0 >
 
             <tr>
@@ -20,7 +21,7 @@
             <tr>
                 <td colspan="2">
                     <select name="type" id="type-select">
-                      <option value="type">type</option>
+                        <option value="type">type</option>
                         <option value="dog">Chien</option>
                         <option value="chat">Chat</option>
                         <option value="hamster">Hamster</option>
@@ -33,35 +34,35 @@
             
             <tr>
                 <td colspan="2">
-                    <input placeholder="Nom" type="text" name="" id="" required>
+                    <input placeholder="Nom" type="text" name="name" id="" required>
                 </td>
             </tr>
 
             <tr>
                 <td colspan="2">
-                    <input placeholder="Race (exemple: pitbull)" type="text" name="" id="" required>
+                    <input placeholder="Race (exemple: pitbull)" type="text" name="race" id="" required>
                 </td>
             </tr>
             
             <tr>
                 <td colspan="2">
-                    <input  type="date" name="" id="" required>
+                    <input  type="date" name="birthday" id="" required>
                 </td>
             </tr>
 
             <tr>
                 <td colspan="2">
-                    <input placeholder="" type="file" name="" id="" required>
+                    <input placeholder="" type="file" name="image_link" id="" required>
                 </td>
             </tr>
 
             <tr>
 
                 <td>
-                    <input type="radio" name="sexe" id="sexe" required>Male
+                    <input type="radio" name="gender" id="male" required>Male
                 </td>
                 <td>
-                        <input type="radio" name="sexe" id="sexe">Female
+                    <input type="radio" name="gender" id="female">Female
                 </td>
             </tr>
             
@@ -70,13 +71,13 @@
                     <span>
                         Abandonner 
                     </span>
-                    <input type="checkbox" name="" id="ABANDONNER">
+                    <input type="checkbox" name="for_adoption" id="ABANDONNER">
                 </td>
             </tr>
             
             <tr>
                 <td colspan="2">
-                    <textarea style="resize:none" placeholder="Details" id="" name="" rows="4" cols="50" fixed></textarea>
+                    <textarea style="resize:none" placeholder="Details" id="" name="details" rows="4" cols="50" fixed></textarea>
                 </td>
             </tr>
             
