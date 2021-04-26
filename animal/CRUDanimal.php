@@ -39,9 +39,29 @@ class Animal
     public  function getGender()       {return $this->gender      ;}
     public  function getDetails()      {return $this->details     ;}
 
-    public  function setId($id)                    {$this->id           = 0            ;}
+    public  function setId($connect)
+    {
+        $query ="SELECT `id_animal` FROM `animals`";
+        $result = mysqli_query($connect,$query);
+        if(!$result){echo "error";}
+        while($row= mysqli_fetch_assoc($result))
+        {
+            $this->id = $row['id_animal'];
+        }
+        $this->id++;
+        echo " id= ".$this->id;
+    }
+    public  function setImage_link()
+    {
+        $link = "uploads/" ;
+        $link = $link . $this->id . "." ;
+        $FileExt = explode('.',$_FILES['image_link']['name']);
+        $link = $link . end($FileExt);
+        $link = strtolower($link);
+        echo $link;
+        $this->image_link = $link;
+    }
     public  function setId_owner()                 {$this->id_owner     = 0            ;}
-    public  function setImage_link($image_link)    {$this->image_link   = $image_link  ;}
     public  function setFor_adoption($for_adoption){$this->for_adoption = $for_adoption;}
     public  function setType($type)                {$this->type         = $type        ;}
     public  function setName($name)                {$this->name         = $name        ;}
@@ -50,11 +70,11 @@ class Animal
     public  function setGender($gender)            {$this->gender       = $gender      ;}
     public  function setDetails($details)          {$this->details     = $details      ;}
 
-    function __construct()
+            function __construct($connect)
             {
-                $this->id           = 0                     ;
+                $this->setId($connect);
                 $this->id_owner     = 0                     ;
-                $this->image_link   = $_POST['image_link']  ;
+                $this->setImage_link();
                 $this->for_adoption = $_POST['for_adoption'];
                 $this->type         = $_POST['type']        ;
                 $this->name         = $_POST['name']        ;
@@ -64,15 +84,18 @@ class Animal
                 $this->details      = $_POST['details']     ;
                 
             }
-}
 
-if(isset($_POST['location']))
-{
-    if($_POST['location'] == "AjoutAnimal")
+    public function upload_image()
+    {
+        $TMPfile= $_FILES['image_link']['tmp_name'];
+        move_uploaded_file($TMPfile, $this->image_link);
+    }
+
+    public function Create($connect)
     {
         
-        $ANIMAL = new Animal();
-        $query ="INSERT INTO `animals` (`id_animal`, `id_owner`, `image_link`, `for_adoption`, `type`, `name`, `race`, `birthday`, `gender`, `details`) VALUES (NULL, '" . $ANIMAL->getId_owner() . "', '" . $ANIMAL->getImage_link() ."', '". $ANIMAL->getFor_adoption() ."', '". $ANIMAL->getType() ."', '". $ANIMAL->getName() ."', '". $ANIMAL->getRace() ."', '". $ANIMAL->getBirthday() ."', '". $ANIMAL->getGender() ."', '". $ANIMAL->getDetails() ."')";
+        $this->upload_image();
+        $query ="INSERT INTO `animals` (`id_animal`, `id_owner`, `image_link`, `for_adoption`, `type`, `name`, `race`, `birthday`, `gender`, `details`) VALUES (NULL, '" . $this->getId_owner() . "', '" . $this->getImage_link() ."', '". $this->getFor_adoption() ."', '". $this->getType() ."', '". $this->getName() ."', '". $this->getRace() ."', '". $this->getBirthday() ."', '". $this->getGender() ."', '". $this->getDetails() ."')";
         $result = mysqli_query($connect,$query);
         if($result)
         {
@@ -85,6 +108,16 @@ if(isset($_POST['location']))
             echo $query;
             include 'AjoutAnimal.php';
         }
+    }
+}
+
+if(isset($_POST['location']))
+{
+    if($_POST['location'] == "AjoutAnimal")
+    {
+        
+        $ANIMAL = new Animal($connect);
+        $ANIMAL->Create($connect);
     }
 
 }

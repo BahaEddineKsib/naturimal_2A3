@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="Style/AjoutAnimalStyle.css">
 </head>
 <body>
-    <form action="CRUDanimal" method="POST">
+    <form action="CRUDanimal" method="POST" enctype="multipart/form-data">
         <input type="hidden"  name="location" value="AjoutAnimal">
         <table border=0 >
 
@@ -52,17 +52,17 @@
 
             <tr>
                 <td colspan="2">
-                    <input placeholder="" type="file" name="image_link" id="" required>
+                    <input  type="file" name="image_link" id="image_link" accept="image/*" required/>
                 </td>
             </tr>
 
             <tr>
 
                 <td>
-                    <input type="radio" name="gender" id="male" required>Male
+                    <input type="radio" name="gender" id="male" value="male" required>Male
                 </td>
                 <td>
-                    <input type="radio" name="gender" id="female">Female
+                    <input type="radio" name="gender" id="female" value="female">Female
                 </td>
             </tr>
             
