@@ -117,6 +117,17 @@
                 $e->getMessage();
             }
         }
+        public function TriArticles(){
+            try{
+                $pdo=getConnexion();
+                $query=$pdo->prepare("SELECT * FROM articlejardinage ORDER BY PrixArticle");
+                $query->execute();
+                return $query->fetchAll();
+            }
+            catch (PDOException $e) {
+                $e->getMessage();
+            }
+        }
         
     }
     

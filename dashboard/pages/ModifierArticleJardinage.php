@@ -1,4 +1,5 @@
 <HTML> 
+    <head>Modifier article jardinage</head>
 <body>
     <?PHP
 include "C:/xampp/htdocs/GestionBotanique/Model/articles jardinage.php";
@@ -20,10 +21,10 @@ if (isset($_GET['IdArticle'])){
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="control.js"> </script>
-<link rel="stylesheet" href="assets/css/ajouter.css">
-<div class="container">  
-<form id="contact" action="" method="post" name='registration'>
+            <script src="control.js"> </script>
+            <link rel="stylesheet" href="assets/css/ajouter.css">
+            <div class="container">  
+            <form id="contact" action="" method="post" name='registration'>
             <h3>Modifier un article de jardinage</h3>
             <h4>Modifier un article de jardinage de la base de données</h4>
             <fieldset>
@@ -63,9 +64,9 @@ if (isset($_GET['IdArticle'])){
 }
 if (isset($_POST['modifier'])){
 	$Art=new articles_jardinage($_POST['IdCategorieArticle'],$_POST['NomArticle'],$_POST['ImageArticle'],$_POST['Description'],$_POST['PrixArticle'],$_POST['QuantiteArticle']);
-    $ArtC-> UpdateArticle($Art,$_POST['edit']);
+    $ArtC-> UpdateArticle($Art,$_POST['IdArticle']);
 	
-	header('refresh:5 ;url=AfficherArticlesJardinageAd.php');
+	header('refresh:3 ;url=AfficherArticlesJardinageAd.php');
 }
 ?>
 

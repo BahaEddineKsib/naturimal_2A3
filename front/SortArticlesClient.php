@@ -100,10 +100,9 @@
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
     					<li><a href="#">All</a></li>
-    					<li><a href="AfficherArticlesJardinageClient.php" class="active">Articles jardinage</a></li>
+    					<li><a href="AfficherArticlesJardinageClient.php" >Articles jardinage</a></li>
     					<li><a href="AfficherCategoriesClient.php" >Categories Articles</a></li>
-              <li><a href="SortArticlesClient.php" >Trier Articles</a></li>
-
+              <li><a href="SortArticlesClient.php" class="active">Trier Articles</a></li>
     				</ul>
     			</div>
     		</div>
@@ -112,7 +111,7 @@
             include_once "../Controller/articles jardinageC.php";
             include_once "../config.php";
             $Art=new articles_JardinageC();
-                        $listecat=$Art->afficherArticlesJardinage();
+                        $listecat=$Art->TriArticles();
                         foreach ($listecat as $aux) {
             ?>
     		<div class="col-md-6 col-lg-3 ftco-animate">
