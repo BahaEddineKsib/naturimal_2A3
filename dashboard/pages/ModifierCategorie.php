@@ -15,7 +15,7 @@ include_once "../../Controller/categorieC.php";
 if (isset($_GET['IdCategorie'])){
 	$catC=new categorieC();
     $result=$catC->getCategorieById($_GET['IdCategorie']);
-	foreach($result as $row){
+	foreach($result as $row){ //ok
 ?>
  
 
