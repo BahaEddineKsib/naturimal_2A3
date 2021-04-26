@@ -35,32 +35,47 @@ class Animal
     public  function getGender()       {return $this->gender      ;}
     public  function getDetails()      {return $this->details     ;}
 
-    public  function setId($pdo)
+    public  function setId($pdo, $id)
     {
-        try
+        if($id == 0)
         {
-            $query =$pdo->prepare("SELECT `id_animal` FROM `animals`");
-            $query->execute();
-            $list = $query->fetchAll();
-            
+            try
+            {
+                $query =$pdo->prepare("SELECT `id_animal` FROM `animals`");
+                $query->execute();
+                $list = $query->fetchAll();
+                
 
-        }catch(PDOException $error){$error->getMessage();}
+            }catch(PDOException $error){$error->getMessage();}
 
-        foreach ($list as $animal) {
-            $this->id = $animal['id_animal'];
+            foreach ($list as $animal) {
+                $this->id = $animal['id_animal'];
+            }
+            $this->id++;
+            echo " id= ".$this->id;
         }
-        $this->id++;
-        echo " id= ".$this->id;
+        else
+        {
+            $this->id=$id;
+        }
     }
-    public  function setImage_link()
+    public  function setImage_link($image_link)
     {
-        $link = "uploads/" ;
-        $link = $link . $this->id . "." ;
-        $FileExt = explode('.',$_FILES['image_link']['name']);
-        $link = $link . end($FileExt);
-        $link = strtolower($link);
-        echo $link;
-        $this->image_link = $link;
+        if(isset($_FILES['image_link']['name']))
+        {
+            $link = "uploads/" ;
+            $link = $link . $this->id . "." ;
+            $FileExt = explode('.',$_FILES['image_link']['name']);
+            $link = $link . end($FileExt);
+            $link = strtolower($link);
+            echo $link;
+            $this->image_link = $link;
+        }
+        else
+        {
+            $this->image_link = $image_link;
+        }
+
     }
     public  function setId_owner()                 {$this->id_owner     = 0            ;}
     public  function setFor_adoption($for_adoption){$this->for_adoption = $for_adoption;}
@@ -71,20 +86,19 @@ class Animal
     public  function setGender($gender)            {$this->gender       = $gender      ;}
     public  function setDetails($details)          {$this->details     = $details      ;}
 
-            function __construct($pdo)
+            function __construct($pdo, $id, $id_owner, $image_link, $for_adoption, $type, $name, $race, $birthday, $gender, $details)
             {
                
-                $this->id_owner     = 0                     ;
-                $this->setId($pdo);
-                $this->setImage_link();
-                
-                $this->for_adoption = $_POST['for_adoption'];
-                $this->type         = $_POST['type']        ;
-                $this->name         = $_POST['name']        ;
-                $this->race         = $_POST['race']        ;
-                $this->birthday     = $_POST['birthday']    ;
-                $this->gender       = $_POST['gender']      ;
-                $this->details      = $_POST['details']     ;
+                $this->setId_owner($id_owner)        ;
+                $this->setId($pdo,$id)               ;
+                $this->setImage_link($image_link)    ;
+                $this->setFor_adoption($for_adoption);
+                $this->setType($type)                ;
+                $this->setName($name)                ;
+                $this->setRace($race)                ;
+                $this->setBirthday($birthday)        ;
+                $this->setGender($gender)            ;
+                $this->setDetails($details)          ;
                 
             }
 
@@ -114,9 +128,10 @@ if(isset($_POST['location']))
 {
     if($_POST['location'] == "AjoutAnimal")
     {
-        
-        $ANIMAL = new Animal($pdo);
-        $ANIMAL->Create($pdo);
+
+            $ANIMAL = new Animal($pdo, 0, 0, $_FILES['image_link']['name'], $_POST['for_adoption'], $_POST['type'], $_POST['name'], $_POST['race'], $_POST['birthday'], $_POST['gender'], $_POST['details']);
+            $ANIMAL->Create($pdo);
+
     }
 
 }
