@@ -39,10 +39,9 @@ if (
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         </head>
         <body>
-            <script src="control.js"> </script>   
         <link rel="stylesheet" href="assets/css/ajouter.css">
         <div class="container">  
-          <form id="categorie" name="formulaire categorie"  method="post">
+          <form id="categorie" name="MonForm"  method="post" onsubmit="return valider()">
             <h3>Ajouter une categorie</h3>
             <h4>Ajouter une categorie à la base de donnees</h4>
             
@@ -50,10 +49,10 @@ if (
               <input placeholder="Id Categorie" type="text" tabindex="1" name="IdCategorie" id="IdCategorie" readonly>
             </fieldset>-->
             <fieldset>
-              <input placeholder="Nom de la categorie" type="text" tabindex="2" name="NomCategorie" id="NomCategorie" required>
+              <input placeholder="Nom de la categorie" type="text" tabindex="2" name="NomCategorie" id="NomCategorie" >
             </fieldset>
             <fieldset>
-              <input placeholder="Description" type="text" tabindex="3" name="Description" id="Description" required>
+              <input placeholder="Description" type="text" tabindex="3" name="Description" id="Description">
             </fieldset>
             <fieldset>
               <button name="submit" type="submit" value="submit" id="categorie submit">Submit</button>
@@ -64,8 +63,27 @@ if (
           </form >         
         </div>
         
+        <SCRIPT LANGUAGE="JavaScript">
+    function valider() 
+    {
+    var NomCategorie=window.document.MonForm.NomCategorie.value;
+    var Description=window.document.MonForm.Description.value;
+    if((NomCategorie=="") || (Description=="") ){
+        alert ("verifier les champs");
+        return false; 
+    } 
+    if(NomCategorie.charAt(0)<'A' || NomCategorie.charAt(0)>'Z'){
+        alert ("Le nom de la categorie doit commencer par une lettre Majuscule");
+        return false;
+    }
+    if (Description.length<2){
+      alert("Veuillez saisir une description");
+      return false;
+    }
+    else return true;
+}
         
-         
+  </script>       
         
         </body>
         </HTMl>

@@ -180,6 +180,9 @@
               <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
               <input type="text" class="form-control" placeholder="Type here...">
             </div>
+           <div>
+               <button type="submit" value="chercher" class="p-3 mb-2 bg-info text-white" class="badge badge-sm bg-gradient-success" style="width=100px;">chercher</button>
+          </div> 
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
@@ -324,8 +327,8 @@
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold"><?php echo $row["Description"];?></span>
                       </td>
-                      <td class="align-middle">
-                        <a class="badge badge-sm bg-gradient-success" href="ModifierCategorie.php?IdCategorie=<?= $row['IdCategorie']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit categorie">
+                     <td class="align-middle">
+                        <a class="badge badge-sm bg-gradient-success" href="ModifierCategorie.php?edit=<?= $row['IdCategorie']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit categorie">
                           Edit
                         </a>
                       </td> 

@@ -1,61 +1,87 @@
+
+
 <HTML> 
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Modifier categorie</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="vendors/jqvmap/dist/jqvmap.min.css">
+
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
 <body>
-    <?PHP
+<?PHP
 include "C:/xampp/htdocs/GestionBotanique/Model/categorie.php";
 include_once "../../config.php";
 include_once "../../Controller/categorieC.php";
-$categorieC =  new categorieC();
 
-    if (isset($_POST['IdCategorie']) && isset($_POST['NomCategorie']) && isset($_POST['Description'])) {
-        $categorie= new Album($_POST['IdCategorie'], (float)$_POST['NomCategorie'], $_POST['Description']);
-        
-        $categorieC->AjouterCategorie($categorie);
-
-     
+if (isset($_GET['edit'])){
+	$catC=new categorieC();
+    $result=$catC->getCategorieById($_GET['edit']);
+	foreach($result as $row){
 ?>
-<meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="control.js"> </script>
-<link rel="stylesheet" href="assets/css/ajouter.css">
-<div class="container">  
-  <form method="post" name="ModifCat" id="ModifCat" >
-  <?php
-        if (isset($_GET['IdCategorie'])) {
-            $result = $categorieC->getCategorieById($_GET['IdCategorie']);
-			if ($result !== false) {
-    ?>
-    <h3>Modifier une categorie</h3>
-    <h4>Modifier une categorie de la base de donnees</h4>
-      <fieldset>
-      <input  type="hidden" name="Id Categorie" id="Id Categorie" tabindex="1" value = "<?= $result['IdCategorie'] ?>" >
-    </fieldset>
-    <fieldset>
-      <input  type="text" name="Nom Categorie" id="Nom Categorie" tabindex="2" value="<? $result['NomCategorie']?>" required  >
-    </fieldset>
-    <fieldset>
-      <input type="text" name="Description" id="Description" tabindex="3" value="<? $result['Description'] ?>" >
-    </fieldset>
-    
-      <button formaction="ModifierCategorie.php" type="submit" name="modifier" value="modifier" onclick="">Valider</button>
-      <button  class="btn btn-warning" type="submit" formaction="AfficherCategoriesAd.php">Cancel</button>    
-    </fieldset>
-  </form>
-   
-</div>
-<?php
-  }
+ 
 
-        }
-        else 
-        {
-          header('location:AfficherCategoriesAd.php');
-        }
-      }
+            </nav>
+    </aside><!-- /#left-panel -->
 
+
+                <div class="container">
+                    <div class="jumbotron">
+<form method="POST">
+<table>
+<caption>Modifier Categorie</caption>
+<tr>
+<td>Id categorie:</td>
+<td><input readonly type="number" name="id" value="<?= $row['IdCategorie']  ?>"></td>
+</tr>
+<tr>
+<td>Nom categorie:</td>
+<td><input type="text" name="nom" value="<?= $row['NomCategorie'] ?>"></td>
+</tr>
+<tr>
+<td>Description:</td>
+<td><input type="text" name="description" value="<?= $row['Description'] ?>"></td>
+</tr>
+
+                       
+
+<tr>
+<td></td>
+<td><input type="submit" name="modifier" value="modifier"></td>
+</tr>
+<tr>
+<td></td>
+<td><input type="hidden" name="id_ini" value="<?PHP echo $_GET['edit'];?>"></td>
+</tr>
+</table>
+</form>
+<?PHP
+	}
+}
+else {echo "verifier";}
+if (isset($_POST['modifier'])){
+	$cat=new categorie($_POST['nom'],$_POST['description']);
+	$catC-> UpdateCategorie($cat,$_POST['id_ini']);
+	echo $_POST['id_ini'];
+	header('Location:AfficherCategoriesAd.php');
+}
 ?>
-
 </body>
 </HTMl>

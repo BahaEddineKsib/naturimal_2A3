@@ -14,7 +14,7 @@
             }
         }
 
-        public function getCategorieById($id) {
+        public function getArticleById($id) {
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
@@ -23,7 +23,7 @@
                 $query->execute([
                     'id' => $id
                 ]);
-                return $query->fetch();
+                return $query->fetchAll();
             } catch (PDOException $e) {
                 $e->getMessage();
             }

@@ -23,7 +23,7 @@
                 $query->execute([
                     'id' => $id
                 ]);
-                return $query->fetch();
+                return $query->fetchAll();
             } catch (PDOException $e) {
                 $e->getMessage();
             }
@@ -65,14 +65,15 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'UPDATE categorie SET IdCategorie = :IdCategorie,NomCategorie= :NomCategorie,Description = :Description WHERE IdCategorie = :id'
+                    'UPDATE categorie SET NomCategorie= :NomCategorie,Description = :Description WHERE IdCategorie = :id'
                 );
                 $query->execute([
                     'NomCategorie' => $Cat->getNomCategorie(),
                     'Description' => $Cat->getDescriptionCategorie(),
-                    'id' => $id
+                    'id' => $Cat->getIdCategorie()
                 ]);
                 echo $query->rowCount() . " records UPDATED successfully";
+                return $query->fetch();
             } catch (PDOException $e) {
                 $e->getMessage();
             }
@@ -93,7 +94,7 @@
         }
 
         public function RechercherCategorie($Nom) {            
-            $sql = "SELECT * from categorie where NomCategorie=:Nom"; 
+            $sql = "SELECT * from categorie where NomCategorie LIKE '%$Nom%' ORDER BY IdCategorie"; 
             $db = config::getConnexion();
             try {
                 $query = $db->prepare($sql);
@@ -109,4 +110,3 @@
         }
         
     }
-    

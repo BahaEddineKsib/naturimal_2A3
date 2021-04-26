@@ -119,7 +119,7 @@
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">
-    						<h3><a href="#"><?php echo $aux["NomArticle"]; ?></a></h3>
+    						<h3><a href="#"><?php echo "Nom article".$aux["NomArticle"]; ?></a></h3>
                             <div class="d-flex">
                             <div class="idd">
 		    						<p class="idd"><span><?php echo 'Description: '. $aux["Description"]; ?></span></p>

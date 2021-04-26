@@ -7,17 +7,9 @@ include_once "../../config.php";
 include_once "../../Controller/articles jardinageC.php";
 
 if (isset($_GET['IdArticle'])){
-	$artC=new articles_jardinageC();
-    $result=$artC->getCategorieById($_GET["IdArticle"]);
+	$ArtC=new articles_jardinageC();
+    $result=$ArtC->getArticleById($_GET["IdArticle"]);
 	foreach($result as $row){
-        $IdArticle=$row['IdArticle'];
-		$IdCategorie=$row['IdCategorie'];
-		$NomArticle=$row['NomArticle'];
-        $ImageArticle=$row['ImageArticle'];
-		$Description=$row['Description'];
-        $PrixArticle=$row['PrixArticle'];
-        $QuantiteArticle=$row['QuantiteArticle'];
-
    
 
 
@@ -31,35 +23,35 @@ if (isset($_GET['IdArticle'])){
 <script src="control.js"> </script>
 <link rel="stylesheet" href="assets/css/ajouter.css">
 <div class="container">  
-<form id="contact" action="ModifierArticleJardinage.php" method="post" onsubmit="return UpdateArticleJardinage();" name='registration'>
+<form id="contact" action="" method="post" name='registration'>
             <h3>Modifier un article de jardinage</h3>
             <h4>Modifier un article de jardinage de la base de données</h4>
             <fieldset>
-                <input value="<?php echo $IdArticle;?>" type="hidden" tabindex="1" name="IdArticle" id="IdArticle" readonly>
+                <input value="<?= $row['IdArticle']?>" type="hidden" tabindex="1" name="IdArticle" id="IdArticle" readonly>
             </fieldset>
             <fieldset>
-                <input value="<?php echo $IdCategorie;?>" type="text" tabindex="1" name="IdCategorieArticle" id="IdCategorieArticle" readonly>
+                <input value="<?= $row['IdCategorie']?>" type="text" tabindex="1" name="IdCategorieArticle" id="IdCategorieArticle" readonly>
             </fieldset>
             <fieldset>
-                <input pvalue="<?php echo $NomArticle;?>" type="text"  tabindex="2" name="NomArticle" id="NomArticle" required>
+                <input pvalue="<?= $row['NomArticle']?>" type="text"  tabindex="2" name="NomArticle" id="NomArticle" >
             </fieldset>
             <fieldset>
-                <input value="<?php echo $ImageArticle;?>" type="file" tabindex="3" name="ImageArticle" accept="image/png, image/jpeg" id="ImageArticle" required>
+                <input value="<?= $row['ImageArticle']?>" type="file" tabindex="3" name="ImageArticle" accept="image/png, image/jpeg" id="ImageArticle" >
              </fieldset>
             <fieldset>
-                <textarea value="<?php echo $Description;?>" tabindex="4" name="Description" id="Description" required></textarea>
+                <textarea value="<?= $row['Description']?>" tabindex="4" name="Description" id="Description" ></textarea>
             </fieldset>
             <fieldset>
-                <input value="<?php echo $PrixArticle;?>" type="text" tabindex="5" name="PrixArticle" id="PrixArticle" required>
+                <input value="<?= $row['PrixArticle']?>" type="text" tabindex="5" name="PrixArticle" id="PrixArticle" >
             </fieldset>
             <fieldset>
-                <input value="<?php echo $QuantiteArticle;?>" type="text" tabindex="6" name="QuantiteArticle" id="QuantiteArticle" required>
+                <input value="<?= $row['QuantiteArticle']?>" type="text" tabindex="6" name="QuantiteArticle" id="QuantiteArticle" >
             </fieldset>
             <fieldset>
-                <button name="submit" type="submit" id="contact-submit" >Submit</button>
+                <button name="modifier" type="submit" id="contact-submit" >Submit</button>
             </fieldset> 
             <fieldset>           
-            <button><a href="AfficherArticleAd.php"></a>Cancel</button>
+            <button><a href="AfficherArticlesJardinageAd.php"></a>Cancel</button>
             </fieldset>           
 
         </form>
@@ -69,12 +61,11 @@ if (isset($_GET['IdArticle'])){
   }
 
 }
-if (isset($_POST['IdArticle'])){
-	$Art=new Art($_POST['IdArticle'],$_POST['IdCategorie'],$_POST['NomArticle'],$_POST['ImageArticle'],$_POST['Description'],$_POST['PrixArticle'],$_POST['QuantiteArticle']);
-
-$ArtC-> UpdateArticle($Art,$_POST['IdArticle']);
+if (isset($_POST['modifier'])){
+	$Art=new articles_jardinage($_POST['IdCategorieArticle'],$_POST['NomArticle'],$_POST['ImageArticle'],$_POST['Description'],$_POST['PrixArticle'],$_POST['QuantiteArticle']);
+    $ArtC-> UpdateArticle($Art,$_POST['edit']);
 	
-	header('Location: AfficherArticlesJardinageAd.php');
+	header('refresh:5 ;url=AfficherArticlesJardinageAd.php');
 }
 ?>
 

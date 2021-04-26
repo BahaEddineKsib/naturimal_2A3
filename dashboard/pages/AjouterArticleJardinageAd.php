@@ -18,7 +18,7 @@ if (
     isset($_POST["ImageArticle"]) &&
     isset($_POST["Description"]) &&
     isset($_POST["PrixArticle"]) &&
-    isset ($_POST['QuantiteArticle'])
+    isset ($_POST['QuantiteArticle']) 
 ) {
         $article = new articles_jardinage(
            // $_POST['IdArticle'],
@@ -48,38 +48,50 @@ if (
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
-<script src="control.js"> </script>   
+
+
         <link rel="stylesheet" href="assets/css/ajouter.css">
         <div class="container">  
-        <form id="article" method="post" name='ajout article'>
+        <form id="AjoutArticle" method="post" name='MonForm' onsubmit="return valider()" >
             <h3>Ajouter un article de jardinage</h3>
             <h4>Ajouter un article de jardinage à la base de données</h4>
             <fieldset>
                 <!--<input placeholder="Id de l'article" type="text" tabindex="1" name="IdArticle" id="IdArticle" >
             </fieldset>-->
             <fieldset>
-                <input placeholder="Id categorie" type="text" tabindex="2" name="IdCategorieArticle" id="IdCategorieArticle" required>
+                <label for="Id Categorie">Id categorie: </label>
+                <input placeholder="Id categorie" type="text" tabindex="2" name="IdCategorieArticle" id="IdCategorieArticle" >
             </fieldset>
             <fieldset>
-                <input placeholder="Nom article" type="text"  tabindex="3" name="NomArticle" id="NomArticle" required>
+            <label for="NomArticle">Nom article: </label>
+                <input placeholder="Nom article" type="text"  tabindex="3" name="NomArticle" id="NomArticle" >
             </fieldset>
             <fieldset>
-                <input placeholder="photo" type="file" tabindex="4" name="ImageArticle" accept="image/png, image/jpeg" id="ImageArticle" required>
+            <label for="ImageArticle">Image Article: </label>
+                <input placeholder="photo" type="file" tabindex="4" name="ImageArticle" accept="image/png, image/jpeg" id="ImageArticle" >
              </fieldset>
             <fieldset>
-                <textarea placeholder="Description de l'article" tabindex="5" name="Description" id="Description" required></textarea>
+            <label for="Description">Description: </label>
+                <textarea placeholder="Description de l'article" tabindex="5" name="Description" id="Description" pattern="[0-9a-zA-Z-\.]{0,12}"></textarea>
             </fieldset>
             <fieldset>
-                <input placeholder="Prix de l'article" type="text" tabindex="6" name="PrixArticle" id="PrixArticle" required>
+            <label for="PrixArticle">Prix Article: </label>
+                <input placeholder="Prix de l'article" type="text" tabindex="6" name="PrixArticle" id="PrixArticle" >
             </fieldset>
             <fieldset>
-                <input placeholder="Quantite de l'article" type="text" tabindex="7" name="QuantiteArticle" id="QuantiteArticle" required>
+            <label for="QuantiteArticle">Quantite Article: </label>
+                <input placeholder="Quantite de l'article" type="text" tabindex="7" name="QuantiteArticle" id="QuantiteArticle" >
+            </fieldset>
+            <br><br>
+            <fieldset>
+            <p id="erreur"></p>
             </fieldset>
             <fieldset>
-                <button name="submit" type="submit" id="contact-submit" >Submit</button>
+                <button name="submit" type="submit" id="submit" >Submit</button>
             </fieldset> 
             <fieldset>           
             <button><a href="AfficherArticleAd.php"></a>Cancel</button>
@@ -88,6 +100,32 @@ if (
         </form>
 
     </div>
-</body>
+    <SCRIPT LANGUAGE="JavaScript">
+    function valider() 
+    {
+    var IdCategorieArticle=window.document.MonForm.IdCategorieArticle.value;
+    var NomArticle=window.document.MonForm.NomArticle.value;
+    var Description=window.document.MonForm.Description.value;
+    var PrixArticle=window.document.MonForm.PrixArticle.value;
+    var QuantiteArticle=window.document.MonForm.QuantiteArticle.value;
+    if((IdCategorieArticle=="") || (Description=="") || (PrixArticle=="") || (QuantiteArticle=="")||(NomArticle=="")){
+        alert ("verifier les champs");
+        return false; 
+    } 
+    if(NomArticle.charAt(0)<'A' || NomArticle.charAt(0)>'Z'){
+        alert ("Le nom doit commencer par une lettre Majuscule");
+        return false;
+    }
+    if(QuantiteArticle>10){
+        alert("la quantite ne doit pas dépasser 10");
+        return false;
+    }
+    if(IdCategorieArticle.length>3){
+        alert("Id ne doit pas depasser 3 chiffres");
+        return false;
+    }
+    else return true;
+}
+</SCRIPT></body>
 </HTMl>
 
