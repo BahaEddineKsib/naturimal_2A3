@@ -1,3 +1,9 @@
+<?php
+//CONNECT TO DATABASE
+require_once 'DatabaseConnection.php';
+$pdo=getConnexion ();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +14,10 @@
     <title>Mes Animeau</title>
 </head>
 <body>
+<?php
+  //require 'CRUDanimal.php'
+
+?>
 <div class="container">
   <div class="images">
     <img src="https://assets.publishing.service.gov.uk/media/600ffd8cd3bf7f05bdaef3f0/renting-pets-cockerpoo-shutterstock-960.jpg" />
@@ -27,6 +37,7 @@
     </div>
   </div>
 </div>
+
 <div class="container">
   <div class="images">
     <img src="https://assets.publishing.service.gov.uk/media/600ffd8cd3bf7f05bdaef3f0/renting-pets-cockerpoo-shutterstock-960.jpg" />
