@@ -52,7 +52,7 @@ class Animal
                 $this->id = $animal['id_animal'];
             }
             $this->id++;
-            echo " id= ".$this->id;
+            //echo " id= ".$this->id;
         }
         else
         {
@@ -86,21 +86,20 @@ class Animal
     public  function setGender($gender)            {$this->gender       = $gender      ;}
     public  function setDetails($details)          {$this->details     = $details      ;}
 
-            function __construct($pdo, $id, $id_owner, $image_link, $for_adoption, $type, $name, $race, $birthday, $gender, $details)
-            {
-               
-                $this->setId_owner($id_owner)        ;
-                $this->setId($pdo,$id)               ;
-                $this->setImage_link($image_link)    ;
-                $this->setFor_adoption($for_adoption);
-                $this->setType($type)                ;
-                $this->setName($name)                ;
-                $this->setRace($race)                ;
-                $this->setBirthday($birthday)        ;
-                $this->setGender($gender)            ;
-                $this->setDetails($details)          ;
+    function __construct($pdo, $id, $id_owner, $image_link, $for_adoption, $type, $name, $race, $birthday, $gender, $details)
+    {
                 
-            }
+        $this->setId_owner($id_owner)        ;
+        $this->setId($pdo,$id)               ;
+        $this->setImage_link($image_link)    ;
+        $this->setFor_adoption($for_adoption);
+        $this->setType($type)                ;
+        $this->setName($name)                ;
+        $this->setRace($race)                ;
+        $this->setBirthday($birthday)        ;
+        $this->setGender($gender)            ;
+        $this->setDetails($details)          ;
+    }
 
     public function upload_image()
     {
@@ -120,7 +119,43 @@ class Animal
         }catch(PDOException $error){$error->getMessage();}
     }
 
+    public function ReadOne()
+    {
+        echo '<div class="container">
+        <div class="images">
+          <img src="' . $this->getImage_link() . '" />
+        </div>
+      <!--rgb(4 169 47)-->
+        <p class="pick">'. $this->getName() .' est né en '. $this->getBirthday() .'</p>
+        
+        <div class="product">
+          <p>'. $this->getType() .'</p>
+          <h1>'. $this->getRace() .'</h1>
+          <h2>'. $this->getGender() .'</h2>
+          <p class="desc">'. $this->getDetails() .'</p>
+          <div class="buttons">
+            <button class="add">MODIFIER</button>
+            <br>
+            <button class="like"><span>Suprimer</span></button>
+          </div>
+        </div>
+      </div>';
+    }
  
+    public function ReadAll($pdo)
+    {
+        try{
+            $query =$pdo->prepare("SELECT * FROM `animals`");
+            $query->execute();
+            $list = $query->fetchAll();
+        }catch(PDOException $error){$error->getMessage();}
+
+
+        foreach ($list as $an) {
+            $ANIMAL = new Animal($pdo, $an['id_animal'], $an['id_owner'], $an['image_link'], $an['for_adoption'], $an['type'], $an['name'], $an['race'], $an['birthday'], $an['gender'], $an['details']);
+            $ANIMAL->ReadOne();
+        }
+    }
 }
 $DeclareClassAnimal = 1 ;
 }
@@ -128,16 +163,13 @@ if(isset($_POST['location']))
 {
     if($_POST['location'] == "AjoutAnimal")
     {
-
+            echo "location == AjoutAnimal";
             $ANIMAL = new Animal($pdo, 0, 0, $_FILES['image_link']['name'], $_POST['for_adoption'], $_POST['type'], $_POST['name'], $_POST['race'], $_POST['birthday'], $_POST['gender'], $_POST['details']);
             $ANIMAL->Create($pdo);
 
     }
 
 }
-else
-{
-    include 'AfficheAnimal.php';
-}
+
 
 ?>
