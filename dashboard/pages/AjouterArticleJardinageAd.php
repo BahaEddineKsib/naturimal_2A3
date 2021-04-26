@@ -43,11 +43,13 @@ if (
 <HTML>
 
 <head>
+            Ajouter article
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+            <title> Ajouter article</title>
 
 </head>
 
@@ -91,10 +93,10 @@ if (
             <p id="erreur"></p>
             </fieldset>
             <fieldset>
-                <button name="submit" type="submit" id="submit" >Submit</button>
+                <button name="submit" type="submit" id="submit" class="btn btn-warning" >Submit</button>
             </fieldset> 
             <fieldset>           
-            <button><a href="AfficherArticleAd.php"></a>Cancel</button>
+            <button><a href="AfficherArticleAd.php" class="btn btn-warning"></a>Cancel</button>
             </fieldset>           
 
         </form>

@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8">
     <title>Modifer categorie</title>
+    Modifer categorie
 </head>
 <body>
 <?PHP
@@ -15,7 +16,7 @@ include_once "../../Controller/categorieC.php";
 if (isset($_GET['IdCategorie'])){
 	$catC=new categorieC();
     $result=$catC->getCategorieById($_GET['IdCategorie']);
-	foreach($result as $row){ //ok
+	foreach($result as $row){ 
 ?>
  
 
@@ -40,10 +41,10 @@ if (isset($_GET['IdCategorie'])){
                 <textarea value="<?= $row['Description']?>" tabindex="3" name="Description" id="Description" ></textarea>
             </fieldset>
             <fieldset>
-                <button name="modifier" type="submit" id="contact-submit" >Submit</button>
+                <button name="modifier" type="submit" id="contact-submit" class="btn btn-warning" >Submit</button>
             </fieldset> 
             <fieldset>           
-            <button><a href="AfficherArticlesJardinageAd.php"></a>Cancel</button>
+            <button><a href="AfficherArticlesJardinageAd.php" class="btn btn-warning"></a>Cancel</button>
             </fieldset>           
 
         </form>

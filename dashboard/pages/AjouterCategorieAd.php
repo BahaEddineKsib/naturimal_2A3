@@ -32,11 +32,13 @@ if (
 
 <HTML>
         <head>
+        Ajouter Categorie
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+            <title>Ajouter Categorie</title>
         </head>
         <body>
         <link rel="stylesheet" href="assets/css/ajouter.css">
@@ -55,10 +57,10 @@ if (
               <input placeholder="Description" type="text" tabindex="3" name="Description" id="Description">
             </fieldset>
             <fieldset>
-              <button name="submit" type="submit" value="submit" id="categorie submit">Submit</button>
+              <button name="submit" type="submit" value="submit" id="categorie submit" class="btn btn-warning">Submit</button>
             </fieldset>
             <fieldset>
-              <button formaction="AfficherCategoriesAd.php"><a href="AfficherCategoriesAd.php"></a>Cancel</button>
+              <button formaction="AfficherCategoriesAd.php"><a href="AfficherCategoriesAd.php" class="btn btn-warning"></a>Cancel</button>
             </fieldset>
           </form >         
         </div>

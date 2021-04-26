@@ -172,14 +172,9 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Tables</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Tables</h6>
+          <h6 class="font-weight-bolder mb-0">Gestion Botanique</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
-            </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
@@ -187,7 +182,6 @@
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">Sign In</span>
               </a>
-              <span><a href="SortArticlesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
 
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -294,7 +288,20 @@
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
+              <div id="google_translate_element"></div>
+         <script type="text/javascript">
+             function googleTranslateElementInit() {
+                 new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+             }
+         </script>
+
+         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+          <div class="container my-2">
+          <span><a href="SortArticlesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
+             <input class="col-10" type="text" name="AfficherClasse" onkeyup="myFunction()" placeholder="rechercher id" id="myInput">
+         </div>
+         
+                <table class="table align-items-center mb-0" id="mytable">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom Article</th>
@@ -460,6 +467,34 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
+  <script>
+
+
+         id="mytable"
+         function myFunction() {
+var input, filter, table, tr, td, i,j, txtValue;
+input = document.getElementById("myInput");
+filter = input.value.toUpperCase();
+table = document.getElementById("mytable");
+tr = table.getElementsByTagName("tr");
+//   alert(td.length);
+             for (i = 0; i < tr.length; i++) {
+                 td= tr[i].getElementsByTagName("td")[1];
+                 if (td) {
+                     txtValue = td.textContent || td.innerText;
+                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                         tr[i].style.display = "";
+                     } else {
+                         tr[i].style.display = "none";
+                     }
+                 }
+
+}
+
+}
+
+
+</script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>

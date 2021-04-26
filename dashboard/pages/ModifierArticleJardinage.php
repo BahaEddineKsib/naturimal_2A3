@@ -1,5 +1,8 @@
 <HTML> 
-    <head>Modifier article jardinage</head>
+    <head>
+    Modifier article jardinage
+    <title>Modifier article jardinage</title>
+    </head>
 <body>
     <?PHP
 include "C:/xampp/htdocs/GestionBotanique/Model/articles jardinage.php";
@@ -49,10 +52,10 @@ if (isset($_GET['IdArticle'])){
                 <input value="<?= $row['QuantiteArticle']?>" type="text" tabindex="6" name="QuantiteArticle" id="QuantiteArticle" >
             </fieldset>
             <fieldset>
-                <button name="modifier" type="submit" id="contact-submit" >Submit</button>
+                <button name="modifier" type="submit" id="contact-submit" class="btn btn-warning" >Submit</button>
             </fieldset> 
             <fieldset>           
-            <button><a href="AfficherArticlesJardinageAd.php"></a>Cancel</button>
+            <button><a href="AfficherArticlesJardinageAd.php" class="btn btn-warning"></a>Cancel</button>
             </fieldset>           
 
         </form>
