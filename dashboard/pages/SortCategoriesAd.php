@@ -123,6 +123,7 @@
               </svg>
             </div>
             <span class="nav-link-text ms-1">Sign In</span>
+
           </a>
         </li>
         <li class="nav-item">
@@ -190,6 +191,7 @@
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">Sign In</span>
                 <span><a href="SortCategoriesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
+
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -306,8 +308,8 @@
                     </tr>
                   </thead>
                   <?php
-                  $cat=new categorieC();
-                  $liste=$cat->afficherCategories();
+                  $catC=new categorieC();
+                  $liste=$catC->TriCategoriesAd();
                   foreach($liste as $row) {?>
                     <tbody>
                     <tr>

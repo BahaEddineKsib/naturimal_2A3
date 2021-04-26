@@ -128,6 +128,18 @@
                 $e->getMessage();
             }
         }
+        public function TriArticlesAd(){
+            try{
+                $pdo=getConnexion();
+                $query=$pdo->prepare("SELECT * FROM articlejardinage ORDER BY NomArticle DESC");
+                $query->execute();
+                return $query->fetchAll();
+            }
+            catch (PDOException $e) {
+                $e->getMessage();
+            }
+        }
+       
         
     }
     

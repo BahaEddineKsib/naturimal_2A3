@@ -56,6 +56,7 @@
                      'NomCategorie' => $Cat->getNomCategorie(),
                  'Description' => $Cat->getDescriptionCategorie()
                 ]);
+                
             } catch (PDOException $e) {
                 $e->getMessage();
             }
@@ -70,7 +71,7 @@
                 $query->execute([
                     'NomCategorie' => $Cat->getNomCategorie(),
                     'Description' => $Cat->getDescriptionCategorie(),
-                    'id' => $Cat->getIdCategorie()
+                    'id' => $id
                 ]);
                 echo $query->rowCount() . " records UPDATED successfully";
                 return $query->fetch();
@@ -108,6 +109,19 @@
                 $e->getMessage();
             }
         }
+        public function TriCategoriesAd(){
+            try{
+                $pdo=getConnexion();
+                $query=$pdo->prepare("SELECT * FROM categories ORDER BY NomCategorie ");
+                $query->execute();
+            }
+            catch (PDOException $e) {
+                $e->getMessage();
+            }
+            return $query->fetchAll();
+
+        }
+       
         
         
     }

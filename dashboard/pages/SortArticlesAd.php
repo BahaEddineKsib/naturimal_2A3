@@ -1,8 +1,8 @@
 <?php
-  include "C:/xampp/htdocs/GestionBotanique/Model/categorie.php";
+  include "C:/xampp/htdocs/GestionBotanique/Model/articles jardinage.php";
 
   include_once "../../config.php";
-  include_once "../../Controller/categorieC.php";
+  include_once "../../Controller/articles jardinageC.php";
   
 ?>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@
     <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active " href="../pages/AfficherCategoriesAd.php">
+          <a class="nav-link  " href="../pages/AfficherCategoriesAd.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>shop </title>
@@ -61,7 +61,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/AfficherArticlesJardinageAd.php">
+          <a class="nav-link  active" href="../pages/AfficherArticlesJardinageAd.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -180,16 +180,14 @@
               <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
               <input type="text" class="form-control" placeholder="Type here...">
             </div>
-           <div>
-               <button type="submit" value="chercher" class="p-3 mb-2 bg-info text-white" class="badge badge-sm bg-gradient-success" style="width=100px;">chercher</button>
-          </div> 
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">Sign In</span>
-                <span><a href="SortCategoriesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
+                <span><a href="SortArticlesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
+
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -289,67 +287,78 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Tableau categories</h6>
+              <h6>Tableau Articles</h6>
             </div>
             <div>
-              <a href="AjouterCategorieAd.php">Ajouter Categorie</a>
+              <a href="AjouterArticleJardinageAd.php">Ajouter article</a>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id Categorie</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom Categorie</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom Article</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Id Article</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prix Article</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantite Article</th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
                   <?php
-                  $cat=new categorieC();
-                  $liste=$cat->afficherCategories();
-                  foreach($liste as $row) {?>
-                    <tbody>
-                    <tr>
+                  $art=new articles_jardinageC();
+                  $liste=$art->TriArticlesAd();
+                  foreach($liste as $aux) {?>
+                       <tbody>
                       <td>
                         <div class="d-flex px-2 py-1">
-                          
+                          <div>
+                            <img src="<?php echo $row["ImageCategorie"];?>" class="avatar avatar-sm me-3">
+                          </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm" ><?php echo $row["IdCategorie"];?></h6>
-                            
+                            <h6 class="mb-0 text-sm"><?php echo $aux["NomArticle"];?></h6>
+                            <p class="text-xs text-secondary mb-0"><?php echo "Id categorie: ".$aux["IdCategorie"];?></p>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $row["NomCategorie"];?></p>
-                        
+                        <p class="text-xs font-weight-bold mb-0"><?php echo $aux["IdArticle"];?></p>
                       </td>
                       
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $row["Description"];?></span>
+                        <span class="text-secondary text-xs font-weight-bold"><?php echo $aux["PrixArticle"]."DT";?></span>
                       </td>
-                     <td class="align-middle">
-                        <a class="badge badge-sm bg-gradient-success" href="ModifierCategorie.php?edit=<?= $row['IdCategorie']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit categorie">
-                          Edit
-                        </a>
-                      </td> 
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><?php echo $aux["Description"];?></p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><?php echo $aux["QuantiteArticle"];?></p>
+                      </td>
                       <td class="align-middle">
-                        <a class="badge badge-sm bg-gradient-danger" onclick="return confirm('vous êtes sûr ?')" href="SupprimerCategorie.php?IdCategorie=<?=$row['IdCategorie']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete categorie">
-                          Delete
+                      <a class="badge badge-sm bg-gradient-success" href="ModifierArticleJardinage.php?IdArticle=<?= $aux['IdArticle']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                      Edit
+                    </a>
+                      </td>
+                      <td class="align-middle">
+                      <a class="badge badge-sm bg-gradient-danger" onclick="return confirm('vous êtes sûr ?')" href="SupprimerArticleJardinage.php?IdArticle=<?= $aux['IdArticle']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete article">
+                      Delete
                         </a>
                       </td>
-                    </tr>
+                    
                     <tr>
                     </tbody>
                     <?php
                     }
                      echo("</tr></table>");
                      ?>
-                   
                 </table>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        
         </div>
       </div>
       <footer class="footer pt-3">
