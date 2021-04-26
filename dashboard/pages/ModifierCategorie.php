@@ -44,7 +44,7 @@ if (isset($_GET['IdCategorie'])){
                 <button name="modifier" type="submit" id="contact-submit" class="btn btn-warning" >Submit</button>
             </fieldset> 
             <fieldset>           
-            <button><a href="AfficherArticlesJardinageAd.php" class="btn btn-warning"></a>Cancel</button>
+            <button><a href="AfficherArticlesJardinageAd.php" ></a>Cancel</button>
             </fieldset>           
 
         </form>
@@ -58,7 +58,7 @@ if (isset($_POST['modifier'])){
 	$cat=new categorie($_POST['NomCategorie'],$_POST['Description']);
 	$catC-> UpdateCategorie($cat,$_POST['IdCategorie']);
 	//echo $_POST['id_ini'];
-	header('refresh:3 ; url=AfficherCategoriesAd.php');
+	header('location:AfficherCategoriesAd.php');
 }
 ?>
 </body>

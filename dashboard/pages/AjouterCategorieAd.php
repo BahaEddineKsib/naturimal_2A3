@@ -60,9 +60,9 @@ if (
               <button name="submit" type="submit" value="submit" id="categorie submit" class="btn btn-warning">Submit</button>
             </fieldset>
             <fieldset>
-              <button formaction="AfficherCategoriesAd.php"><a href="AfficherCategoriesAd.php" class="btn btn-warning"></a>Cancel</button>
+              <button formaction="AfficherCategoriesAd.php" ><a href="AfficherCategoriesAd.php" ></a>Cancel</button>
             </fieldset>
-          </form >         
+          </form >     
         </div>
         
         <SCRIPT LANGUAGE="JavaScript">

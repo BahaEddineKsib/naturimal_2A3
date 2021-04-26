@@ -333,7 +333,7 @@ Afficher Categories
                         <span class="text-secondary text-xs font-weight-bold"><?php echo $row["Description"];?></span>
                       </td>
                      <td class="align-middle">
-                        <a class="badge badge-sm bg-gradient-success" href="ModifierCategorie.php?edit=<?= $row['IdCategorie']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit categorie">
+                        <a class="badge badge-sm bg-gradient-success" href="ModifierCategorie.php?IdCategorie=<?= $row['IdCategorie']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit categorie">
                           Edit
                         </a>
                       </td> 
