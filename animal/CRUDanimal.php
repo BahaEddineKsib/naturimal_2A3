@@ -68,7 +68,7 @@ class Animal
             $FileExt = explode('.',$_FILES['image_link']['name']);
             $link = $link . end($FileExt);
             $link = strtolower($link);
-            echo $link;
+           /* echo $link;*/
             $this->image_link = $link;
         }
         else
@@ -109,10 +109,21 @@ class Animal
 
     public function Create($pdo)
     {
+        /*echo "create";*/
         try
         {
+            $query =$pdo->prepare("INSERT INTO `animals` (`id_animal`, `id_owner`, `image_link`, `for_adoption`, `type`, `name`, `race`, `birthday`, `gender`, `details`) VALUES (:id_animal, :id_owner, :image_link, :for_adoption, :type, :name, :race, :birthday, :gender, :details)");
             
-            $query =$pdo->prepare("INSERT INTO `animals` (`id_animal`, `id_owner`, `image_link`, `for_adoption`, `type`, `name`, `race`, `birthday`, `gender`, `details`) VALUES (NULL, '" . $this->getId_owner() . "', '" . $this->getImage_link() ."', '". $this->getFor_adoption() ."', '". $this->getType() ."', '". $this->getName() ."', '". $this->getRace() ."', '". $this->getBirthday() ."', '". $this->getGender() ."', '". $this->getDetails() ."')");
+            $query->bindValue(':id_animal',     NULL);
+            $query->bindValue(':id_owner',      $this->getId_owner());
+            $query->bindValue(':image_link',    $this->getImage_link());
+            $query->bindValue(':for_adoption',  $this->getFor_adoption());
+            $query->bindValue(':type',          $this->getType());
+            $query->bindValue(':name',          $this->getName());
+            $query->bindValue(':race',          $this->getRace());
+            $query->bindValue(':birthday',      $this->getBirthday());
+            $query->bindValue(':gender',        $this->getGender());
+            $query->bindValue(':details',       $this->getDetails());
             $query->execute();
             $this->upload_image();
             include 'AfficheAnimal.php';
@@ -121,25 +132,32 @@ class Animal
 
     public function ReadOne()
     {
-        echo '<div class="container">
-        <div class="images">
-          <img src="' . $this->getImage_link() . '" />
-        </div>
-      <!--rgb(4 169 47)-->
-        <p class="pick">'. $this->getName() .' est né en '. $this->getBirthday() .'</p>
-        
+        echo '<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
         <div class="product">
-          <p>'. $this->getType() .'</p>
-          <h1>'. $this->getRace() .'</h1>
-          <h2>'. $this->getGender() .'</h2>
-          <p class="desc">'. $this->getDetails() .'</p>
-          <div class="buttons">
-            <button class="add">MODIFIER</button>
-            <br>
-            <button class="like"><span>Suprimer</span></button>
-          </div>
+
+            <a href="#" class="img-prod"><img class="img-fluid" src="'. $this->getImage_link() .'" alt="Colorlib Template">
+                <div class="overlay"></div>
+            </a>
+            <div class="text py-3 pb-4 px-3 text-center">
+                <h3><a href="#">'. $this->getName() .'</a></h3>
+                <div class="d-flex">
+                    <div class="pricing">
+                        <p class="price"><span>'. $this->getBirthday() .'</span></p>
+                    </div>
+                </div>
+                <div class="bottom-area d-flex px-3">
+                    <div class="m-auto d-flex">
+                        <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                            <span><i class="ion-ios-menu"></i></span>
+                        </a>
+                        <a href="#" class=" d-flex justify-content-center align-items-center mx-1">
+                            <span><i class=""></i>x</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>';
+    </div>';
     }
  
     public function ReadAll($pdo)
@@ -150,25 +168,42 @@ class Animal
             $list = $query->fetchAll();
         }catch(PDOException $error){$error->getMessage();}
 
-
+        echo '<div class="container"><div class="row">';
         foreach ($list as $an) {
             $ANIMAL = new Animal($pdo, $an['id_animal'], $an['id_owner'], $an['image_link'], $an['for_adoption'], $an['type'], $an['name'], $an['race'], $an['birthday'], $an['gender'], $an['details']);
             $ANIMAL->ReadOne();
-        }
+       
+       }
+        echo '</div></div>';
     }
 }
 $DeclareClassAnimal = 1 ;
 }
+/*echo "--f crude--";*/
 if(isset($_POST['location']))
 {
+    /*echo "--location t3abet ema =". $_POST['location']."--";*/
     if($_POST['location'] == "AjoutAnimal")
     {
-            echo "location == AjoutAnimal";
-            $ANIMAL = new Animal($pdo, 0, 0, $_FILES['image_link']['name'], $_POST['for_adoption'], $_POST['type'], $_POST['name'], $_POST['race'], $_POST['birthday'], $_POST['gender'], $_POST['details']);
+        
+           /* echo "--location == AjoutAnimal--";*/
+            if(isset($_POST['for_adoption']))
+            {
+                $for_adoption = "checked";
+            }
+            else
+            {
+                $for_adoption = "unchecked";
+            }
+            $ANIMAL = new Animal($pdo, 0, 0, $_FILES['image_link']['name'], $for_adoption, $_POST['type'], $_POST['name'], $_POST['race'], $_POST['birthday'], $_POST['gender'], $_POST['details']);
             $ANIMAL->Create($pdo);
-
+            
     }
 
+}
+else
+{
+    /*echo "enta iiin ?";*/
 }
 
 

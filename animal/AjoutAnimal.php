@@ -8,16 +8,13 @@
     <link rel="stylesheet" href="Style/AjoutAnimalStyle.css">
 </head>
 <body>
+<?php
+require_once 'header.php';
+myheader("ENREGISTREZ VOTRE ANIMAL DE COMPAGNIE");
+?>
     <form action="CRUDanimal" method="POST" enctype="multipart/form-data">
         <input type="hidden"  name="location" value="AjoutAnimal">
         <table border=0 >
-
-            <tr>
-                <td colspan="2" id="TD1">
-                    <h1>Enregistrez <br> Votre Animal De Compagnie</h1>
-                </td>
-            </tr>
-
             <tr>
                 <td colspan="2">
                     <select name="type" id="type-select">
@@ -57,21 +54,13 @@
             </tr>
 
             <tr>
-
                 <td>
-                    <input type="radio" name="gender" id="male" value="male" required>Male
-                </td>
-                <td>
-                    <input type="radio" name="gender" id="female" value="female">Female
-                </td>
-            </tr>
-            
-            <tr>
-                <td colspan="2">
-                    <span>
-                        Abandonner 
-                    </span>
-                    <input type="checkbox" name="for_adoption" id="ABANDONNER">
+                    Male               
+                    <input type="radio" name="gender" id="male" value="male" required>
+                    Female
+                    <input type="radio" name="gender" id="female" value="female">
+                    <span>Abandonner</span>
+                    <input type="checkbox" name="for_adoption" id="ABANDONNER" value="checked">
                 </td>
             </tr>
             
