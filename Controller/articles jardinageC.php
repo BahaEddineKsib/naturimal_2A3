@@ -5,7 +5,7 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'SELECT * FROM articlejardinage'
+                    'SELECT * FROM articlejardinage A INNER JOIN categorie C WHERE A.IdCategorie=C.IdCategorie'
                 );
                 $query->execute();
                 return $query->fetchAll();
@@ -131,7 +131,7 @@
         public function TriArticlesAd(){
             try{
                 $pdo=getConnexion();
-                $query=$pdo->prepare("SELECT * FROM articlejardinage ORDER BY NomArticle DESC");
+                $query=$pdo->prepare("SELECT * FROM articlejardinage ORDER BY NomArticle ");
                 $query->execute();
                 return $query->fetchAll();
             }
@@ -139,6 +139,7 @@
                 $e->getMessage();
             }
         }
+       
        
         
     }

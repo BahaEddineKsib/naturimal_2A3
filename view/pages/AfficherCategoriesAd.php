@@ -297,7 +297,7 @@ Afficher Categories
 
          <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
               <div class="container my-2">
-          <span><a href="SortArticlesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
+          <span><a href="SortCategoriesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
              <input class="col-10" type="text" name="AfficherClasse" onkeyup="myFunction()" placeholder="rechercher id" id="myInput">
          </div>
                 <table class="table align-items-center mb-0" id="mytable">

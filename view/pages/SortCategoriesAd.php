@@ -1,8 +1,8 @@
 <?php
-  include "C:/xampp/htdocs/GestionBotanique/Model/articles jardinage.php";
+  include "C:/xampp/htdocs/GestionBotanique/Model/categorie.php";
 
   include_once "../../config.php";
-  include_once "../../Controller/articles jardinageC.php";
+  include_once "../../Controller/categorieC.php";
   
 ?>
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Soft UI Dashboard by Creative Tim
+    Categories-sort
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -41,7 +41,7 @@
     <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/AfficherCategoriesAd.php">
+          <a class="nav-link active " href="../pages/AfficherCategoriesAd.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>shop </title>
@@ -61,7 +61,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  active" href="../pages/AfficherArticlesJardinageAd.php">
+          <a class="nav-link  " href="../pages/AfficherArticlesJardinageAd.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -123,6 +123,7 @@
               </svg>
             </div>
             <span class="nav-link-text ms-1">Sign In</span>
+
           </a>
         </li>
         <li class="nav-item">
@@ -174,7 +175,6 @@
           </ol>
           <h6 class="font-weight-bolder mb-0">Gestion Botanique</h6>
         </nav>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
@@ -182,7 +182,6 @@
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">Sign In</span>
               </a>
-
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -281,10 +280,10 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Tableau Articles</h6>
+              <h6>Tableau categories</h6>
             </div>
             <div>
-              <a href="AjouterArticleJardinageAd.php">Ajouter article</a>
+              <a href="AjouterCategorieAd.php">Ajouter Categorie</a>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -296,76 +295,65 @@
          </script>
 
          <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-          <div class="container my-2">
-          <span><a href="SortArticlesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
+              <div class="container my-2">
+          <span><a href="SortCategoriesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
              <input class="col-10" type="text" name="AfficherClasse" onkeyup="myFunction()" placeholder="rechercher id" id="myInput">
          </div>
-         
-                <table class="table align-items-center mb-0" id="mytable">
+                <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom Article</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Id Article</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prix Article</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantite Article</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id Categorie</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom Categorie</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
                   <?php
-                  $art=new articles_jardinageC();
-                  $liste=$art->afficherArticlesJardinage();
-                  foreach($liste as $aux) {?>
-                       <tbody>
+                  $catC=new categorieC();
+                  $liste=$catC->TriCategoriesAd();
+                  foreach($liste as $row) {
+                    ?>
+                    <tbody>
+                    <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="<?php echo $row["ImageCategorie"];?>" class="avatar avatar-sm me-3">
-                          </div>
+                          
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm"><?php echo $aux["NomArticle"];?></h6>
-                            <p class="text-xs text-secondary mb-0"><?php echo "Id categorie: ".$aux["IdCategorie"];?></p>
+                            <h6 class="mb-0 text-sm" ><?php echo $row["IdCategorie"];?></h6>
+                            
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $aux["IdArticle"];?></p>
+                        <p class="text-xs font-weight-bold mb-0"><?php echo $row["NomCategorie"];?></p>
+                        
                       </td>
                       
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $aux["PrixArticle"]."DT";?></span>
+                        <span class="text-secondary text-xs font-weight-bold"><?php echo $row["Description"];?></span>
                       </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $aux["Description"];?></p>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $aux["QuantiteArticle"];?></p>
-                      </td>
+                     <td class="align-middle">
+                        <a class="badge badge-sm bg-gradient-success" href="ModifierCategorie.php?edit=<?= $row['IdCategorie']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit categorie">
+                          Edit
+                        </a>
+                      </td> 
                       <td class="align-middle">
-                      <a class="badge badge-sm bg-gradient-success" href="ModifierArticleJardinage.php?IdArticle=<?= $aux['IdArticle']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                      Edit
-                    </a>
-                      </td>
-                      <td class="align-middle">
-                      <a class="badge badge-sm bg-gradient-danger" onclick="return confirm('vous êtes sûr ?')" href="SupprimerArticleJardinage.php?IdArticle=<?= $aux['IdArticle']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete article">
-                      Delete
+                        <a class="badge badge-sm bg-gradient-danger" onclick="return confirm('vous êtes sûr ?')" href="SupprimerCategorie.php?IdCategorie=<?=$row['IdCategorie']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete categorie">
+                          Delete
                         </a>
                       </td>
-                    
+                    </tr>
                     <tr>
                     </tbody>
                     <?php
                     }
                      echo("</tr></table>");
                      ?>
+                   
                 </table>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        
         </div>
       </div>
       <footer class="footer pt-3">
@@ -467,27 +455,27 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
-  <script>
+   <script>
 
 
-         id="mytable"
-         function myFunction() {
+id="mytable"
+function myFunction() {
 var input, filter, table, tr, td, i,j, txtValue;
 input = document.getElementById("myInput");
 filter = input.value.toUpperCase();
 table = document.getElementById("mytable");
 tr = table.getElementsByTagName("tr");
 //   alert(td.length);
-             for (i = 0; i < tr.length; i++) {
-                 td= tr[i].getElementsByTagName("td")[1];
-                 if (td) {
-                     txtValue = td.textContent || td.innerText;
-                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                         tr[i].style.display = "";
-                     } else {
-                         tr[i].style.display = "none";
-                     }
-                 }
+    for (i = 0; i < tr.length; i++) {
+        td= tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
 
 }
 

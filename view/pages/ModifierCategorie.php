@@ -38,7 +38,7 @@ if (isset($_GET['IdCategorie'])){
                 <input value="<?= $row['NomCategorie']?>" type="text" tabindex="2" name="NomCategorie" id="NomCategoie">
             </fieldset>            
             <fieldset>
-                <textarea value="<?= $row['Description']?>" tabindex="3" name="Description" id="Description" ></textarea>
+                <input value="<?= $row['Description']?>" tabindex="3" name="Description" id="Description" type="text" >
             </fieldset>
             <fieldset>
                 <button name="modifier" type="submit" id="contact-submit" class="btn btn-warning" >Submit</button>

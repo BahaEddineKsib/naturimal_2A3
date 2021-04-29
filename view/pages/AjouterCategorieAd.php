@@ -51,9 +51,11 @@ if (
               <input placeholder="Id Categorie" type="text" tabindex="1" name="IdCategorie" id="IdCategorie" readonly>
             </fieldset>-->
             <fieldset>
+            <label for="Nom Categorie">Nom categorie: </label>
               <input placeholder="Nom de la categorie" type="text" tabindex="2" name="NomCategorie" id="NomCategorie" >
             </fieldset>
             <fieldset>
+            <label for="Description">Description: </label>
               <input placeholder="Description" type="text" tabindex="3" name="Description" id="Description">
             </fieldset>
             <fieldset>

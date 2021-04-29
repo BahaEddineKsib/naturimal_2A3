@@ -112,13 +112,13 @@
         public function TriCategoriesAd(){
             try{
                 $pdo=getConnexion();
-                $query=$pdo->prepare("SELECT * FROM categories ORDER BY NomCategorie ");
+                $query=$pdo->prepare('SELECT * FROM categorie ORDER BY NomCategorie DESC');
                 $query->execute();
+                return $query->fetchAll();
             }
             catch (PDOException $e) {
                 $e->getMessage();
             }
-            return $query->fetchAll();
 
         }
        
