@@ -5,7 +5,6 @@
 <head>
     <meta charset="utf-8">
     <title>Modifer categorie</title>
-    Modifer categorie
 </head>
 <body>
 <?PHP

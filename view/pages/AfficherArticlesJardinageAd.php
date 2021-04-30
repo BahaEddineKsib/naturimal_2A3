@@ -18,7 +18,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Soft UI Dashboard by Creative Tim
+    Afficher articles jardinage
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -208,10 +208,10 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-            <div class="card-header pb-0">
+            <div class="card-header pb-0" id="Tableauarticles">
               <h6>Tableau Articles</h6>
             </div>
-            <div>
+            <div id="Ajouterarticle">
               <a href="AjouterArticleJardinageAd.php">Ajouter article</a>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -226,7 +226,7 @@
          <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
           <div class="container my-2">
          
-          <span><a href="SortArticlesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
+          <span><a href="SortArticlesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;" id="Trier">Trier</a></span>
                <input class="col-10" type="text" name="AfficherClasse" onkeyup="myFunction()" placeholder="rechercher id" id="myInput">
          </div>
         

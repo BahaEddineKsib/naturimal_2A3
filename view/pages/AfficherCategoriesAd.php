@@ -9,7 +9,6 @@
 <html lang="en">
 
 <head>
-Afficher Categories
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
@@ -224,11 +223,11 @@ Afficher Categories
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-            <div class="card-header pb-0">
+            <div class="card-header pb-0" id="Tableaucategories">
               <h6>Tableau categories</h6>
             </div>
             <div>
-              <a href="AjouterCategorieAd.php">Ajouter Categorie</a>
+              <a href="AjouterCategorieAd.php" id="AjouterCategorie">Ajouter Categorie</a>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -241,7 +240,7 @@ Afficher Categories
 
          <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
               <div class="container my-2">
-          <span><a href="SortCategoriesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
+          <span><a href="SortCategoriesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;" id="Trier">Trier</a></span>
              <input class="col-10" type="text" name="AfficherClasse" onkeyup="myFunction()" placeholder="rechercher id" id="myInput">
          </div>
                 <table class="table align-items-center mb-0" id="mytable">

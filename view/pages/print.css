@@ -1,10 +1,43 @@
 @page
 {
-    size:A4;
     margin:0;
+    size:A4;
 }
 #print-btn
 {
     display:none;
     visibility:none;
+}
+#Trier
+{
+    display:none;
+    visibility:none;
+}
+#myInput
+{
+    display:none;
+    visibility:none;
+}
+#AjouterCategorie
+{
+    display:none;
+    visibility:none;
+}
+#Tableaucategories
+{
+    display:none;
+    visibility:none;
+}
+#Ajouterarticle
+{
+    display:none;
+    visibility:none;
+}
+#Tableauarticles
+{
+    display:none;
+    visibility:none;
+}
+.news-export-doc .head-note > div {
+    border-color: #ff0000;
 }

@@ -1,6 +1,5 @@
 <HTML> 
     <head>
-    Modifier article jardinage
     <title>Modifier article jardinage</title>
     </head>
 <body>

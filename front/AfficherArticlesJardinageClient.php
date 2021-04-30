@@ -99,7 +99,7 @@
     		<div class="row justify-content-center">
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
-    					<li><a href="#">All</a></li>
+    					<li><a href="AllBotanique.php">All</a></li>
     					<li><a href="AfficherArticlesJardinageClient.php" class="active">Articles jardinage</a></li>
     					<li><a href="AfficherCategoriesClient.php" >Categories Articles</a></li>
               <li><a href="SortArticlesClient.php" >Trier Articles</a></li>
