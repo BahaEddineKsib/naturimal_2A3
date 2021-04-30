@@ -118,7 +118,7 @@
     		<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
     					<a href="#" class="img-prod">
-              <img class="img-fluid" src="images/<?php echo $aux["ImageArticle"];?>" alt="non">
+              <img class="img-fluid" style="width:300px;height:300px;" src="images/<?php echo $aux["ImageArticle"];?>" alt="non">
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">
@@ -174,24 +174,7 @@
     	</div>
     </section>
 
-		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
-      <div class="container py-4">
-        <div class="row d-flex justify-content-center py-5">
-          <div class="col-md-6">
-          	<h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
-          	<span>Get e-mail updates about our latest shops and special offers</span>
-          </div>
-          <div class="col-md-6 d-flex align-items-center">
-            <form action="#" class="subscribe-form">
-              <div class="form-group d-flex">
-                <input type="text" class="form-control" placeholder="Enter email address">
-                <input type="submit" value="Subscribe" class="submit px-3">
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+		
     <footer class="ftco-footer ftco-section">
       <div class="container">
       	<div class="row">
