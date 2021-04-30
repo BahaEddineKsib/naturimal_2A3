@@ -117,7 +117,8 @@
             ?>
     		<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="C:/xampp/htdocs/GestionBotanique/front/images/<?=$aux["ImageArticle"] ?>" alt="Colorlib Template">
+    					<a href="#" class="img-prod">
+              <img class="img-fluid" src="images/<?php echo $aux["ImageArticle"];?>" alt="non">
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">

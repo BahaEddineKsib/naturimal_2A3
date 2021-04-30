@@ -5,10 +5,11 @@
   include_once "../../config.php";
   include_once "../../Controller/articles jardinageC.php";
   include_once "../../Controller/categorieC.php";
+  include_once "../../Controller/visiteursC.php";
+
   
   
 ?>
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -302,8 +303,9 @@
 
          <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
           <div class="container my-2">
+         
           <span><a href="SortArticlesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
-             <input class="col-10" type="text" name="AfficherClasse" onkeyup="myFunction()" placeholder="rechercher id" id="myInput">
+               <input class="col-10" type="text" name="AfficherClasse" onkeyup="myFunction()" placeholder="rechercher id" id="myInput">
          </div>
         
          
@@ -325,9 +327,9 @@
                        <tbody>
                       <td>
                         <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../../assets/img/<?= $row['ImageArticle']?>" class="avatar avatar-sm me-3">
-                          </div>
+                         <!-- <div>
+                            <a src="C:/xampp/htdocs/GestionBotanique/View/assets/img</?= $row['ImageArticle']?>" class="avatar avatar-sm me-3"><a>
+                          </div>-->
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm"><?php echo $aux["NomArticle"];?></h6>
                             <p class="text-xs text-secondary mb-0"><?php echo "Id categorie: ".$aux["IdCategorie"];?></p>

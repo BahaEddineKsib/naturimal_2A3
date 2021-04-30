@@ -1,10 +1,13 @@
 <?php
     require_once "C:/xampp/htdocs/GestionBotanique/config.php";
-    $art=new articles_jardinageC();
-    $result=$art->nombre_visiteurs();  
+	require_once "C:/xampp/htdocs/GestionBotanique/Controller/visiteursC.php";
+    $vis=new visiteursC();
+    $result=$vis->nombre_visiteurs();  
     foreach($result as $row){
-        $row['NbVisiteurs']=$row['NbVisiteurs']+1;
+        $visiteurs_nv=$row['NbVisiteurs']+1;
     }
+	$vis->update_visiteurs($visiteurs_nv);
+
 ?>
 
 

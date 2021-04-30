@@ -31,25 +31,32 @@ if (isset($_GET['IdArticle'])){
             <h3>Modifier un article de jardinage</h3>
             <h4>Modifier un article de jardinage de la base de données</h4>
             <fieldset>
-                <input value="<?= $row['IdArticle']?>" type="hidden" tabindex="1" name="IdArticle" id="IdArticle" readonly>
+            <label for="Id Article">Id article: </label>
+                <input value="<?= $row['IdArticle']?>" type="text" tabindex="1" name="IdArticle" id="IdArticle" readonly>
             </fieldset>
             <fieldset>
-                <input value="<?= $row['IdCategorie']?>" type="text" tabindex="1" name="IdCategorieArticle" id="IdCategorieArticle" readonly>
+                <label for="Id Categorie">Id categorie: </label>
+                <input value="<?= $row['IdCategorie']?>" type="text" tabindex="2" name="IdCategorieArticle" id="IdCategorieArticle" readonly>
             </fieldset>
             <fieldset>
-                <input pvalue="<?= $row['NomArticle']?>" type="text"  tabindex="2" name="NomArticle" id="NomArticle" >
+                <label for="NomArticle">Nom article: </label>
+                <input pvalue="<?= $row['NomArticle']?>" type="text"  tabindex="3" name="NomArticle" id="NomArticle" >
             </fieldset>
             <fieldset>
-                <input value="<?= $row['ImageArticle']?>" type="file" tabindex="3" name="ImageArticle" accept="image/png, image/jpeg" id="ImageArticle" >
+                <label for="ImageArticle">Image Article: </label>
+                <input value="<?= $row['ImageArticle']?>" type="text" tabindex="4" name="ImageArticle" accept="image/png, image/jpeg" id="ImageArticle" >
              </fieldset>
             <fieldset>
-                <textarea value="<?= $row['Description']?>" tabindex="4" name="Description" id="Description" ></textarea>
+                 <label for="Description">Description: </label>
+                <input value="<?= $row['Description']?>" tabindex="5" name="Description" id="Description" >
             </fieldset>
             <fieldset>
-                <input value="<?= $row['PrixArticle']?>" type="text" tabindex="5" name="PrixArticle" id="PrixArticle" >
+                <label for="PrixArticle">Prix Article: </label>
+                <input value="<?= $row['PrixArticle']?>" type="text" tabindex="6" name="PrixArticle" id="PrixArticle" >
             </fieldset>
             <fieldset>
-                <input value="<?= $row['QuantiteArticle']?>" type="text" tabindex="6" name="QuantiteArticle" id="QuantiteArticle" >
+                <label for="QuantiteArticle">Quantite Article: </label>
+                <input value="<?= $row['QuantiteArticle']?>" type="text" tabindex="7" name="QuantiteArticle" id="QuantiteArticle" >
             </fieldset>
             <fieldset>
                 <button name="modifier" type="submit" id="contact-submit" class="btn btn-warning" >Submit</button>
