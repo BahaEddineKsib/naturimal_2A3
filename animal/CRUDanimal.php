@@ -35,8 +35,7 @@ class Animal
     public  function getGender()       {return $this->gender      ;}
     public  function getDetails()      {return $this->details     ;}
 
-    public  function getAnimalById($pdo, $id)
-    {
+    public  function getAnimalById($pdo, $id){
         try{
             $query =$pdo->prepare("SELECT * FROM `animals` WHERE `id_animal` = :id_animal");
             $query->bindValue(':id_animal',     $id);
@@ -49,9 +48,7 @@ class Animal
             return $ANIMAL;
        }
     }
-
-    public  function setId($pdo, $id)
-    {
+    public  function setId($pdo, $id){
         if($id == 0)
         {
             try
@@ -74,8 +71,7 @@ class Animal
             $this->id=$id;
         }
     }
-    public  function setImage_link($image_link)
-    {
+    public  function setImage_link($image_link){
         $this->image_link = $image_link;
     }
     public  function setId_owner()                 {$this->id_owner     = 0            ;}
@@ -87,8 +83,7 @@ class Animal
     public  function setGender($gender)            {$this->gender       = $gender      ;}
     public  function setDetails($details)          {$this->details     = $details      ;}
 
-    function __construct($pdo, $id, $id_owner, $image_link, $for_adoption, $type, $name, $race, $birthday, $gender, $details)
-    {
+    function __construct($pdo, $id, $id_owner, $image_link, $for_adoption, $type, $name, $race, $birthday, $gender, $details){
                 
         $this->setId_owner($id_owner)        ;
         $this->setId($pdo,$id)               ;
@@ -102,8 +97,7 @@ class Animal
         $this->setDetails($details)          ;
     }
 
-    public function upload_image()
-    {
+    public function upload_image(){
         if(isset($_FILES['image_link']['name']) && $_FILES['image_link']['name'] != "")
         {
 
@@ -123,8 +117,7 @@ class Animal
         }
     }
 
-    public function Create($pdo)
-    {
+    public function Create($pdo){
         /*echo "create";*/
         try
         {
@@ -146,8 +139,7 @@ class Animal
         }catch(PDOException $error){$error->getMessage();}
     }
 
-    public function ReadOne()
-    {
+    public function ReadOne(){
         echo '
         <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
         <div class="product">
@@ -169,7 +161,7 @@ class Animal
                             <span><i class="ion-ios-menu"></i></span>
                         </a>
                         
-                        <a href="AjoutAnimal" class=" d-flex justify-content-center align-items-center mx-1">
+                        <a href="SupprimerAnimal.php?id_animal='.$this->getId().'" class=" d-flex justify-content-center align-items-center mx-1">
                             <span><i class=""></i>x</span>
                         </a>
                     </div>
@@ -180,8 +172,7 @@ class Animal
         </div>';
     }
  
-    public function ReadAll($pdo)
-    {
+    public function ReadAll($pdo){
         try{
             $query =$pdo->prepare("SELECT * FROM `animals`");
             $query->execute();
@@ -197,8 +188,7 @@ class Animal
         echo '</div></div>';
     }
 
-    public  function Update($pdo)
-    {
+    public  function Update($pdo){
         $this->upload_image();
         try
         {
@@ -219,6 +209,18 @@ class Animal
             
         }catch(PDOException $error){$error->getMessage();}
     }
+
+    public  function Delete($pdo){
+        try
+        {
+            $query =$pdo->prepare("DELETE FROM `animals` WHERE `animals`.`id_animal` = :id_animal");
+            $query->bindValue(':id_animal', $this->getId());
+            $query->execute();
+            unlink($this->image_link);
+            
+        }catch(PDOException $error){$error->getMessage();}
+    }
+
 }
 $DeclareClassAnimal = 1 ;
 }
@@ -252,6 +254,13 @@ if(isset($_POST['location']))
        $ANIMAL = new Animal($pdo, $_POST['id_animal'], 0, $image_link, $for_adoption, $_POST['type'], $_POST['name'], $_POST['race'], $_POST['birthday'], $_POST['gender'], $_POST['details']);
        $ANIMAL->Update($pdo);
        include 'AfficheAnimal.php';
+    }
+    elseif ($_POST['location'] == "SupprimerAnimal") 
+    {
+        $ANIMAL = new Animal($pdo, 0, 0, "", 0, "", "", "", "", "", "");
+        $ANIMAL = $ANIMAL->getAnimalById($pdo, $_POST['id_animal']);
+        $ANIMAL->Delete($pdo);
+        include 'AfficheAnimal.php';
     }
 
 }
