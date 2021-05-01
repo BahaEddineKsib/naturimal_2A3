@@ -1,5 +1,5 @@
 <?php
-    function myheader($title)
+    function myheader($title, $image)
     {
         echo '    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="css/style.css">
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
-              <a class="navbar-brand" href="index.html">Vegefoods</a>
+              <a class="navbar-brand" href="index.html">naturimal</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
               </button>
@@ -47,14 +47,14 @@
                   <li class="nav-item active"><a href="blog.html" class="nav-link">Blog</a></li>
                   <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                   <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
-    
+
                 </ul>
               </div>
             </div>
           </nav>
           <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
     
-        <div class="hero-wrap hero-bread" style="background-image: url(\'images/466172.jpg\');">
+        <div class="hero-wrap hero-bread" style="background-image: url(\''.$image.'\');">
           <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
               <div class="col-md-9 ftco-animate text-center">

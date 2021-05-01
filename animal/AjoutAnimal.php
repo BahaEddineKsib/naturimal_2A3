@@ -10,7 +10,7 @@
 <body>
 <?php
 require_once 'header.php';
-myheader("ENREGISTREZ VOTRE ANIMAL DE COMPAGNIE");
+myheader("ENREGISTREZ VOTRE ANIMAL DE COMPAGNIE", "images/466172.jpg");
 ?>
     <form action="CRUDanimal" method="POST" enctype="multipart/form-data">
         <input type="hidden"  name="location" value="AjoutAnimal">

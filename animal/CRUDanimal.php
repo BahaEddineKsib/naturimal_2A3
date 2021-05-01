@@ -35,6 +35,21 @@ class Animal
     public  function getGender()       {return $this->gender      ;}
     public  function getDetails()      {return $this->details     ;}
 
+    public  function getAnimalById($pdo, $id)
+    {
+        try{
+            $query =$pdo->prepare("SELECT * FROM `animals` WHERE `id_animal` = :id_animal");
+            $query->bindValue(':id_animal',     $id);
+            $query->execute();
+            $list = $query->fetchAll();
+        }catch(PDOException $error){$error->getMessage();}
+
+        foreach ($list as $an) {
+            $ANIMAL = new Animal($pdo, $an['id_animal'], $an['id_owner'], $an['image_link'], $an['for_adoption'], $an['type'], $an['name'], $an['race'], $an['birthday'], $an['gender'], $an['details']);
+            return $ANIMAL;
+       }
+    }
+
     public  function setId($pdo, $id)
     {
         if($id == 0)
@@ -61,21 +76,7 @@ class Animal
     }
     public  function setImage_link($image_link)
     {
-        if(isset($_FILES['image_link']['name']))
-        {
-            $link = "uploads/" ;
-            $link = $link . $this->id . "." ;
-            $FileExt = explode('.',$_FILES['image_link']['name']);
-            $link = $link . end($FileExt);
-            $link = strtolower($link);
-           /* echo $link;*/
-            $this->image_link = $link;
-        }
-        else
-        {
-            $this->image_link = $image_link;
-        }
-
+        $this->image_link = $image_link;
     }
     public  function setId_owner()                 {$this->id_owner     = 0            ;}
     public  function setFor_adoption($for_adoption){$this->for_adoption = $for_adoption;}
@@ -103,8 +104,23 @@ class Animal
 
     public function upload_image()
     {
-        $TMPfile= $_FILES['image_link']['tmp_name'];
-        move_uploaded_file($TMPfile, $this->image_link);
+        if(isset($_FILES['image_link']['name']) && $_FILES['image_link']['name'] != "")
+        {
+
+            //echo "*d5al*";
+            $link = "uploads/" ;
+            $link = $link . $this->id . "." ;
+            $FileExt = explode('.',$_FILES['image_link']['name']);
+            $link = $link . end($FileExt);
+            $link = strtolower($link);
+           /* echo $link;*/
+            $this->image_link = $link;
+            //echo "///radineeh ".$this->image_link;
+            
+            //unlink($this->image_link);
+            $TMPfile= $_FILES['image_link']['tmp_name'];
+            move_uploaded_file($TMPfile, $this->image_link);
+        }
     }
 
     public function Create($pdo)
@@ -126,16 +142,17 @@ class Animal
             $query->bindValue(':details',       $this->getDetails());
             $query->execute();
             $this->upload_image();
-            include 'AfficheAnimal.php';
+            
         }catch(PDOException $error){$error->getMessage();}
     }
 
     public function ReadOne()
     {
-        echo '<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+        echo '
+        <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
         <div class="product">
-
-            <a href="#" class="img-prod"><img class="img-fluid" src="'. $this->getImage_link() .'" alt="Colorlib Template">
+        <form action="CRUDanimal" method="POST" enctype="multipart/form-data">
+            <a href="#" class="img-prod"><img class="img-fluid" src="'. $this->getImage_link() .'" alt="'. $this->getImage_link() .'">
                 <div class="overlay"></div>
             </a>
             <div class="text py-3 pb-4 px-3 text-center">
@@ -145,19 +162,22 @@ class Animal
                         <p class="price"><span>'. $this->getBirthday() .'</span></p>
                     </div>
                 </div>
+                
                 <div class="bottom-area d-flex px-3">
                     <div class="m-auto d-flex">
-                        <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                        <a href="ModifierAnimal.php?id_animal='.$this->getId().'" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                             <span><i class="ion-ios-menu"></i></span>
                         </a>
-                        <a href="#" class=" d-flex justify-content-center align-items-center mx-1">
+                        
+                        <a href="AjoutAnimal" class=" d-flex justify-content-center align-items-center mx-1">
                             <span><i class=""></i>x</span>
                         </a>
                     </div>
                 </div>
             </div>
+            </form>
         </div>
-    </div>';
+        </div>';
     }
  
     public function ReadAll($pdo)
@@ -169,12 +189,35 @@ class Animal
         }catch(PDOException $error){$error->getMessage();}
 
         echo '<div class="container"><div class="row">';
-        foreach ($list as $an) {
+        foreach ($list as $an)
+        {
             $ANIMAL = new Animal($pdo, $an['id_animal'], $an['id_owner'], $an['image_link'], $an['for_adoption'], $an['type'], $an['name'], $an['race'], $an['birthday'], $an['gender'], $an['details']);
             $ANIMAL->ReadOne();
-       
-       }
+        }
         echo '</div></div>';
+    }
+
+    public  function Update($pdo)
+    {
+        $this->upload_image();
+        try
+        {
+            $query =$pdo->prepare("UPDATE `animals` SET `image_link` = :image_link, `for_adoption` = :for_adoption, `type` = :type, `name` = :name, `race` = :race, `birthday` = :birthday, `gender` = :gender, `details` = :details WHERE `animals`.`id_animal` = :id_animal");
+            #$query =$pdo->prepare("UPDATE `animals` SET `name` = :name");
+
+            $query->bindValue(':id_animal',     $this->getId());
+            $query->bindValue(':image_link',    $this->getImage_link());
+            $query->bindValue(':for_adoption',  $this->getFor_adoption());
+            $query->bindValue(':type',          $this->getType());
+            $query->bindValue(':name',          $this->getName());
+            $query->bindValue(':race',          $this->getRace());
+            $query->bindValue(':birthday',      $this->getBirthday());
+            $query->bindValue(':gender',        $this->getGender());
+            $query->bindValue(':details',       $this->getDetails());
+            $query->execute();
+            
+            
+        }catch(PDOException $error){$error->getMessage();}
     }
 }
 $DeclareClassAnimal = 1 ;
@@ -185,25 +228,36 @@ if(isset($_POST['location']))
     /*echo "--location t3abet ema =". $_POST['location']."--";*/
     if($_POST['location'] == "AjoutAnimal")
     {
-        
            /* echo "--location == AjoutAnimal--";*/
-            if(isset($_POST['for_adoption']))
-            {
-                $for_adoption = "checked";
-            }
-            else
-            {
-                $for_adoption = "unchecked";
-            }
-            $ANIMAL = new Animal($pdo, 0, 0, $_FILES['image_link']['name'], $for_adoption, $_POST['type'], $_POST['name'], $_POST['race'], $_POST['birthday'], $_POST['gender'], $_POST['details']);
-            $ANIMAL->Create($pdo);
+        if(isset($_POST['for_adoption']))
+        {    $for_adoption =   "checked";}
+        else{$for_adoption = "unchecked";}
+
+        $ANIMAL = new Animal($pdo, 0, 0, $_FILES['image_link']['name'], $for_adoption, $_POST['type'], $_POST['name'], $_POST['race'], $_POST['birthday'], $_POST['gender'], $_POST['details']);
+        $ANIMAL->Create($pdo);
+
+        include 'AfficheAnimal.php';
             
+    }
+    elseif ($_POST['location'] == "ModifierAnimal") 
+    {
+       if ($_FILES['image_link']['tmp_name'] == "" )
+       {$image_link = $_POST['old_image'];}
+       else{$image_link = $_FILES['image_link']['name'];}
+      //echo "--location == ModifierAnimal". $_POST['id_animal'] ."--".$_POST['name']."  --".$image_link;
+       if(isset($_POST['for_adoption']))
+       {    $for_adoption =   "checked";}
+       else{$for_adoption = "unchecked";}
+
+       $ANIMAL = new Animal($pdo, $_POST['id_animal'], 0, $image_link, $for_adoption, $_POST['type'], $_POST['name'], $_POST['race'], $_POST['birthday'], $_POST['gender'], $_POST['details']);
+       $ANIMAL->Update($pdo);
+       include 'AfficheAnimal.php';
     }
 
 }
 else
 {
-    /*echo "enta iiin ?";*/
+    /*echo "enta fiiin ?";*/
 }
 
 
