@@ -29,12 +29,13 @@ include_once "header_animalerie_admin.php";
     </div>
     <div class="form-group">
         <label   >Type </label>
-        <input type="text" class="form-control" name="type" id="type">
+        <input type="number" class="form-control" name="type" id="type">
         <div id="type_1" style="color : red; font-size : 12px;"></div>
     </div>
     <div class="form-group">
         <label   >Prix </label>
         <input type="number" class="form-control" name="prix" id="prix" >
+        <div id="prix_1" style="color : red; font-size : 12px;"></div>
     </div>
     <div class="form-group">
         <label   >Image </label>
@@ -47,7 +48,8 @@ include_once "header_animalerie_admin.php";
     </div>
     <div class="form-group">
         <label   >Qte</label>
-        <input type="text" class="form-control" name="qte" id="qte">
+        <input type="number" class="form-control" name="qte" id="qte">
+        <div id="qte_1" style="color : red; font-size : 12px;"></div>
     </div>
 
 

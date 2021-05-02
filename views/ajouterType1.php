@@ -25,8 +25,9 @@ include_once "header_animalerie_admin.php";
                     <div class="form-group">
                         <label   >Type </label>
                         <input type="text" class="form-control" name="type" id="type">
+                        <div id="type_1" style="color : red; font-size : 12px;"></div>
                     <div>
-                        <a href="afficher.php"><input type="submit" name="ajouter" value="ajouter" class="btn btn-lg btn-info btn-block" ></a>
+                        <a href="afficher.php"><input type="submit" name="ajouter" value="ajouter" onclick="return verif1()"  class="btn btn-lg btn-info btn-block" ></a>
 
                     </div>
                 </form>
@@ -34,5 +35,5 @@ include_once "header_animalerie_admin.php";
         </div>
     </div>
 </main>
-
+<script src="saisie.js"></script>
 </html>

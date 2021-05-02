@@ -59,7 +59,7 @@ if (isset($_GET['id'])){
                 </tr>
                 <tr class="form-group">
                     <td>Qte </td>
-                    <td><input class="form-control" type="text" name="qte" value="<?PHP echo $qte ?>"></td>
+                    <td><input class="form-control" type="number" name="qte" value="<?PHP echo $qte ?>"></td>
                 </tr>
 
 

@@ -34,7 +34,7 @@ include_once "header_animalerie_admin.php";
                 </div>
                                     <span>
                                     <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff"
-                                       data-hc="white"></i>
+                                       data-hc="white" ></i>
                                     Liste des Accessoires</span>
             </h3>
         </div>
@@ -42,6 +42,8 @@ include_once "header_animalerie_admin.php";
             <div id="sample_editable_1_wrapper" class="">
                 <div>
                     <a href="ajouterAccess1.php"><input type="submit" name="ajouter" value="ajout d'un accessoire" class="btn btn-lg btn-info btn-block"></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button onClick="window.print()" class="btn btn-lg btn-info btn-block">Impression des listes</button>
                 </div>
                 <!***********************************************>
                 <input class="col-10" type="text" name="AfficherClasse" onkeyup="myFunction()" placeholder="rechercher nom" id="myInput">
@@ -92,11 +94,11 @@ include_once "header_animalerie_admin.php";
                                             : activate to sort column ascending">QTE
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1"
-                            colspan="1" aria-label="
+                            colspan="1" id="E" aria-label="
                                                  Edit
-                                            : activate to sort column ascending">Edit
+                                            : activate to sort column ascending">Modifier
                         </th>
-                        <th>DELETE</th>
+                        <th id="D">Supprimer</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -112,19 +114,19 @@ include_once "header_animalerie_admin.php";
                             <td><?PHP echo $row['image']; ?></td>
                             <td><?PHP echo $row['type']; ?></td>
                             <td><?PHP echo $row['qte']; ?></td>
-                            <td>
+                            <td id="edit">
                                 <a  href="modifierAccess1.php?id=<?PHP echo $row['id']; ?>" >
-                                    edit</a></td>
+                                    modifier</a></td>
 
 
 
                             </td>
-                            <td>
+                            <td id="delete">
                                 <form method="POST"
                                       action="supprimerAccess.php">
                                     <input type="submit" name="supprimer"
                                            value="supprimer"  >
-                                    <input  type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
+                                    <input type="hidden" value="<?PHP echo $row['id']; ?>" name="id" >
                                 </form>
 
                             </td>
@@ -203,14 +205,14 @@ include_once "header_animalerie_admin.php";
                                             : activate to sort column ascending">QTE
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="sample_editable" rowspan="1"
-                                    colspan="1" aria-label="
+                                    colspan="1" id="E1" aria-label="
                                                  Edit
-                                            : activate to sort column ascending">Edit
+                                            : activate to sort column ascending">Modifier
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1"
-                                    colspan="1" aria-label="
+                                    colspan="1" id="D1" aria-label="
                                                  Delete
-                                            : activate to sort column ascending">Delete
+                                            : activate to sort column ascending">Supprimer
                                 </th>
                             </tr>
                             </thead>
@@ -228,19 +230,19 @@ include_once "header_animalerie_admin.php";
                                     <td><?PHP echo $row['image']; ?></td>
                                     <td><?PHP echo $row['type']; ?></td>
                                     <td><?PHP echo $row['qte']; ?></td>
-                                    <td>
-                                        <a  href="modifierAliment1.php?id=<?PHP echo $row['id']; ?>" >
-                                            edit</a></td>
+                                    <td id="edit1">
+                                        <a  href="modifierAliment1.php?id=<?PHP echo $row['id']; ?>"  >
+                                            modifier</a></td>
 
 
 
                                     </td>
-                                    <td>
+                                    <td id="delete1">
                                         <form method="POST"
                                               action="supprimerAliment.php">
                                             <input type="submit" name="supprimer"
                                                    value="supprimer"  >
-                                            <input  type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
+                                            <input  type="hidden" value="<?PHP echo $row['id']; ?>" name="id" >
                                         </form>
 
                                     </td>
@@ -294,14 +296,14 @@ include_once "header_animalerie_admin.php";
                                             : activate to sort column ascending">TYPE
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="sample_editable" rowspan="1"
-                                        colspan="1" aria-label="
+                                        colspan="1" id="E2" aria-label="
                                                  Edit
-                                            : activate to sort column ascending">Edit
+                                            : activate to sort column ascending">Modifier
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1"
-                                        colspan="1" aria-label="
+                                        colspan="1" id="D2" aria-label="
                                                  Delete
-                                            : activate to sort column ascending">Delete
+                                            : activate to sort column ascending">Supprimer
                                     </th>
                                 </tr>
                                 </thead>
@@ -314,19 +316,19 @@ include_once "header_animalerie_admin.php";
                                     <tr>
                                         <td><?PHP echo $row['id_type']; ?></td>
                                         <td><?PHP echo $row['type']; ?></td>
-                                        <td>
-                                            <a  href="modifierType1.php?id=<?PHP echo $row['id_type']; ?>" >
-                                                edit</a></td>
+                                        <td id="edit2">
+                                            <a  href="modifierType1.php?id=<?PHP echo $row['id_type']; ?>"  >
+                                                modifier</a></td>
 
 
 
                                         </td>
-                                        <td>
+                                        <td id="delete2">
                                             <form method="POST"
                                                   action="supprimerType.php">
                                                 <input type="submit" name="supprimer"
                                                        value="supprimer"  >
-                                                <input  type="hidden" value="<?PHP echo $row['id_type']; ?>" name="id_type">
+                                                <input  type="hidden" value="<?PHP echo $row['id_type']; ?>" name="id_type" >
                                             </form>
 
                                         </td>

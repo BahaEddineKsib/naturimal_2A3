@@ -1,5 +1,5 @@
 <?php
-include '../config.php';
+include "../config.php";
 class AccessC {
 
 
@@ -62,7 +62,7 @@ class AccessC {
 
 
     function modifierAccess($access,$id){
-        $sql="UPDATE accessoires SET id=:id_h, nom=:nom,type=:type,prix=:prix,image=:image,vendeur=:vendeur, qte=:qte WHERE id=:id";
+        $sql="UPDATE accessoires SET id=:id_h,nom=:nom,type=:type,prix=:prix,image=:image,vendeur=:vendeur,qte=:qte WHERE id=:id";
 
         $db = config::getConnexion();
         //$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);

@@ -62,7 +62,7 @@ include_once "header_animalerie_admin.php";
                 </tr>
                 <tr class="form-group">
                     <td>qte </td>
-                    <td><input class="form-control" type="text" name="qte" value="<?PHP echo $qte ?>"></td>
+                    <td><input class="form-control" type="number" name="qte" value="<?PHP echo $qte ?>"></td>
                 </tr>
 
 
