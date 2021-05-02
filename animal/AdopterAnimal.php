@@ -1,46 +1,49 @@
+<?php
+//CONNECT TO DATABASE
+require_once 'DatabaseConnection.php';
+$pdo=getConnexion ();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style/AfficheAnimalStyle.css">
+
     <title>Mes Animeau</title>
 </head>
 <body>
-<div class="container">
-  <div class="images">
-    <img src="https://assets.publishing.service.gov.uk/media/600ffd8cd3bf7f05bdaef3f0/renting-pets-cockerpoo-shutterstock-960.jpg" />
-  </div>
-<!--rgb(4 169 47)-->
-  <p class="pick">MIMI est né en 06/08/2020</p>
-  
-  <div class="product">
-    <p>CHIEN</p>
-    <h1>CANICHE</h1>
-    <h2>FEMALE</h2>
-    <p class="desc">The Nike Air Zoom Pegasus 34 is a durable yet light weight running shoe. When running in these shoes, one feels a sensation that not only enhances the feeling of moving forward, but feels fun, too.</p>
-    <div class="buttons">
-      <button class="add">ADOPTER</button>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="images">
-    <img src="https://assets.publishing.service.gov.uk/media/600ffd8cd3bf7f05bdaef3f0/renting-pets-cockerpoo-shutterstock-960.jpg" />
-  </div>
+<?php
+require_once 'header.php';
+myheader("Adoptez un nouvel ami ", "images/adopter.jpg");
+?>
+<br>
+<section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 ftco-animate fadeInUp ftco-animated">
+						<div class="row">
+<?php
+  require_once 'CRUDanimal.php';
+  $ANIMAL = new Animal($pdo, 0, 0, "", 0, "", "", "", "", "", "");
+  $ANIMAL->ReadAllForAdoption($pdo);
 
-  <p class="pick">MIMI est né en 06/08/2020</p>
-  
-  <div class="product">
-    <p>CHIEN</p>
-    <h1>CANICHE</h1>
-    <h2>FEMALE</h2>
-    <p class="desc">The Nike Air Zoom Pegasus 34 is a durable yet light weight running shoe. When running in these shoes, one feels a sensation that not only enhances the feeling of moving forward, but feels fun, too.</p>
-    <div class="buttons">
-      <button class="add">Adopter</button>
+?>
+        </div>
+      </div>
+      <div class="col-lg-4 sidebar ftco-animate fadeInUp ftco-animated">
+            <div class="sidebar-box">
+              <form action="#" class="search-form">
+                <div class="form-group">
+                  <span class="icon ion-ios-search"></span>
+                  <input type="text" class="form-control" placeholder="Search...">
+                </div>
+              </form>
+            </div>
+          </div>
     </div>
   </div>
-</div>
+</section>
 </body>
 </html>

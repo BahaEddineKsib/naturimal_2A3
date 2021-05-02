@@ -139,37 +139,59 @@ class Animal
         }catch(PDOException $error){$error->getMessage();}
     }
 
-    public function ReadOne(){
-        echo '
-        <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
-        <div class="product">
-        <form action="CRUDanimal" method="POST" enctype="multipart/form-data">
-            <a href="#" class="img-prod"><img class="img-fluid" src="'. $this->getImage_link() .'" alt="'. $this->getImage_link() .'">
-                <div class="overlay"></div>
-            </a>
-            <div class="text py-3 pb-4 px-3 text-center">
-                <h3><a href="#">'. $this->getName() .'</a></h3>
-                <div class="d-flex">
-                    <div class="pricing">
-                        <p class="price"><span>'. $this->getBirthday() .'</span></p>
+    public function ReadOne($Design){
+        if ($Design == 1)
+        {
+            echo '
+            <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+            <div class="product">
+            <form action="CRUDanimal" method="POST" enctype="multipart/form-data">
+                <a href="#" class="img-prod"><img class="img-fluid" src="'. $this->getImage_link() .'" alt="'. $this->getImage_link() .'">
+                    <div class="overlay"></div>
+                </a>
+                <div class="text py-3 pb-4 px-3 text-center">
+                    <h3><a href="#">'. $this->getName() .'</a></h3>
+                    <div class="d-flex">
+                        <div class="pricing">
+                            <p class="price"><span>'. $this->getBirthday() .'</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="bottom-area d-flex px-3">
+                        <div class="m-auto d-flex">
+                            <a href="ModifierAnimal.php?id_animal='.$this->getId().'" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                <span><i class="ion-ios-menu"></i></span>
+                            </a>
+                            
+                            <a href="SupprimerAnimal.php?id_animal='.$this->getId().'" class=" d-flex justify-content-center align-items-center mx-1">
+                                <span><i class=""></i>x</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="bottom-area d-flex px-3">
-                    <div class="m-auto d-flex">
-                        <a href="ModifierAnimal.php?id_animal='.$this->getId().'" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                            <span><i class="ion-ios-menu"></i></span>
-                        </a>
-                        
-                        <a href="SupprimerAnimal.php?id_animal='.$this->getId().'" class=" d-flex justify-content-center align-items-center mx-1">
-                            <span><i class=""></i>x</span>
-                        </a>
-                    </div>
-                </div>
+                </form>
             </div>
-            </form>
-        </div>
-        </div>';
+            </div>';
+        }
+        elseif ($Design == 2) {
+            echo '<div class="col-md-12 d-flex ftco-animate fadeInUp ftco-animated">
+            <div class="blog-entry align-self-stretch d-md-flex">
+              <a href="blog-single.html" class="block-20" style="background-image: url(\''. $this->getImage_link() .'\');">
+              </a>
+              <div class="text d-block pl-md-4">
+                  <div class="meta mb-3">
+                  <div><a href="#">'. $this->getBirthday() .' |</a></div>
+                  <div><a href="#">'. $this->getType() .'</a></div>
+                  <div><a href="#" class="meta-chat">'. $this->getRace() .' '. $this->getGender() .'</a></div>
+                </div>
+                <h3 class="heading"><a href="#"></a>'. $this->getName() .'</h3>
+                <p>'. $this->getDetails() .'</p>
+                <p><a href="blog-single.html" class="btn btn-primary py-2 px-3">ADOPTER</a></p>
+              </div>
+            </div>
+          </div>';
+        }
+
     }
  
     public function ReadAll($pdo){
@@ -183,7 +205,7 @@ class Animal
         foreach ($list as $an)
         {
             $ANIMAL = new Animal($pdo, $an['id_animal'], $an['id_owner'], $an['image_link'], $an['for_adoption'], $an['type'], $an['name'], $an['race'], $an['birthday'], $an['gender'], $an['details']);
-            $ANIMAL->ReadOne();
+            $ANIMAL->ReadOne(1);
         }
         echo '</div></div>';
     }
@@ -221,6 +243,19 @@ class Animal
         }catch(PDOException $error){$error->getMessage();}
     }
 
+    public  function ReadAllForAdoption($pdo){
+        try{
+            $query =$pdo->prepare("SELECT * FROM `animals` WHERE `for_adoption` = 'checked'");
+            $query->execute();
+            $list = $query->fetchAll();
+        }catch(PDOException $error){$error->getMessage();}
+
+        foreach ($list as $an)
+        {
+            $ANIMAL = new Animal($pdo, $an['id_animal'], $an['id_owner'], $an['image_link'], $an['for_adoption'], $an['type'], $an['name'], $an['race'], $an['birthday'], $an['gender'], $an['details']);
+            $ANIMAL->ReadOne(2);
+        }
+    }
 }
 $DeclareClassAnimal = 1 ;
 }
