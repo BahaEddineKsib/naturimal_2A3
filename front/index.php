@@ -1,18 +1,13 @@
 <?php
     require_once "C:/xampp/htdocs/GestionBotanique/config.php";
 	require_once "C:/xampp/htdocs/GestionBotanique/Controller/visiteursC.php";
-    $vis=new visiteursC();
-    $result=$vis->nombre_visiteurs();  
-    foreach($result as $row){
-        $visiteurs=$row['NbVisiteurs'];
-		$visiteurs_nv=$visiteurs+1;
+	require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'View' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'compteur.php' ;
+	ajouter_vue();
 
-    }
-	var_dump($visiteurs_nv);
-	echo $visiteurs_nv;
-	$vis->update_visiteurs($visiteurs_nv);
 
-?>
+
+
+	?>
 
 
 

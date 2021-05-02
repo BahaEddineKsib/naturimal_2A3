@@ -162,6 +162,14 @@
           </ol>
           <h6 class="font-weight-bolder mb-0">Gestion Botanique</h6>
         </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+         <?php
+              	require_once ("C:/xampp/htdocs/GestionBotanique/View/pages/compteur.php");
+                $vues=nombre_vues();
+         ?>
+         <h6><u>Il ya <?= $vues ?> visite(s) sur le site Naturimal </u></h6>
+         
+          </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
