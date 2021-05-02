@@ -48,15 +48,15 @@
             try {
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
-                    'INSERT INTO articlejardinage (IdCategorie,NomArticle,ImageArticle,Description,PrixArticle,QuantiteArticle) 
-                VALUES (:IdCategorie, :NomArticle, :ImageArticle,:Description,:PrixArticle,:QuantiteArticle)'
+                    'INSERT INTO articlejardinage (IdCategorie,NomArticle,ImageArticle,DescriptionArticle,PrixArticle,QuantiteArticle) 
+                VALUES (:IdCategorie, :NomArticle, :ImageArticle,:DescriptionArticle,:PrixArticle,:QuantiteArticle)'
                 );
                 $query->execute([
                 //'IdArticle' =>$Art->getIdArticle(),
                 'IdCategorie' => $Art->getIdCategorieArticle(),
                  'NomArticle' => $Art->getNomArticle(),
                  'ImageArticle' => $Art->getImageArticle(),
-                 'Description' => $Art->getDescriptionArticle(),
+                 'DescriptionArticle' => $Art->getDescriptionArticle(),
                  'PrixArticle' => $Art->getPrixArticle(),
                  'QuantiteArticle' => $Art->getQuantiteArticle()
                 ]);
@@ -70,14 +70,14 @@
                 $pdo = getConnexion();
                 $query = $pdo->prepare(
                     'UPDATE articlejardinage SET IdCategorie= :IdCategorie,NomArticle=:NomArticle,
-                     ImageArticle=:ImageArticle,Description = :Description,PrixArticle=:PrixArticle,QuantiteArticle=:QuantiteArticle
+                     ImageArticle=:ImageArticle,DescriptionArticle = :DescriptionArticle,PrixArticle=:PrixArticle,QuantiteArticle=:QuantiteArticle
                      WHERE IdArticle = :id'
                 );
                 $query->execute([
                 'IdCategorie' => $Art->getIdCategorieArticle(),
                 'NomArticle' => $Art->getNomArticle(),
                 'ImageArticle' => $Art->getImageArticle(),
-                'Description' => $Art->getDescriptionArticle(),
+                'DescriptionArticle' => $Art->getDescriptionArticle(),
                 'PrixArticle' => $Art->getPrixArticle(),
                 'QuantiteArticle' => $Art->getQuantiteArticle(),
                 'id' => $id

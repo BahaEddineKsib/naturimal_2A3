@@ -4,16 +4,16 @@ class articles_jardinage {
     private int $IdCategorie;
     private string $NomArticle;
     private string $ImageArticle;
-    private string $Description;
+    private string $DescriptionArticle;
     private float $PrixArticle;
     private int $QuantiteArticle;
 
-    public function __construct($IdCategorie,$NomArticle,$ImageArticle,$Description,$PrixArticle,$QuantiteArticle){
+    public function __construct($IdCategorie,$NomArticle,$ImageArticle,$DescriptionArticle,$PrixArticle,$QuantiteArticle){
         //$this->IdArticle=$IdArticle;
         $this->IdCategorie=$IdCategorie;
         $this->NomArticle=$NomArticle;
         $this->ImageArticle=$ImageArticle;
-        $this->Description=$Description;
+        $this->DescriptionArticle=$DescriptionArticle;
         $this->PrixArticle=$PrixArticle;
         $this->QuantiteArticle=$QuantiteArticle;
     }
@@ -32,7 +32,7 @@ class articles_jardinage {
         return $this->ImageArticle;
     }
     public function getDescriptionArticle(){
-        return $this->Description;
+        return $this->DescriptionArticle;
     }
     public function getPrixArticle(){
         return $this->PrixArticle;
@@ -54,8 +54,8 @@ class articles_jardinage {
     public function setImageArticle ($ImageArticle){
         $this->ImageArticle = $ImageArticle;
     }
-    public function setDescriptionArticle($Description){
-        return $this->Description;
+    public function setDescriptionArticle($DescriptionArticle){
+        return $this->DDescriptionArticle;
     }
     public function setPrixArticle ($PrixArticle){
         $this->PrixArticle = $PrixArticle;

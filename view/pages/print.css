@@ -8,6 +8,11 @@
     display:none;
     visibility:none;
 }
+#Ajouterarticle
+{
+    display:none;
+    visibility:none;
+}
 #Trier
 {
     display:none;
@@ -40,4 +45,14 @@
 }
 .news-export-doc .head-note > div {
     border-color: #ff0000;
+}
+#Edit
+{
+    display:none;
+    visibility:none;
+}
+#Delete
+{
+    display:none;
+    visibility:none;
 }

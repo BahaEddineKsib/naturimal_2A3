@@ -6,7 +6,7 @@
   include_once "../../Controller/articles jardinageC.php";
   include_once "../../Controller/categorieC.php";
   include_once "../../Controller/visiteursC.php";
-
+  $con=mysqli_connect("localhost","root","","naturimal");
   
   
 ?>
@@ -29,8 +29,41 @@
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
+  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.1" rel="stylesheet"/>
+
+  <!-- print-->
   <link rel="stylesheet" type="text/css" href="print.css" media="print"/>
+
+  <!--chart-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript"> 
+     google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+                   ['NomArticle','QuantiteArticle'],
+                   <?php
+                   $sql="SELECT * FROM articlejardinage";
+                   $fire=mysqli_query($con,$sql);
+                   while($chat=mysqli_fetch_array($fire)){
+                     echo "['".$chat["NomArticle"]."',".$chat["QuantiteArticle"]."],";
+                   }
+                   // $NomArticle=$aux['NomArticle'];
+                  // $QuantiteArticle=$aux['QuantiteArticle']; 
+                  ?>
+                                        
+                   
+                  ]);
+
+        var options = {
+          title: 'Les articles de jardinage par rapport à leurs quantites',
+          //pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+     </script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -135,19 +168,7 @@
         </li>
       </ul>
     </div>
-    <div class="sidenav-footer mx-3 mt-3 pt-3">
-      <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
-        <div class="full-background" style="background-image: url('../assets/img/curved-images/white-curved.jpeg')"></div>
-        <div class="card-body text-left p-3 w-100">
-          <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
-            <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true" id="sidenavCardIcon"></i>
-          </div>
-          <h6 class="text-white up mb-0">Need help?</h6>
-          <p class="text-xs font-weight-bold">Please check our docs</p>
-          <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" target="_blank" class="btn btn-white btn-sm w-100 mb-0">Documentation</a>
-        </div>
-      </div>
-    </div>
+    
   </aside>
   <main class="main-content mt-1 border-radius-lg">
     <!-- Navbar -->
@@ -161,6 +182,7 @@
           <h6 class="font-weight-bolder mb-0">Gestion Botanique</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+         
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
@@ -266,18 +288,18 @@
                         <span class="text-secondary text-xs font-weight-bold"><?php echo $aux["PrixArticle"]."DT";?></span>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $aux["Description"];?></p>
+                        <p class="text-xs font-weight-bold mb-0"><?php echo $aux["DescriptionArticle"];?></p>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0"><?php echo $aux["QuantiteArticle"];?></p>
                       </td>
                       <td class="align-middle">
-                      <a class="badge badge-sm bg-gradient-success" href="ModifierArticleJardinage.php?IdArticle=<?= $aux['IdArticle']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                      <a class="badge badge-sm bg-gradient-success" href="ModifierArticleJardinage.php?IdArticle=<?= $aux['IdArticle']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" id="Edit">
                       Edit
                     </a>
                       </td>
                       <td class="align-middle">
-                      <a class="badge badge-sm bg-gradient-danger" onclick="return confirm('vous êtes sûr ?')" href="SupprimerArticleJardinage.php?IdArticle=<?= $aux['IdArticle']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete article">
+                      <a class="badge badge-sm bg-gradient-danger" onclick="return confirm('vous êtes sûr ?')" href="SupprimerArticleJardinage.php?IdArticle=<?= $aux['IdArticle']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete article" id="Delete">
                       Delete
                         </a>
                       </td>
@@ -293,6 +315,8 @@
                       <a onclick="window.print();" class="btn btn-primary" id="print-btn">Print</a>
                     </div>
                 </table>
+                <div id="piechart" style="width: 900px; height: 500px;"></div>
+
               </div>
             </div>
           </div>

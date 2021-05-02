@@ -39,7 +39,7 @@ if (isset($_GET['IdArticle'])){
             </fieldset>
             <fieldset>
                 <label for="NomArticle">Nom article: </label>
-                <input pvalue="<?= $row['NomArticle']?>" type="text"  tabindex="3" name="NomArticle" id="NomArticle" >
+                <input value="<?= $row['NomArticle']?>" type="text"  tabindex="3" name="NomArticle" id="NomArticle" >
             </fieldset>
             <fieldset>
                 <label for="ImageArticle">Image Article: </label>
@@ -47,7 +47,7 @@ if (isset($_GET['IdArticle'])){
              </fieldset>
             <fieldset>
                  <label for="Description">Description: </label>
-                <input value="<?= $row['Description']?>" tabindex="5" name="Description" id="Description" >
+                <input value="<?= $row['DescriptionArticle']?>" tabindex="5" name="Description" id="Description" >
             </fieldset>
             <fieldset>
                 <label for="PrixArticle">Prix Article: </label>
@@ -72,7 +72,7 @@ if (isset($_GET['IdArticle'])){
 
 }
 if (isset($_POST['modifier'])){
-	$Art=new articles_jardinage($_POST['IdCategorieArticle'],$_POST['NomArticle'],$_POST['ImageArticle'],$_POST['Description'],$_POST['PrixArticle'],$_POST['QuantiteArticle']);
+	$Art=new articles_jardinage($_POST['IdCategorieArticle'],$_POST['NomArticle'],$_POST['ImageArticle'],$_POST['DescriptionArticle'],$_POST['PrixArticle'],$_POST['QuantiteArticle']);
     $ArtC-> UpdateArticle($Art,$_POST['IdArticle']);
 	
 	header('refresh:3 ;url=AfficherArticlesJardinageAd.php');

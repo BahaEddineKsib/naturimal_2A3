@@ -4,8 +4,12 @@
     $vis=new visiteursC();
     $result=$vis->nombre_visiteurs();  
     foreach($result as $row){
-        $visiteurs_nv=$row['NbVisiteurs']+1;
+        $visiteurs=$row['NbVisiteurs'];
+		$visiteurs_nv=$visiteurs+1;
+
     }
+	var_dump($visiteurs_nv);
+	echo $visiteurs_nv;
 	$vis->update_visiteurs($visiteurs_nv);
 
 ?>

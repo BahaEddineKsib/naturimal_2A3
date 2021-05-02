@@ -14,7 +14,7 @@ include_once "../../Controller/categorieC.php";
 
 if (isset($_GET['IdCategorie'])){
 	$catC=new categorieC();
-    $result=$catC->getCategorieById($_GET['IdCategorie']);
+    $result=$catC->getCategorieById($_GET["IdCategorie"]);
 	foreach($result as $row){ 
 ?>
  
@@ -40,7 +40,7 @@ if (isset($_GET['IdCategorie'])){
                 <input value="<?= $row['Description']?>" tabindex="3" name="Description" id="Description" type="text" >
             </fieldset>
             <fieldset>
-                <button name="modifier" type="submit" id="contact-submit" class="btn btn-warning" >Submit</button>
+             <button name="modifier" type="submit" id="contact-submit" class="btn btn-warning" >Submit</button>
             </fieldset> 
             <fieldset>           
             <button><a href="AfficherArticlesJardinageAd.php" ></a>Cancel</button>
@@ -49,15 +49,17 @@ if (isset($_GET['IdCategorie'])){
         </form>
    
 </div>
-<?PHP
+<?php
 	}
 }
 else {echo "verifier";}
 if (isset($_POST['modifier'])){
 	$cat=new categorie($_POST['NomCategorie'],$_POST['Description']);
-	$catC-> UpdateCategorie($cat,$_POST['IdCategorie']);
+	$catC-> UpdateCategorie($cat,$_POST["IdCategorie"]);
 	//echo $_POST['id_ini'];
-	header('location:AfficherCategoriesAd.php');
+	//header('location:AfficherCategoriesAd.php');
+    header('refresh:3 ;url=AfficherCategoriesAd.php');
+
 }
 ?>
 </body>

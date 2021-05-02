@@ -16,7 +16,7 @@ if (
     isset($_POST["IdCategorieArticle"]) &&
     isset($_POST["NomArticle"]) &&
     isset($_POST["ImageArticle"]) &&
-    isset($_POST["Description"]) &&
+    isset($_POST["DescriptionArticle"]) &&
     isset($_POST["PrixArticle"]) &&
     isset ($_POST['QuantiteArticle']) 
 ) {
@@ -25,7 +25,7 @@ if (
             $_POST['IdCategorieArticle'],
             $_POST['NomArticle'],
             $_POST['ImageArticle'],
-            $_POST['Description'],
+            $_POST['DescriptionArticle'],
             $_POST['PrixArticle'],
             $_POST['QuantiteArticle']
         );

@@ -14,12 +14,12 @@
             $e->getMessage();
         }
     }
-    public function update_visiteurs($nv_visiteurs){
+    public function update_visiteurs($NbVisiteurs){
         try{
             $pdo=getConnexion();
-            $query=$pdo->prepare('UPDATE visiteurs SET NbVisiteurs WHERE NbVisiteurs=:nv_visiteurs');
+            $query=$pdo->prepare('UPDATE visiteurs SET NbVisiteurs WHERE NbVisiteurs=:NbVisiteurs');
             $query->execute([
-                'nv_visiteurs'=>$nv_visiteurs
+                'NbVisiteurs'=> $NbVisiteurs
             ]);
             echo "update visiteurs success";
             return $query->fetch();
