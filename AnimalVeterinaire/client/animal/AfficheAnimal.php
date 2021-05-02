@@ -15,8 +15,8 @@ $pdo=getConnexion ();
 </head>
 <body>
 <?php
-require_once 'header.php';
-myheader("vos animeaux", "images/681643.jpg");
+require_once '../header.php';
+myheader("vos animeaux", "../images/681643.jpg");
 ?>
 <br>
 <?php

@@ -15,8 +15,8 @@ $pdo=getConnexion ();
 </head>
 <body>
 <?php
-require_once 'header.php';
-myheader("SUPPRIMER", "images/681643.jpg");
+require_once '../header.php';
+myheader("SUPPRIMER", "../images/681643.jpg");
 
 require_once 'CRUDanimal.php';
 $ANIMAL = new Animal($pdo, 0, 0, "", 0, "", "", "", "", "", "");

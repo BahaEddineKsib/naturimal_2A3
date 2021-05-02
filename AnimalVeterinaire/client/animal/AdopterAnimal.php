@@ -15,8 +15,8 @@ $pdo=getConnexion ();
 </head>
 <body>
 <?php
-require_once 'header.php';
-myheader("Adoptez un nouvel ami ", "images/adopter.jpg");
+require_once '../header.php';
+myheader("Adoptez un nouvel ami ", "../images/adopter.jpg");
 ?>
 <br>
 <section class="ftco-section ftco-degree-bg">

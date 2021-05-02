@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajout Animal</title>
-    <link rel="stylesheet" href="Style/AjoutAnimalStyle.css">
+    <link rel="stylesheet" href="../Style/AjoutAnimalStyle.css">
 </head>
 <body>
 <?php
-require_once 'header.php';
-myheader("ENREGISTREZ VOTRE ANIMAL DE COMPAGNIE", "images/466172.jpg");
+require_once '../header.php';
+myheader("ENREGISTREZ VOTRE ANIMAL DE COMPAGNIE", "../images/466172.jpg");
 ?>
     <form action="CRUDanimal" method="POST" enctype="multipart/form-data">
         <input type="hidden"  name="location" value="AjoutAnimal">
