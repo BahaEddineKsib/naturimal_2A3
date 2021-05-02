@@ -150,19 +150,6 @@
         </li>
       </ul>
     </div>
-    <div class="sidenav-footer mx-3 mt-3 pt-3">
-      <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
-        <div class="full-background" style="background-image: url('../assets/img/curved-images/white-curved.jpeg')"></div>
-        <div class="card-body text-left p-3 w-100">
-          <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
-            <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true" id="sidenavCardIcon"></i>
-          </div>
-          <h6 class="text-white up mb-0">Need help?</h6>
-          <p class="text-xs font-weight-bold">Please check our docs</p>
-          <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" target="_blank" class="btn btn-white btn-sm w-100 mb-0">Documentation</a>
-        </div>
-      </div>
-    </div>
   </aside>
   <main class="main-content mt-1 border-radius-lg">
     <!-- Navbar -->
@@ -296,7 +283,7 @@
 
          <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
               <div class="container my-2">
-          <span><a href="SortCategoriesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
+          <span><a href="SortCategoriesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;" id="Trier">Trier</a></span>
              <input class="col-10" type="text" name="AfficherClasse" onkeyup="myFunction()" placeholder="rechercher id" id="myInput">
          </div>
                 <table class="table align-items-center mb-0">
@@ -333,12 +320,12 @@
                         <span class="text-secondary text-xs font-weight-bold"><?php echo $row["Description"];?></span>
                       </td>
                      <td class="align-middle">
-                        <a class="badge badge-sm bg-gradient-success" href="ModifierCategorie.php?edit=<?= $row['IdCategorie']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit categorie">
+                        <a class="badge badge-sm bg-gradient-success" href="ModifierCategorie.php?edit=<?= $row['IdCategorie']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit categorie" id="Edit">
                           Edit
                         </a>
                       </td> 
                       <td class="align-middle">
-                        <a class="badge badge-sm bg-gradient-danger" onclick="return confirm('vous êtes sûr ?')" href="SupprimerCategorie.php?IdCategorie=<?=$row['IdCategorie']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete categorie">
+                        <a class="badge badge-sm bg-gradient-danger" onclick="return confirm('vous êtes sûr ?')" href="SupprimerCategorie.php?IdCategorie=<?=$row['IdCategorie']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete categorie" id="Delete">
                           Delete
                         </a>
                       </td>

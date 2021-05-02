@@ -3,6 +3,8 @@
 
   include_once "../../config.php";
   include_once "../../Controller/articles jardinageC.php";
+  $con=mysqli_connect("localhost","root","","naturimal");
+
   
 ?>
 <!DOCTYPE html>
@@ -26,6 +28,36 @@
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
+
+  <!-- print-->
+  <link rel="stylesheet" type="text/css" href="print.css" media="print"/>
+   <!--chart-->
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript"> 
+     google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+                   ['NomArticle','QuantiteArticle'],
+                   <?php
+                   $sql="SELECT * FROM articlejardinage";
+                   $fire=mysqli_query($con,$sql);
+                   while($chat=mysqli_fetch_array($fire)){
+                     echo "['".$chat["NomArticle"]."',".$chat["QuantiteArticle"]."],";
+                   }
+                  ?>
+                                        
+                   
+                  ]);
+
+        var options = {
+          title: 'Les articles de jardinage par rapport à leurs quantites',
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+     </script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -148,19 +180,6 @@
           </a>
         </li>
       </ul>
-    </div>
-    <div class="sidenav-footer mx-3 mt-3 pt-3">
-      <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
-        <div class="full-background" style="background-image: url('../assets/img/curved-images/white-curved.jpeg')"></div>
-        <div class="card-body text-left p-3 w-100">
-          <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
-            <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true" id="sidenavCardIcon"></i>
-          </div>
-          <h6 class="text-white up mb-0">Need help?</h6>
-          <p class="text-xs font-weight-bold">Please check our docs</p>
-          <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" target="_blank" class="btn btn-white btn-sm w-100 mb-0">Documentation</a>
-        </div>
-      </div>
     </div>
   </aside>
   <main class="main-content mt-1 border-radius-lg">
@@ -298,7 +317,7 @@
 
          <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
               <div class="container my-2">
-          <span><a href="SortArticlesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;">Trier</a></span>
+          <span><a href="SortArticlesAd.php" style="border-radius: 8px; background-color: white;color: black; border: 2px solid #4CAF50;" id="Trier">Trier</a></span>
              <input class="col-10" type="text" name="AfficherClasse" onkeyup="myFunction()" placeholder="rechercher id" id="myInput">
          </div>
                 <table class="table align-items-center mb-0" id="mytable">
@@ -314,14 +333,11 @@
                   </thead>
                   <?php
                   $art=new articles_jardinageC();
-                  $liste=$art->TriArticlesAd();
+                  $liste=$art->TriArticles();
                   foreach($liste as $aux) {?>
                        <tbody>
                       <td>
                         <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="<?php echo $row["ImageCategorie"];?>" class="avatar avatar-sm me-3">
-                          </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm"><?php echo $aux["NomArticle"];?></h6>
                             <p class="text-xs text-secondary mb-0"><?php echo "Id categorie: ".$aux["IdCategorie"];?></p>
@@ -336,18 +352,18 @@
                         <span class="text-secondary text-xs font-weight-bold"><?php echo $aux["PrixArticle"]."DT";?></span>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $aux["Description"];?></p>
+                        <p class="text-xs font-weight-bold mb-0"><?php echo $aux["DescriptionArticle"];?></p>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0"><?php echo $aux["QuantiteArticle"];?></p>
                       </td>
                       <td class="align-middle">
-                      <a class="badge badge-sm bg-gradient-success" href="ModifierArticleJardinage.php?IdArticle=<?= $aux['IdArticle']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                      <a class="badge badge-sm bg-gradient-success" href="ModifierArticleJardinage.php?IdArticle=<?= $aux['IdArticle']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" id="Edit">
                       Edit
                     </a>
                       </td>
                       <td class="align-middle">
-                      <a class="badge badge-sm bg-gradient-danger" onclick="return confirm('vous êtes sûr ?')" href="SupprimerArticleJardinage.php?IdArticle=<?= $aux['IdArticle']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete article">
+                      <a class="badge badge-sm bg-gradient-danger" onclick="return confirm('vous êtes sûr ?')" href="SupprimerArticleJardinage.php?IdArticle=<?= $aux['IdArticle']?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="delete article" id="Delete">
                       Delete
                         </a>
                       </td>
@@ -358,7 +374,12 @@
                     }
                      echo("</tr></table>");
                      ?>
+                     <div class="text-center">
+                      <a onclick="window.print();" class="btn btn-primary" id="print-btn">Print</a>
+                    </div>
                 </table>
+                <div id="piechart" style="width: 900px; height: 500px;"></div>
+
               </div>
             </div>
           </div>

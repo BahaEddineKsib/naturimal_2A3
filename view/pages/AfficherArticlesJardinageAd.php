@@ -48,18 +48,12 @@
                    while($chat=mysqli_fetch_array($fire)){
                      echo "['".$chat["NomArticle"]."',".$chat["QuantiteArticle"]."],";
                    }
-                   // $NomArticle=$aux['NomArticle'];
-                  // $QuantiteArticle=$aux['QuantiteArticle']; 
                   ?>
-                                        
-                   
                   ]);
 
         var options = {
           title: 'Les articles de jardinage par rapport à leurs quantites',
-          //pieHole: 0.4,
         };
-
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
       }
