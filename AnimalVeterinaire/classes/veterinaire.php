@@ -209,6 +209,24 @@ class Veterinary
         }catch(PDOException $error){$error->getMessage();}
     }
 
+    public  function Search($pdo, $KeyWord){
+      try
+      {
+         $query =$pdo->prepare("SELECT * FROM `veterinary` WHERE `name` LIKE :KeyWord OR `email` LIKE :KeyWord OR `address` LIKE :KeyWord OR `details` LIKE :KeyWord ORDER BY `id_veterinary` ASC ");  
+   
+         $query->bindValue(':KeyWord', '%'.$KeyWord.'%');
+         $query->execute();
+         $list = $query->fetchAll();
+          
+          
+         foreach ($list as $vet)
+         {
+             $VETERINARY = new Veterinary($pdo, $vet['id_veterinary'], $vet['image_link'], $vet['name'], $vet['email'], $vet['address'], $vet['details']);
+             $VETERINARY->ReadOne(2);
+         }
+          
+      }catch(PDOException $error){$error->getMessage();}
+  }
 }
 $DeclareClassVeterinary = 1 ;
 }

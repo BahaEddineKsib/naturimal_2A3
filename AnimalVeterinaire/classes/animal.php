@@ -249,6 +249,25 @@ class Animal
             $ANIMAL->ReadOne(2);
         }
     }
+
+    public  function Search($pdo, $KeyWord){
+        try
+        {
+           $query =$pdo->prepare("SELECT * FROM `animals` WHERE `type` LIKE :KeyWord OR `name` LIKE :KeyWord OR `race` LIKE :KeyWord OR `gender` LIKE :KeyWord OR `details` LIKE :KeyWord AND `for_adoption` = 'checked' ORDER BY `birthday` ASC ");
+            
+           $query->bindValue(':KeyWord', '%'.$KeyWord.'%');
+           $query->execute();
+           $list = $query->fetchAll();
+            
+            
+            foreach ($list as $an)
+            {
+                $ANIMAL = new Animal($pdo, $an['id_animal'], $an['id_owner'], $an['image_link'], $an['for_adoption'], $an['type'], $an['name'], $an['race'], $an['birthday'], $an['gender'], $an['details']);
+                $ANIMAL->ReadOne(2);
+            }
+            
+        }catch(PDOException $error){$error->getMessage();}
+    }
 }
 $DeclareClassAnimal = 1 ;
 }

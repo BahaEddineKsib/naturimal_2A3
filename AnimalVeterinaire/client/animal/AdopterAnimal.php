@@ -27,17 +27,24 @@ myheader("Adoptez un nouvel ami ", "../images/adopter.jpg");
 <?php
   require_once 'CRUDanimal.php';
   $ANIMAL = new Animal($pdo, 0, 0, "", 0, "", "", "", "", "", "");
-  $ANIMAL->ReadAllForAdoption($pdo);
+  if (isset($_POST['search']) && $_POST['search'] != "") {
+    $ANIMAL->Search($pdo, $_POST['search']);
+  }
+  else
+  {
+    $ANIMAL->ReadAllForAdoption($pdo);
+  }
+  
 
 ?>
         </div>
       </div>
       <div class="col-lg-4 sidebar ftco-animate fadeInUp ftco-animated">
             <div class="sidebar-box">
-              <form action="#" class="search-form">
+              <form action="#" method="POST"  class="search-form">
                 <div class="form-group">
-                  <span class="icon ion-ios-search"></span>
-                  <input type="text" class="form-control" placeholder="Search...">
+                  <input type="submit" class="icon ion-ios-search" value="search">
+                  <input type="text" name="search" class="form-control" placeholder="Search..." value="<?php   if (isset($_POST['search'])) {echo $_POST['search'];} ?>">
                 </div>
               </form>
             </div>
