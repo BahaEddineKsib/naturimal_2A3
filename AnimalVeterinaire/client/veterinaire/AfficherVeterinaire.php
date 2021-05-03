@@ -27,7 +27,7 @@ myheader("veterinaire", "../images/veterinary.jpg");
       <div class="container">
         <div class="row">
           <div class="col-lg-8 ftco-animate fadeInUp ftco-animated">
-            <?php $VETERINAIRE->ReadAll($pdo); ?>
+            <?php $VETERINAIRE->ReadAll($pdo, 1); ?>
           </div>
           </div>
           </div>

@@ -21,7 +21,7 @@ class Veterinary
 
     public  function getVeterinaryById($pdo, $id){
         try{
-            $query =$pdo->prepare("SELECT * FROM `veterinary` WHERE `id_animal` = :id_veterinary");
+            $query =$pdo->prepare("SELECT * FROM `veterinary` WHERE `id_veterinary` = :id_veterinary");
             $query->bindValue(':id_veterinary',     $id);
             $query->execute();
             $list = $query->fetchAll();
@@ -123,31 +123,60 @@ class Veterinary
                 <p>'. $this->getDetails() .'</p>
                 <p><a href="blog-single.html" class="btn btn-primary py-2 px-3">RENDEZ-VOUS</a></p>
               </div>
-              <a href="blog-single.html" class="block-20" style="background-image: url(\''. $this->getImage_link() .'\');">
+              <a href="blog-single.html" class="block-20" style="background-image: url(\'../../dashboard/pages/'. $this->getImage_link() .'\');">
               </a>
             </div>
           </div>';
         }
         elseif ($Design == 2) {
-            echo '$Design == 2';
+            echo '<tr>
+            <td class="align-middle">
+            <a href="ModifierVeterinaire.php?id_veterinary='.$this->id.'" class="badge badge-sm bg-gradient-success" data-toggle="tooltip" data-original-title="Edit user">
+            Modifier
+          </a>
+          </td>
+            <td class="align-middle">
+            <a href="SupprimerVeterinaire.php?id_veterinary='.$this->id.'" class="badge badge-sm bg-gradient-danger" data-toggle="tooltip" data-original-title="Edit user">
+            Supprimer
+          </a>
+          </td>
+            <td>
+              <div class="d-flex px-2 py-1">
+                <div>
+                  <img src="'.$this->getImage_link().'" class="avatar avatar-sm me-3">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">'. $this->name.'</h6>
+                  <p class="text-xs text-secondary mb-0">'. $this->email.'</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              
+              <p class="text-xs text-secondary mb-0">'. $this->address .'</p>
+            </td>
+            
+            <td class="align-middle text-center">
+              <span class="text-secondary text-xs font-weight-bold">'. $this->details .'</span>
+            </td>
+  
+          </tr>';
         }
 
     }
  
-    public function ReadAll($pdo){
+    public function ReadAll($pdo, $Design){
         try{
             $query =$pdo->prepare("SELECT * FROM `veterinary`");
             $query->execute();
             $list = $query->fetchAll();
         }catch(PDOException $error){$error->getMessage();}
 
-        echo '<div class="container"><div class="row">';
         foreach ($list as $vet)
         {
             $VETERINARY = new Veterinary($pdo, $vet['id_veterinary'], $vet['image_link'], $vet['name'], $vet['email'], $vet['address'], $vet['details']);
-            $VETERINARY->ReadOne(1);
+            $VETERINARY->ReadOne($Design);
         }
-        echo '</div></div>';
     }
 
     public  function Update($pdo){
@@ -157,7 +186,7 @@ class Veterinary
             $query =$pdo->prepare("UPDATE `veterinary` SET `image_link` = :image_link, `name` = :name, `email` = :email, `address` = :address, `details` = :details WHERE `veterinary`.`id_veterinary` = :id_veterinary");
             #$query =$pdo->prepare("UPDATE `animals` SET `name` = :name");
 
-            $query->bindValue(':id_veterinary', NULL);
+            $query->bindValue(':id_veterinary', $this->id);
             $query->bindValue(':image_link',    $this->getImage_link());
             $query->bindValue(':name',          $this->getName());
             $query->bindValue(':email',         $this->getEmail());
