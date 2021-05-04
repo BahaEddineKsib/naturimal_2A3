@@ -98,37 +98,6 @@ class AccessC {
 
     }
 
-    public function modifierAccess1($access, $id)
-    {
-        $db = config::getConnexion();
-        try {
-
-            $query = $db->prepare(
-                'UPDATE accessoires SET 
-                            nom = :nom, 
-                            prix= :prix,
-                            image = :image,
-                            vendeur = :vendeur,
-                            type = :type, 
-                            qte= :qte,
-                        WHERE id = :id'
-            );
-            $query->execute([
-                'id' =>  $id,
-                'nom' => $access->getNom(),
-                'prix' => $access->getPrix(),
-                'image' => $access->getImage(),
-                'vendeur' => $access->getVendeur(),
-                'type' => $access->getType(),
-                'qte' => $access->getQte(),
-
-            ]);
-            echo $query->rowCount() . " records UPDATED successfully <br>";
-        } catch (PDOException $e) {
-            $e->getMessage();
-        }
-    }
-
     function recupererAccess($id){
         $sql="SELECT * from accessoires  where id=$id";
         $db = config::getConnexion();

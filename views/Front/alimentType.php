@@ -3,7 +3,7 @@ include '../../Controller/animalerieC.php';
 include "../../config.php";
 $typeC= new typeC();
 $types= $typeC->afficherType();
-if(isset($_POST['type']) && isset($_POST['search'])){
+if(isset($_POST['type']) && isset($_POST['filtrer'])){
     $list = $typeC->filtreAliment($_POST['type']);
 }
 include_once 'HeaderClient.php';
@@ -68,15 +68,12 @@ include_once 'HeaderClient.php';
                             }
                             ?>
                         </select>
+                        <input type="submit" value="filtrer" name="filtrer">
                     </div>
-                </div>
-                <br>
-                <div class="row" >
-                    <input type="submit" value="search" name="search">
                 </div>
             </form>
         </div>
-        <?php if(isset($_POST['search'])){ ?>
+        <?php if(isset($_POST['filtrer'])){ ?>
             <div class="row">
 
                 <?php

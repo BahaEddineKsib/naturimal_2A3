@@ -10,7 +10,7 @@ include_once 'HeaderClient.php';
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Accueil</a></span> <span>Boutique</span></p>
+                <p class="breadcrumbs"><span class="mr-2"><a href="Accueil.php">Accueil</a></span> <span>Boutique</span></p>
                 <h1 class="mb-0 bread">Aliments</h1>
             </div>
         </div>
@@ -24,7 +24,7 @@ include_once 'HeaderClient.php';
         <div class="row justify-content-center">
             <div class="col-md-10 mb-5 text-center">
                 <ul class="product-category">
-                    <li><a href="AfficherAccessCL.php">Accessoires</a></li>
+                    <li><a href="afficherAccessCL.php">Accessoires</a></li>
                     <li><a class="active">Aliments</a></li>
                 </ul>
             </div>
@@ -83,7 +83,7 @@ include_once 'HeaderClient.php';
                 <?php
                 endforeach ;
             }
-            else echo "fama ghalta";?>
+            else echo "ERREUR";?>
         </div>
     </div>
 </section>

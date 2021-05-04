@@ -4,7 +4,7 @@
     <title>NATURIMAL</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md pr-4 d-flex topper align-items-center">
                         <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                        <span class="text">contact@naturimal.com</span>
+                        <span class="text">naturimal.contact@gmail.com</span>
                     </div>
                     <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                         <span class="text">Votre univers vert</span>
@@ -51,8 +51,8 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <img src="../img/logo.png" style="height: 50px " alt="...">
-        <a class="navbar-brand" href="index.html">NATURIMAL</a>
+        <img src="../Back/img/logo.png" style="height: 50px " alt="...">
+        <a class="navbar-brand" href="Accueil.php">NATURIMAL</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
@@ -75,17 +75,8 @@
                         <a class="dropdown-item" href="wishlist.html">Assistance médicale</a>
                     </div>
                 </li>
-                <li class="nav-item active dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Compte</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="wishlist.html">Profil</a>
-                        <a class="dropdown-item" href="shop.html">Mes commandes</a>
-                        <a class="dropdown-item" href="wishlist.html">Mes réservations</a>
-                        <a class="dropdown-item" href="wishlist.html">Mes animaux</a>
-                        <a class="dropdown-item" href="wishlist.html">Wishlist</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="about.html" class="nav-link">A propos</a></li>
+                <li class="nav-item"><a href="aproposPage.php" class="nav-link">A propos</a></li>
+                <li class="nav-item"><a href="aproposPage.php" class="nav-link">Se connecter</a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 
             </ul>
