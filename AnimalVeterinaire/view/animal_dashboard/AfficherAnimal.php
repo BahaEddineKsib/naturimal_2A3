@@ -64,10 +64,13 @@
           <h6 class="font-weight-bolder mb-0">Tables</h6>
         </nav>
         <form action="#" method="POST">
+        proprietaire<input type="checkbox" name="proprietaire" class="form-control" value="proprietaire">
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+          
             <div class="input-group">
-            
+              
               <input type="submit"  class="input-group-text text-body" value="Recherche">
               <input type="text" name="search" class="form-control" placeholder="Type here..." value="<?php   if (isset($_POST['search'])) {echo $_POST['search'];} ?>">
             
@@ -114,6 +117,10 @@
                     if (isset($_POST['search']) && $_POST['search'] != "")
                     {
                       $ANIMAL->Search($pdo, $_POST['search'], 3, 0);
+                    }
+                    elseif(isset($_POST['proprietaire']) )
+                    {
+                      $ANIMAL->Join($pdo);
                     }
                     else
                     {

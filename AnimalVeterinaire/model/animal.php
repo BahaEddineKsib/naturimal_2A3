@@ -66,7 +66,12 @@ class Animal
     public  function setImage_link($image_link){
         $this->image_link = $image_link;
     }
-    public  function setId_owner()                 {$this->id_owner     = 0            ;}
+    public  function setId_owner(){
+        if($this->id_owner == 0)
+        {
+            $this->id_owner = 47;
+        }   
+    }
     public  function setFor_adoption($for_adoption){$this->for_adoption = $for_adoption;}
     public  function setType($type)                {$this->type         = $type        ;}
     public  function setName($name)                {$this->name         = $name        ;}
@@ -320,6 +325,72 @@ class Animal
             }
             
         }catch(PDOException $error){$error->getMessage();}
+    }
+
+     
+    public function Join($pdo){
+        try{
+            $query =$pdo->prepare("SELECT * FROM `animals` INNER JOIN `utilisateur` ON `animals`.`id_owner` = `utilisateur`.`id_utilisateur` ");
+            //$query =$pdo->prepare("SELECT * FROM `animals`");
+            $query->execute();
+            $list = $query->fetchAll();
+        }catch(PDOException $error){$error->getMessage();}
+
+        echo '<div class="container"><div class="row">';
+        foreach ($list as $an)
+        {
+            if($an['for_adoption'] == "checked")
+            {
+                $displayAdoption = '<span class="badge badge-sm bg-gradient-success">pour l\'adoption</span>';
+            }
+            else
+            {
+                $displayAdoption = '<span class="badge badge-sm bg-gradient-secondary">pas pour l\'adoption</span>';
+
+            }
+            echo '<tr>
+            <td class="align-middle">
+            <div class="d-flex flex-column justify-content-center">
+              <h6 class="mb-0 text-sm">'. $an['Email'].'</h6>
+              <p class="text-xs text-secondary mb-0">'. $an['FirstName'].' '. $an['LastName'].'</p>
+            </div>
+            </td>
+            <td class="align-middle">
+            <a href="ModifierAnimal.php?id_animal='.$an['id_animal'].'" class="badge badge-sm bg-gradient-success" data-toggle="tooltip" data-original-title="Edit user">
+            Modifier
+          </a>
+          </td>
+            <td class="align-middle">
+            <a href="SupprimerAnimal.php?id_animal='.$an['id_animal'].'" class="badge badge-sm bg-gradient-danger" data-toggle="tooltip" data-original-title="Edit user">
+            Supprimer
+          </a>
+          </td>
+            <td>
+              <div class="d-flex px-2 py-1">
+                <div>
+                  <img src="'.$an['image_link'].'" class="avatar avatar-sm me-3">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">'. $an['name'].'</h6>
+                  <p class="text-xs text-secondary mb-0">'. $an['birthday'].' | '. $an['gender'].'</p>
+                </div>
+              </div>
+            </td>
+            <td>
+            <p class="text-xs font-weight-bold mb-0">'. $an['type'] .'
+            </p>
+            <p class="text-xs text-secondary mb-0">'. $an['race'].'</p>
+          </td>
+          <td class="align-middle text-center text-sm">
+          '. $displayAdoption .'
+        </td>
+            <td class="align-middle text-center">
+              <span class="text-secondary text-xs font-weight-bold">'. $an['details'] .'</span>
+            </td>
+  
+          </tr>';
+        }
+        echo '</div></div>';
     }
 }
 $DeclareClassAnimal = 1 ;
