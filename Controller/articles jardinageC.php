@@ -60,6 +60,7 @@
                  'PrixArticle' => $Art->getPrixArticle(),
                  'QuantiteArticle' => $Art->getQuantiteArticle()
                 ]);
+                echo "zah";
             } catch (PDOException $e) {
                 $e->getMessage();
             }

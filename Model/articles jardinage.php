@@ -55,7 +55,7 @@ class articles_jardinage {
         $this->ImageArticle = $ImageArticle;
     }
     public function setDescriptionArticle($DescriptionArticle){
-        return $this->DDescriptionArticle;
+        return $this->$DescriptionArticle;
     }
     public function setPrixArticle ($PrixArticle){
         $this->PrixArticle = $PrixArticle;
