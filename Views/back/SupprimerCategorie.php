@@ -11,8 +11,8 @@ if(isset($_GET['IdCategorie']))
     $id=$_GET['IdCategorie'];
     $cat-> DeleteCategorie($id);
     echo "succeeeesssss supprimer";
-   header('Location: AfficherCategoriesAd.php');
+   header('Location: AfficherBotaniqueAd.php');
 
 }
-header("refresh:1;url=AfficherCategoriesAd.php");
+header("refresh:1;url=AfficherBotaniqueAd.php");
 ?>

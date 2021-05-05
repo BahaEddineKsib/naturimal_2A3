@@ -37,7 +37,7 @@
       </div>
     </section>
     <?php
-    include("FooterClient.php");
+    include("footer.php");
     ?>
     
   </body>

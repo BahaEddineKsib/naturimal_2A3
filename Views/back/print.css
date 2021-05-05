@@ -18,7 +18,12 @@
     display:none;
     visibility:none;
 }
-#myInput
+#myInput1
+{
+    display:none;
+    visibility:none;
+}
+#myInput2
 {
     display:none;
     visibility:none;

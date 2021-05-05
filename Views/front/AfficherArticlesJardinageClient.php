@@ -100,7 +100,7 @@
 
 		
     <?php
-     include("FooterClient.php");
+     include("footer.php");
     ?>
   </body>
 </html>

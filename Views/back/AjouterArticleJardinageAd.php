@@ -32,7 +32,7 @@ if (
             $_POST['QuantiteArticle']
         );
         $articleC->AjouterArticleJardinage($article);
-        header('Location:AfficherArticlesJardinageAd.php');
+        header('Location:AfficherBotaniqueAd.php');
     }
     else
         $error = "Missing information";

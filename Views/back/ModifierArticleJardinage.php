@@ -76,7 +76,7 @@ if (isset($_POST['modifier'])){
 	$Art=new articles_jardinage($_POST['IdCategorieArticle'],$_POST['NomArticle'],$_POST['ImageArticle'],$_POST['Description'],$_POST['PrixArticle'],$_POST['QuantiteArticle']);
     $ArtC-> UpdateArticle($Art,$_POST['IdArticle']);
 	
-	header('refresh:3 ;url=AfficherArticlesJardinageAd.php');
+	header('refresh:1 ;url=AfficherBotaniqueAd.php');
 }
 ?>
 

@@ -11,8 +11,8 @@ if(isset($_GET['IdArticle']))
     $id=$_GET['IdArticle'];
     $Art-> DeleteArticle($id);
     echo "succeeeesssss supprimer";
-   header('Location: AfficherArticlesJardinageAd.php');
+   header('Location: AfficherBotaniqueAd.php');
 
 }
-header("refresh:1;url=AfficherArticlesJardinageAd.php");
+header("refresh:1;url=AfficherBotaniqueAd.php");
 ?>

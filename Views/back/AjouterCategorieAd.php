@@ -23,7 +23,7 @@ if (
   
         );
         $categorieC-> AjouterCategorie($categorie);
-       header('Location:AfficherCategoriesAd.php');
+       header('Location:AfficherBotaniqueAd.php');
     }
     else
         $error = "Missing information";

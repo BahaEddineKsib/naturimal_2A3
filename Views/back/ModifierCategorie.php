@@ -55,7 +55,7 @@ if (isset($_GET['IdCategorie'])){
 if (isset($_POST['modifier'])){
 	$cat=new categorie($_POST['NomCategorie'],$_POST['Description']);
 	$catC-> UpdateCategorie($cat,$_POST['IdCategorie']);
-   header('refresh:3 ;url=AfficherCategoriesAd.php');
+   header('refresh:1 ;url=AfficherBotaniqueAd.php');
 
 }
 ?>
