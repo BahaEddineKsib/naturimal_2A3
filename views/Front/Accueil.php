@@ -1,5 +1,12 @@
 <?php
 include_once 'HeaderClient.php';
+    require_once "../../config.php";
+	require_once dirname(__DIR__) . DIRECTORY_SEPARATOR  . 'back' . DIRECTORY_SEPARATOR . 'compteur.php' ;
+	ajouter_vue();
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>

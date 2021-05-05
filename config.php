@@ -1,19 +1,25 @@
 <?php
-  class config {
-    private static $instance = NULL;
-
-    public static function getConnexion() {
-      if (!isset(self::$instance)) {
-		try{
-        self::$instance = new PDO(
-            'mysql:host=localhost;dbname=projet', 'root', '');
-		self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		}catch(Exception $e){
-            die('Erreur: '.$e->getMessage());
-		}
+  
+  function getConnexion () {
+      $servername = 'localhost';	
+      $username = 'root';	
+      $password = '';       
+      $dbname = 'naturimal';	
+      try {
+          $pdo = new PDO(
+              "mysql:host=$servername;dbname=$dbname", 
+              $username, 
+              $password,
+              [
+                  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+              ]
+          );
+          //echo "Connected successfully";
+          return $pdo;
       }
-      return self::$instance;
-    }
+      catch(PDOException $e) {
+          echo "Connection failed: ". $e->getMessage();
+      }
   }
-
 ?>
