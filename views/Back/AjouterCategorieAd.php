@@ -1,5 +1,5 @@
 <?php
-  include_once "../../config.php";
+  include_once "../../config1.php";
   include "../../Model/categorie.php";
   include "../../Controller/categorieC.php";
 

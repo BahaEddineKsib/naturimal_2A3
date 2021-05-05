@@ -1,7 +1,7 @@
 <?php
   include "../../Model/articles jardinage.php";
 
-  include_once "../../config.php";
+  include_once "../../config1.php";
   include_once "../../Controller/articles jardinageC.php";
   include_once "../../Controller/categorieC.php";
   $con=mysqli_connect("localhost","root","","naturimal");

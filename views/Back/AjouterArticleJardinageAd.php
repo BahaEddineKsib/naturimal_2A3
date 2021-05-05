@@ -1,7 +1,7 @@
 
 <?php
 
-  include_once "../../config.php";
+  include_once "../../config1.php";
     include "../../Model/articles jardinage.php";
     include "../../Controller/articles JardinageC.php";
     include "../../Model/categorie.php";
