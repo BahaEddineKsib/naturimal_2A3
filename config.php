@@ -7,7 +7,7 @@
       if (!isset(self::$instance)) {
 		try{
         self::$instance = new PDO(
-            'mysql:host=localhost;dbname=projet', 'root', '');
+            'mysql:host=localhost;dbname=naturimal', 'root', '');
 		self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}catch(Exception $e){
             die('Erreur: '.$e->getMessage());

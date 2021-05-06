@@ -33,7 +33,7 @@
             <?php
             include_once "../../Model/categorie.php";
             include_once "../../Controller/categorieC.php";
-            include_once "../../config.php";
+            include_once "../../config1.php";
             $cat=new categorieC();
                         $listecat=$cat->afficherCategories();
                         foreach ($listecat as $aux) {

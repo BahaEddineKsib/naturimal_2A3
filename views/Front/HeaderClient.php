@@ -1,3 +1,20 @@
+<?php
+
+    require_once "../../config1.php";
+ $Login = 0 ;
+            session_start();
+
+                 if(empty($_SESSION["user"])){
+                     $Login=0 ;
+                 }
+                    else{
+                     $Login=1 ;
+
+                 }
+                
+        
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +25,11 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+        integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
@@ -65,6 +87,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
                         <a class="dropdown-item" href="afficherAccessCL.php">Animalerie</a>
                         <a class="dropdown-item" href="AllBotanique.php">Botanique</a>
+                        <a class="dropdown-item" href="wishlist.php">wishlist</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
@@ -76,8 +99,18 @@
                     </div>
                 </li>
                 <li class="nav-item"><a href="aproposPage.php" class="nav-link">A propos</a></li>
-                <li class="nav-item"><a href="aproposPage.php" class="nav-link">Se connecter</a></li>
+                <li class="nav-item" id="Login"><a href="LoginVue.php" class="nav-link">Se connecter</a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+
+                <li class="nav-item dropdown" id="Userdropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i style="font-size: 17px ; padding-top:1px;" class="far fa-user" ></i></a>
+                  <div class="dropdown-menu" aria-labelledby="dropdown04">
+                	<a class="dropdown-item" href="Profil.php">Profil</a>
+                	<a class="dropdown-item" href="../../Controller/User_WishlistC/Deconnexion.php">Decnnecter</a>
+
+                  </div>
+                </li>
+
 
             </ul>
         </div>
@@ -86,6 +119,12 @@
 
 
 </head>
+
+  <script src="js/UserJS/index.js"></script>
+<script>
+  LoginTest(<?=$Login?>)
+
+</script>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-migrate-3.0.1.min.js"></script>

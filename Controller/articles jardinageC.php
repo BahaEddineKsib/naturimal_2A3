@@ -1,5 +1,5 @@
 <?php
-    require_once "C:/xampp/htdocs/GestionBotanique/config.php";
+    require_once "../../config1.php";
     class articles_JardinageC{
         public function afficherArticlesJardinage() {
             try {
