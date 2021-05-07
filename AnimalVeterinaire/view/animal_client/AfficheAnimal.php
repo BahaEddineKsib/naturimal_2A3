@@ -24,6 +24,7 @@ myheader("vos animeaux", "../images/681643.jpg");
   $ANIMAL = new Animal($pdo, 0, 0, "", 0, "", "", "", "", "", "");
   $ANIMAL->ReadAll($pdo, 1);
 
+
 ?>
 
 </body>

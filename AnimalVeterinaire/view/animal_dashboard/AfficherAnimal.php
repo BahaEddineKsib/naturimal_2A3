@@ -2,6 +2,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="csshidden.css">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
@@ -99,6 +100,8 @@
   $ANIMAL = new Animal($pdo, 0, 0, "", 0, "", "", "", "", "", "");
 
 ?>
+
+ <button onClick="window.print()" class="btn btn-lg btn-info btn-block">Impression des listes</button>
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
@@ -127,11 +130,6 @@
                       $ANIMAL->ReadAll($pdo, 3);
                     }
                    ?>
-                    
-                    
-                    
-                    
-                    
                   </tbody>
                 </table>
               </div>

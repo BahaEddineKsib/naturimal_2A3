@@ -26,6 +26,18 @@ class Animal
     public  function getBirthday()     {return $this->birthday    ;}
     public  function getGender()       {return $this->gender      ;}
     public  function getDetails()      {return $this->details     ;}
+    public  function getOwnerEmailByOwnerId($pdo){
+        try{
+            $query =$pdo->prepare("SELECT * FROM `utilisateur` WHERE `id_utilisateur` = :id_utilisateur");
+            $query->bindValue(':id_utilisateur',     $this->id_owner);
+            $query->execute();
+            $list = $query->fetchAll();
+        }catch(PDOException $error){$error->getMessage();}
+
+        foreach ($list as $utilisateur) {
+            return $utilisateur['Email'];
+        }
+    }
 
     public  function getAnimalById($pdo, $id){
         try{
@@ -184,7 +196,7 @@ class Animal
                 </div>
                 <h3 class="heading"><a href="#"></a>'. $this->getName() .'</h3>
                 <p>'. $this->getDetails() .'</p>
-                <p><a href="blog-single.html" class="btn btn-primary py-2 px-3">ADOPTER</a></p>
+                <p><a href="MailAdoption.php?id_animal='. $this->getId() .'" class="btn btn-primary py-2 px-3">ADOPTER</a></p>
               </div>
             </div>
           </div>';
@@ -200,12 +212,12 @@ class Animal
 
             }
             echo '<tr>
-            <td class="align-middle">
+            <td name="LB1" class="align-middle">
             <a href="ModifierAnimal.php?id_animal='.$this->id.'" class="badge badge-sm bg-gradient-success" data-toggle="tooltip" data-original-title="Edit user">
             Modifier
           </a>
           </td>
-            <td class="align-middle">
+            <td name="LB2" class="align-middle">
             <a href="SupprimerAnimal.php?id_animal='.$this->id.'" class="badge badge-sm bg-gradient-danger" data-toggle="tooltip" data-original-title="Edit user">
             Supprimer
           </a>

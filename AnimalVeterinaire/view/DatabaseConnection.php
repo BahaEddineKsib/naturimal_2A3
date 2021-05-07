@@ -2,7 +2,7 @@
   function getConnexion () {
       $servername = 'localhost';	
       $username = 'root';	
-      $password = 'root';       
+      $password = '';       
       $dbname = 'naturimal';	
       try {
           $pdo = new PDO(
