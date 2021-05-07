@@ -121,7 +121,7 @@ class Veterinary
                 </div>
                 <h3 class="heading"><a href="#"></a>'. $this->getName() .'</h3>
                 <p>'. $this->getDetails() .'</p>
-                <p><a href="blog-single.html" class="btn btn-primary py-2 px-3">RENDEZ-VOUS</a></p>
+                <p><a href="MailVeterinaire.php?id_veterinary='. $this->getId() .'" class="btn btn-primary py-2 px-3">RENDEZ-VOUS</a></p>
               </div>
               <a href="blog-single.html" class="block-20" style="background-image: url(\'../../dashboard/veterinaire/'. $this->getImage_link() .'\');">
               </a>

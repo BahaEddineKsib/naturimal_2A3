@@ -247,6 +247,9 @@ class Animal
   
           </tr>';
         }
+        elseif ($Design == 4) {
+            echo '<option value="'.$this->id.'">'.$this->name.'</option>' ;
+        }
 
     }
  
