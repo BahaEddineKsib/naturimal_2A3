@@ -1,23 +1,7 @@
 <?php
+/*
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-  }
-if(isset($_SESSION['user']) /*&& !empty($_SESSION['user'])*/)
-{
-    $ConnectingMail = $_SESSION['user'];
-}
-elseif (isset($_GET['user'])) {
-    $ConnectingMail = $_GET['user'];
-}
-else
-{
-    echo "mn hne";
-    header('Location: LoginVue.php');
-    //echo "maandekch l7a9 tkoun hne 5ater mch mkonnectyy";
-    //$ConnectingMail = "bahadingsib@gmail.com";
-}
-
+*/
 //CREATE CLASS ANIMAL
 $DeclareClassAnimal = 0;
 if($DeclareClassAnimal == 0)
@@ -287,11 +271,18 @@ class Animal
  
     public static function ReadAll($pdo, $Design){
         try{
-            $ANIMAL = new Animal($pdo, 0, 0, "", "", "", "", "", "", "", "");
-            $ANIMAL->setId_owner($pdo,0);
-            echo $ANIMAL->id_owner;
-            $query =$pdo->prepare("SELECT * FROM `animals` WHERE `id_owner` = :id_owner");
-            $query->bindValue(':id_owner',      $ANIMAL->id_owner);
+            if($Design == 1)
+            {
+                $ANIMAL = new Animal($pdo, 0, 0, "", "", "", "", "", "", "", "");
+                $ANIMAL->setId_owner($pdo,0);
+                //echo $ANIMAL->id_owner;
+                $query =$pdo->prepare("SELECT * FROM `animals` WHERE `id_owner` = :id_owner");
+                $query->bindValue(':id_owner',      $ANIMAL->id_owner);
+            }
+            else
+            {
+                $query =$pdo->prepare("SELECT * FROM `animals`");
+            }
             $query->execute();
             $lists = $query->fetchAll();
         }catch(PDOException $error){$error->getMessage();}
