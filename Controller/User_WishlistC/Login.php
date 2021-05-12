@@ -25,13 +25,13 @@ $userC = new UtilisateurC();
         
         if($emailtest == null ){          
           echo "<script>alert('Email invalide');
-          window.location.href='http://localhost/Projet/views/Front/LoginVue.php'
+          window.location.href='../../views/Front/LoginVue.php'
           </script>";
           }
           else{
                if($passwordtest == null ){          
                 echo "<script>alert('Mot de passe incorrect');
-                 window.location.href='http://localhost/Projet/views/Front/LoginVue.php'
+                 window.location.href='../../views/Front/LoginVue.php'
                  </script>";
                 }
                 else{
@@ -41,11 +41,11 @@ $userC = new UtilisateurC();
       
                           if($_SESSION["user"] == "Admin@Admin.com")
                           {
-                                      header('Location: http://localhost/Projet/views/Back/users.php');
+                                      header('Location: ../../views/Back/users.php');
       
                           }
                           else{
-                           header('Location: http://localhost/Projet/views/Front/Accueil.php');
+                           header('Location: ../../views/Front/Accueil.php');
       
                           }
                               echo $_SESSION["user"];

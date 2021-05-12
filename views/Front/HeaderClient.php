@@ -2,7 +2,9 @@
 
     require_once "../../config1.php";
  $Login = 0 ;
-            session_start();
+ if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+  }
 
                  if(empty($_SESSION["user"])){
                      $Login=0 ;
@@ -12,7 +14,7 @@
 
                  }
                 
-        
+
 
 ?>
 <!DOCTYPE html>
@@ -94,8 +96,9 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
                         <a class="dropdown-item" href="shop.html">Hebergement</a>
-                        <a class="dropdown-item" href="wishlist.html">Adoption</a>
-                        <a class="dropdown-item" href="wishlist.html">Assistance médicale</a>
+                        <a class="dropdown-item" href="AdopterAnimal.php">Adoption</a>
+                        <a class="dropdown-item" href="AfficherVeterinaire.php">Assistance médicale</a>
+                        <a class="dropdown-item" href="AfficheAnimal.php">Mes Animeaux</a>
                     </div>
                 </li>
                 <li class="nav-item"><a href="aproposPage.php" class="nav-link">A propos</a></li>

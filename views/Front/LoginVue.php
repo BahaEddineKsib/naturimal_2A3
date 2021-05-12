@@ -134,7 +134,7 @@ include ("../../Controller/User_WishlistC/UserController.php");
     <!--Login Form-->
     <div class="LoginForm" >
         <div class="form-box" style="height:500px">
-            <a href="http://localhost/projet/views/Front/Accueil.php" class="Loginclosebtn" style="cursor: pointer;text-decoration:none;">
+            <a href="Accueil.php" class="Loginclosebtn" style="cursor: pointer;text-decoration:none;">
                 <i>&times;</i>
             </a>
 
