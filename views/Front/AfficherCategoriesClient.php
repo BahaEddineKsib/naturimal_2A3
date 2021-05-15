@@ -24,7 +24,6 @@
     		<div class="row justify-content-center">
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
-    					<li><a href="AllBotanique.php">All</a></li>
     					<li><a href="AfficherArticlesJardinageClient.php">Articles jardinage</a></li>
     					<li><a href="AfficherCategoriesClient.php" class="active">Categories Articles</a></li>
     				</ul>
@@ -49,17 +48,7 @@
 		    					</div>
 	    					</div>
     						<div class="bottom-area d-flex px-3">
-	    						<div class="m-auto d-flex">
-	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-	    								<span><i class="ion-ios-menu"></i></span>
-	    							</a>
-	    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-	    								<span><i class="ion-ios-cart"></i></span>
-	    							</a>
-	    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-	    								<span><i class="ion-ios-heart"></i></span>
-	    							</a>
-    							</div>
+	    						
     						</div>
     					</div>
     				</div>

@@ -23,7 +23,6 @@
     		<div class="row justify-content-center">
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
-    					<li><a href="AllBotanique.php">All</a></li>
     					<li><a href="AfficherArticlesJardinageClient.php" class="active">Articles jardinage</a></li>
     					<li><a href="AfficherCategoriesClient.php" >Categories Articles</a></li>
     				</ul>
@@ -33,7 +32,7 @@
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
           <li><a href="SortArticlesClient.php" >Moins cher</a></li>
-          <li><a href="SortArticlesClient2.php" >plus cher</a></li>
+          <li><a href="SortArticlesClient2.php" >Plus cher</a></li>
           </ul>
 
           </div>

@@ -92,7 +92,7 @@ else{
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Boutique</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
                         <a class="dropdown-item" href="afficherAccessCL.php">Animalerie</a>
-                        <a class="dropdown-item" href="AllBotanique.php">Botanique</a>
+                        <a class="dropdown-item" href="AfficherArticlesJardinageClient.php">Botanique</a>
                         <a class="dropdown-item" href="wishlist.php">wishlist</a>
                     </div>
                 </li>
