@@ -1,5 +1,4 @@
 <?php
-
     require_once "../../config1.php";
  $Login = 0 ;
  if (session_status() === PHP_SESSION_NONE) {
@@ -14,8 +13,13 @@
 
                  }
                 
-
-
+if ( !isset($_SESSION['panierjar']) && !isset($_SESSION['panieraccess']) && !isset($_SESSION['panieraliment'])){
+    $tot = 0;
+    $indic = 0;
+}
+else{
+    $indic=1;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,9 +105,16 @@
                         <a class="dropdown-item" href="AfficheAnimal.php">Mes Animeaux</a>
                     </div>
                 </li>
+                <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Commandes</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <a class="dropdown-item" href="purchases.php">Mes Achats</a>
+                        <a class="dropdown-item" href="complaint.php">Mes Reclamation</a>
+                    </div>
+                </li>
                 <li class="nav-item"><a href="aproposPage.php" class="nav-link">A propos</a></li>
                 <li class="nav-item" id="Login"><a href="LoginVue.php" class="nav-link">Se connecter</a></li>
-                <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+                <li class="nav-item cta cta-colored"><a href="cart.php" class="nav-link"><span class="icon-shopping_cart"></span>[<?php if ($indic ==0){echo 0;}else {echo array_sum($_SESSION['panierjar']+$_SESSION['panieraccess']+$_SESSION['panieraliment']);}?>]</a></li>
 
                 <li class="nav-item dropdown" id="Userdropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i style="font-size: 17px ; padding-top:1px;" class="far fa-user" ></i></a>

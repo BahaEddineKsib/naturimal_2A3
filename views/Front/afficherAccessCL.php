@@ -50,8 +50,6 @@ include_once 'HeaderClient.php';
             if(is_array($liste)|| is_object($liste))
             {
                 foreach ($liste as $access) :
-
-
                     ?>
 
 
@@ -73,7 +71,7 @@ include_once 'HeaderClient.php';
                                             <a href="oneaccess.php?id=<?PHP echo $access['id']; ?>" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                                 <span><i class="ion-ios-menu"></i></span>
                                             </a>
-                                            <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                            <a href="cart.php?id=<?=$access["id"]." "."access";?>" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                                 <span><i class="ion-ios-cart"></i></span>
                                             </a>
                                             <a href="http://localhost/Projet/Controller/User_WishlistC/AjouterProduitWish/?Email=<?=$_SESSION["user"]?>&ID=<?=$access["id"] ?>" class="heart d-flex justify-content-center align-items-center ">
