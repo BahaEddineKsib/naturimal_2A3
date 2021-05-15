@@ -38,13 +38,13 @@ $userC = new UtilisateurC();
         $result = $userC->UserSignUpRecherche($user);
         if($result != null ){          
           echo "<script>alert('Email deja utilisee');
-          window.location.href='http://localhost/Projet/views/Front/LoginVue.php'
+          window.location.href='../../views/Front/LoginVue.php'
           </script>";
           }
         
         if( ($result == null)&&($REcaptchresult->success === true ) ){
           $userC->AjouterUtilisateur($user);
-          header('Location: http://localhost/Projet/views/Front/Accueil.php');
+          header('Location: ../../views/Front/Accueil.php');
 
         }
 

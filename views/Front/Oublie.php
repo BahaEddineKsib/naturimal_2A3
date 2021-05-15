@@ -45,7 +45,7 @@ if(isset($_POST['Send'])){
    update();
 
 
- header('Location: http://localhost/Projet/views/Front/Accueil.php');
+ header('Location: ../../views/Front/Accueil.php');
    
 
 } 

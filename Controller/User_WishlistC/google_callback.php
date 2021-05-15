@@ -75,13 +75,13 @@ if(isset($_GET["code"]))
       $userC->EnvoyerMail($_SESSION['user_email_address'],$password);
    echo "<script>
        alert('verifier votre boite mail et changer votre mtp svp ');
-		 window.location.href='http://localhost/Projet/views/Front/Profil.php'
+		 window.location.href='../../views/Front/Profil.php'
 		 </script>";
   }
   else{
         echo "<script>
        alert('email deja utilise ');
-		 window.location.href='http://localhost/Projet/views/Front/LoginVue.php'
+		 window.location.href='../../views/Front/LoginVue.php'
 		 </script>";
   }
 

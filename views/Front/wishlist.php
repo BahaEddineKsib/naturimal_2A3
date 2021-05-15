@@ -102,36 +102,36 @@ if(!empty($_SESSION["user"])){
 									if($wishlist != null){
 										foreach($wishlist as $row) {
 											echo "<tr class='text-center'>" .
-											"<td class='product-remove'>" . "<a href='http://localhost/Projet/Controller/User_WishlistC/AjouterProduitWish/?Email=$_SESSION[user]&ID=$row[IdArticle]'><span class='ion-ios-close'></span></a>" . "</td>" .
+											"<td class='product-remove'>" . "<a href='../../Controller/User_WishlistC/DeleteProductWish.php/?Email=$_SESSION[user]&ID=$row[IdArticle]&BUY=false'><span class='ion-ios-close'></span></a>" . "</td>" .
 											"<td class='image-prod'>" . "<div class='img' style='background-image:url(images/$row[ImageArticle]);'>" . "</div>" . "</td>" .
 											"<td class='product-name'>" . "<h3>" . $row["NomArticle"] . "</h3>" . "<p>" . $row["DescriptionArticle"] . "</p>" . "</td>" .
 											"<td class='price'>$" . $row["PrixArticle"] . "</td>" .
 											"<td class='quantity'>" . "<div class='input-group mb-3'>" . "<input type='number' name='quantity' class='quantity form-control input-number' value='1' min='1' max='100'>" . "</td>" .
-											"<td class='product-remove'>" . "<a href=''><span class='icon-shopping_cart'></span></a>" . "</td>" .
+											"<td class='product-remove'>" . "<a href='../../Controller/User_WishlistC/DeleteProductWish.php/?Email=$_SESSION[user]&ID=$row[IdArticle]&BUY=true'><span class='icon-shopping_cart'></span></a>" . "</td>" .
 											"</tr>";
 										}
 									}
 									if($wishlist1 != null){
 										foreach($wishlist1 as $row) {
 											echo "<tr class='text-center'>" .
-											"<td class='product-remove'>" . "<a href='http://localhost/Projet/Controller/User_WishlistC/AjouterProduitWish/?Email=$_SESSION[user]&ID=$row[id]'><span class='ion-ios-close'></span></a>" . "</td>" .
+											"<td class='product-remove'>" . "<a href='../../Controller/User_WishlistC/DeleteProductWish.php/?Email=$_SESSION[user]&ID=$row[id]&BUY=false'><span class='ion-ios-close'></span></a>" . "</td>" .
 											"<td class='image-prod'>" . "<div class='img' style='background-image:url(images/$row[image]);'>" . "</div>" . "</td>" .
 											"<td class='product-name'>" . "<h3>" . $row["nom"] . "</h3>" . "<p>" . "fdfd" . "</p>"  . "</td>" .
 											"<td class='price'>$" . $row["prix"] . "</td>" .
 											"<td class='quantity'>" . "<div class='input-group mb-3'>" . "<input type='number' name='quantity' class='quantity form-control input-number' value='1' min='1' max='100'>" . "</td>" .
-											"<td class='product-remove'>" . "<a href=''><span class='icon-shopping_cart'></span></a>" . "</td>" .
+											"<td class='product-remove'>" . "<a href='../../Controller/User_WishlistC/DeleteProductWish.php/?Email=$_SESSION[user]&ID=$row[id]&BUY=true'><span class='icon-shopping_cart'></span></a>" . "</td>" .
 											"</tr>";
 										}
 									}
 									if($wishlist3 != null){
 										foreach($wishlist3 as $row) {
 											echo "<tr class='text-center'>" .
-											"<td class='product-remove'>" . "<a href='http://localhost/Projet/Controller/User_WishlistC/AjouterProduitWish/?Email=$_SESSION[user]&ID=$row[id]'><span class='ion-ios-close'></span></a>" . "</td>" .
+											"<td class='product-remove'>" . "<a href='../../Controller/User_WishlistC/DeleteProductWish.php/?Email=$_SESSION[user]&ID=$row[id]&BUY=false'><span class='ion-ios-close'></span></a>" . "</td>" .
 											"<td class='image-prod'>" . "<div class='img' style='background-image:url(images/$row[image]);'>" . "</div>" . "</td>" .
 											"<td class='product-name'>" . "<h3>" . $row["nom"] . "</h3>" . "<p>" . "fdfd" . "</p>"  . "</td>" .
 											"<td class='price'>$" . $row["prix"] . "</td>" .
 											"<td class='quantity'>" . "<div class='input-group mb-3'>" . "<input type='number' name='quantity' class='quantity form-control input-number' value='1' min='1' max='100'>" . "</td>" .
-											"<td class='product-remove'>" . "<a href=''><span class='icon-shopping_cart'></span></a>" . "</td>" .
+											"<td class='product-remove'>" . "<a href='../../Controller/User_WishlistC/DeleteProductWish.php/?Email=$_SESSION[user]&ID=$row[id]&BUY=true'><span class='icon-shopping_cart'></span></a>" . "</td>" .
 											"</tr>";
 										}
 									}

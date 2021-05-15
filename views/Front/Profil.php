@@ -43,7 +43,7 @@ require_once "../../config1.php";
      $userC->DeleteUtilisateur($_SESSION["user"]);
      echo "<script>
      alert('Votre compte a ete supprimee');
-     window.location.href='http://localhost/Projet/views/Front/Accueil.php'
+     window.location.href='../../views/Front/Accueil.php'
      </script>";
 
 	}

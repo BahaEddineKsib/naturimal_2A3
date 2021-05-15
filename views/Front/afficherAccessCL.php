@@ -74,7 +74,7 @@ include_once 'HeaderClient.php';
                                             <a href="cart.php?id=<?=$access["id"]." "."access";?>" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                                 <span><i class="ion-ios-cart"></i></span>
                                             </a>
-                                            <a href="http://localhost/Projet/Controller/User_WishlistC/AjouterProduitWish/?Email=<?=$_SESSION["user"]?>&ID=<?=$access["id"] ?>" class="heart d-flex justify-content-center align-items-center ">
+                                            <a href="../../Controller/User_WishlistC/AjouterProduitWish/?Email=<?=$_SESSION["user"]?>&ID=<?=$access["id"] ?>" class="heart d-flex justify-content-center align-items-center ">
                                                 <span><i class="ion-ios-heart"></i></span>
                                             </a>
                                         </div>
