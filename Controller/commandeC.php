@@ -1,6 +1,6 @@
 <?php 
-    require_once "C:/xampp/htdocs/naturimal_2A3/config1.php";
-    require_once "C:/xampp/htdocs/naturimal_2A3/views/Front/panier.class.php";
+    require_once "C:/xampp/htdocs/Naturimal/config1.php";
+    require_once "C:/xampp/htdocs/Naturimal/views/Front/panier.class.php";
     $panier = new panier();
     class commandeC{
         
@@ -12,6 +12,41 @@
                 return $query->fetchAll();
             }catch(PDOException $e){
                 $e->getMessage();
+            }
+        }
+
+        public function return_image( $temp,$idproduit){
+            $db = getConnexion();
+            if ( $temp == "jardinage") {
+                try {
+                    $query = $db->prepare('SELECT * FROM articlejardinage where IdArticle=:id');
+                    $query->BindValue(':id', $idproduit);
+                    $query->execute();
+                    return $query->fetchAll();
+                    
+                } catch (PDOException $e) {
+                    $e->getMessage();
+                }
+            }
+            else if ( $temp == "aliment") {
+                try {
+                    $query = $db->prepare('SELECT * FROM aliments where id=:i');
+                    $query->BindValue(':i', $idproduit);
+                    $query->execute();
+                    return $query->fetchAll();
+                } catch (PDOException $e) {
+                    $e->getMessage();
+                }
+            }
+            else if ( $temp == "access") {
+                try {
+                    $query = $db->prepare('SELECT * FROM accessoires where id=:i');
+                    $query->BindValue(':i', $idproduit);
+                    $query->execute();
+                    return $query->fetchAll();
+                } catch (PDOException $e) {
+                    $e->getMessage();
+                }
             }
         }
 

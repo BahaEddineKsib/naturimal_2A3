@@ -1,7 +1,7 @@
 <?php 
 require "panier.class.php";
-require "C:/xampp/htdocs/naturimal_2A3/Controller/commandeC.php";
-require "C:/xampp/htdocs/naturimal_2A3/Controller/reclamationC.php";
+require "C:/xampp/htdocs/Naturimal/Controller/commandeC.php";
+require "C:/xampp/htdocs/Naturimal/Controller/reclamationC.php";
 // echo json_encode($_SESSION['user']);
 
 $db = getConnexion();
@@ -10,7 +10,10 @@ $comC = new commandeC();
 $recC = new reclamationC();
 if (isset($_GET['add_complaint_id'])) {
   $recC->ajouter_reclamation($_GET['add_complaint_id']);
+  header('location: complaint.php');
+
 }
+unset($_GET['add_complaint_id']);
 $email = $_SESSION['user'];
 echo $email;
 
@@ -97,7 +100,7 @@ echo $email;
 
                         </td>
                         <td class="producttotal"><?= number_format($product->PrixArticle * $qts_produit[$product->IdArticle], 2, ',', ' '); ?> $</td>
-                        <td class="product-add" title="report a complaint"><a href="purchase.php?add_complaint_id=<?= $product->IdArticle . " " . $id_co->id_commande; ?>"><span class="btn btn-primary icon-add"></span></a></td>
+                        <td class="product-add" title="report a complaint"><a href="purchases.php?add_complaint_id=<?= $product->IdArticle . " " . $id_co->id_commande. " "."jardinage"; ?>"><span class="btn btn-primary icon-add"></span></a></td>
                       </tr><!-- END TR-->
                     </div>
                   <?php 
@@ -140,7 +143,7 @@ echo $email;
  
                          </td>
                          <td class="producttotal"><?= number_format($product->prix * $qts_produit[$product->id], 2, ',', ' '); ?> $</td>
-                         <td class="product-add" title="report a complaint"><a href="purchase.php?add_complaint_id=<?= $product->id . " " . $id_co->id_commande; ?>"><span class="btn btn-primary icon-add"></span></a></td>
+                         <td class="product-add" title="report a complaint"><a href="purchases.php?add_complaint_id=<?= $product->id . " " . $id_co->id_commande. " ". "access"; ?>"><span class="btn btn-primary icon-add"></span></a></td>
                        </tr><!-- END TR-->
                      </div>
                    <?php 
@@ -185,7 +188,7 @@ echo $email;
    
                            </td>
                            <td class="producttotal"><?= number_format($product->prix * $qts_produit[$product->id], 2, ',', ' '); ?> $</td>
-                           <td class="product-add" title="report a complaint"><a href="purchase.php?add_complaint_id=<?= $product->id . " " . $id_co->id_commande; ?>"><span class="btn btn-primary icon-add"></span></a></td>
+                           <td class="product-add" title="report a complaint"><a href="purchases.php?add_complaint_id=<?= $product->id . " " . $id_co->id_commande. " ". "aliment"; ?>"><span class="btn btn-primary icon-add"></span></a></td>
                          </tr><!-- END TR-->
                        </div>
                      <?php 

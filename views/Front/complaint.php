@@ -1,7 +1,7 @@
 <?php
 require "panier.class.php";
-require "C:/xampp/htdocs/naturimal_2A3/Controller/commandeC.php";
-require "C:/xampp/htdocs/naturimal_2A3/Controller/reclamationC.php";
+require "C:/xampp/htdocs/Naturimal/Controller/commandeC.php";
+require "C:/xampp/htdocs/Naturimal/Controller/reclamationC.php";
 
 $db = getConnexion();
 $panier = new panier();

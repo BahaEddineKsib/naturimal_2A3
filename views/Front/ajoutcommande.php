@@ -1,8 +1,8 @@
 <?php
 require '../../config1.php';
 require "panier.class.php";
-require "C:/xampp/htdocs/naturimal_2A3/Controller/commandeC.php";
-require "C:/xampp/htdocs/naturimal_2A3/Model/commandeM.php";
+require "C:/xampp/htdocs/Naturimal/Controller/commandeC.php";
+require "C:/xampp/htdocs/Naturimal/Model/commandeM.php";
 
 
 $panier = new panier();
