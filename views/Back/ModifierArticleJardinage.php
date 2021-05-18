@@ -61,7 +61,7 @@ if (isset($_GET['IdArticle'])){
                 <button name="modifier" type="submit" id="contact-submit" class="btn btn-warning" >Submit</button>
             </fieldset> 
             <fieldset>           
-            <button><a href="AfficherArticlesJardinageAd.php" class="btn btn-warning"></a>Cancel</button>
+            <a href="AfficherBotaniqueAd.php" class="btn btn-warning">Cancel</a>
             </fieldset>           
 
         </form>

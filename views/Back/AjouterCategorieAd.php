@@ -60,12 +60,12 @@ if (
               <button name="submit" type="submit" value="submit" id="categorie submit" class="btn btn-warning">Submit</button>
             </fieldset>
             <fieldset>
-              <button formaction="AfficherCategoriesAd.php" ><a href="AfficherCategoriesAd.php" ></a>Cancel</button>
+            <a href="AfficherBotaniqueAd.php" class="btn btn-warning">Cancel</a>
             </fieldset>
           </form >     
         </div>
-        
-        <SCRIPT LANGUAGE="JavaScript">
+
+    <SCRIPT LANGUAGE="JavaScript">
     function valider() 
     {
     var NomCategorie=window.document.MonForm.NomCategorie.value;
@@ -81,6 +81,10 @@ if (
     if (Description.length<2){
       alert("Veuillez saisir une description");
       return false;
+    }
+    if(Description.charAt(0)<'A' || Description.charAt(0)>'Z'){
+        alert ("La description de la categorie doit commencer par une lettre Majuscule");
+        return false;
     }
     else return true;
 }

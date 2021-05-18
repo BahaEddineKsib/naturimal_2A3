@@ -214,6 +214,13 @@ function Delete ($email){
            <span class="nav-link-text ms-1">Deconencter</span>
           </a>
         </li>
+        <li> 
+        <?php
+              	require_once ("../../Views/back/compteur.php");
+                $vues=nombre_vues();
+        ?>
+         <h6>Il ya <?= $vues ?> visite(s) sur le site Naturimal </h6>
+        </li>
       </ul>
     </div>
     

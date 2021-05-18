@@ -43,7 +43,7 @@ if (isset($_GET['IdCategorie'])){
              <button name="modifier" type="submit" id="contact-submit" class="btn btn-warning" >Submit</button>
             </fieldset> 
             <fieldset>           
-            <button><a href="AfficherArticlesJardinageAd.php" ></a>Cancel</button>
+            <a href="AfficherBotaniqueAd.php" class="btn btn-warning">Cancel</a>
             </fieldset>           
 
         </form>

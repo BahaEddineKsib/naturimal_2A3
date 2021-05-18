@@ -109,14 +109,16 @@ if (
                 <button name="submit" type="submit" id="submit" class="btn btn-warning" >Submit</button>
             </fieldset> 
             <fieldset>           
-            <button><a href="AfficherArticleAd.php" class="btn btn-warning"></a>Cancel</button>
+            <a href="AfficherBotaniqueAd.php" class="btn btn-warning">Cancel</a>
             </fieldset>           
             
 
         </form>
 
     </div>
+   
     <SCRIPT LANGUAGE="JavaScript">
+   
     function valider() 
     {
     //var IdCategorieArticle=window.document.MonForm.IdCategorieArticle.value;
@@ -124,18 +126,39 @@ if (
     var DescriptionArticle=window.document.MonForm.DescriptionArticle.value;
     var PrixArticle=window.document.MonForm.PrixArticle.value;
     var QuantiteArticle=window.document.MonForm.QuantiteArticle.value;
+       
+        
+        
+    
     if((IdCategorieArticle=="") || (DescriptionArticle=="") || (PrixArticle=="") || (QuantiteArticle=="")||(NomArticle=="")){
         alert ("verifier les champs");
         return false; 
     } 
     if(NomArticle.charAt(0)<'A' || NomArticle.charAt(0)>'Z'){
-        alert ("Le nom doit commencer par une lettre Majuscule");
+        alert ("Le nom de l'article doit commencer par une lettre Majuscule");
         return false;
+    }
+    if(DescriptionArticle.charAt(0)<'A' || DescriptionArticle.charAt(0)>'Z'){
+        alert ("La description de l'article doit commencer par une lettre Majuscule");
+        return false;
+    }
+    if (DescriptionArticle.length<2){
+      alert("Veuillez saisir une description");
+      return false;
     }
     if(QuantiteArticle>10){
         alert("la quantite ne doit pas dépasser 10");
         return false;
     }
+    if(isNaN(QuantiteArticle)){
+        alert("la quantite de l'article doit etre un entier");
+        return false;
+    }
+    if(isNaN(PrixArticle)){
+        alert("le prix de l'article doit etre un entier");
+        return false;
+    }
+          
    
     else return true;
 }
