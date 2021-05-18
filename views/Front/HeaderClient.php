@@ -99,7 +99,7 @@ else{
                 <li class="nav-item active dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="shop.html">Hebergement</a>
+                        <a class="dropdown-item" href="Hebergements.php">Hebergement</a>
                         <a class="dropdown-item" href="AdopterAnimal.php">Adoption</a>
                         <a class="dropdown-item" href="AfficherVeterinaire.php">Assistance médicale</a>
                         <a class="dropdown-item" href="AfficheAnimal.php">Mes Animeaux</a>

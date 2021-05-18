@@ -8,7 +8,7 @@ class Hebergs {
     private string $Description;
     private string $Image;
 
-    public function __construct($Id,$Nom,$Email,$Prix,$Adresse,$Description,$Image){
+    public function __construct($Nom,$Email,$Prix,$Adresse,$Description,$Image){
         //$this->IdArticle=$IdArticle;
         $this->Nom=$Nom;
         $this->Email=$Email;

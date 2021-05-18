@@ -53,7 +53,7 @@ class Hebergements{
         try {
             $pdo = getConnexion();
             $query = $pdo->prepare(
-                'SELECT * FROM hebergement INNER JOIN ratings ON hebergement.Id=ratings.Heberg WHERE hebergement.Id = :id'
+                'SELECT * FROM hebergement INNER JOIN rating ON hebergement.Id=rating.Heberg WHERE hebergement.Id = :id'
             );
             $query->execute([
                 'id' => $id
@@ -90,6 +90,28 @@ class Hebergements{
             return $query->fetchAll();
         } catch (PDOException $e) {
             $e->getMessage();
+        }
+    }
+    public function AddHeberg($heberg)
+    {
+        $sql = "INSERT INTO hebergement (Nom, Email, Prix, Adresse, Description, Image) 
+        VALUES (:Nom, :Email, :Prix, :Adresse, :Description, :Image)";
+
+       
+        try {
+            $pdo = getConnexion();
+            $query = $pdo->prepare($sql);
+            $query->execute([
+                'Nom' => $heberg->getNom(),
+                'Email' => $heberg->getEmail(),
+                'Prix' => $heberg->getPrix(),
+                'Adresse' => $heberg->getAdresse(),
+                'Description' => $heberg->getDescription(),
+                'Image' => $heberg->getImage()
+
+            ]);
+        } catch (Exception $e) {
+            echo 'Erreur: ' . $e->getMessage();
         }
     }
 }

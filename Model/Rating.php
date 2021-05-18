@@ -3,11 +3,10 @@ class Ratings {
     private int $Id;
     private int $Stars;
     private string $Comment;
-    private int $User;
+    private string $User;
     private int $Heberg;
-    public function __construct($Id,$Stars,$Comment,$User,$Heberg){
+    public function __construct($Stars,$Comment,$User,$Heberg){
 
-        $this->Id=$Id;
         $this->Stars=$Stars;
         $this->Comment=$Comment;
         $this->User=$User;

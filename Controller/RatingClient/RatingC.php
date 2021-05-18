@@ -1,7 +1,9 @@
 <?php
 require_once "../../config1.php";
-class Ratingc{
-    public function afficherRatings() {
+class Ratingc
+{
+    public function afficherRatings()
+    {
         try {
             $pdo = getConnexion();
             $query = $pdo->prepare(
@@ -14,7 +16,8 @@ class Ratingc{
         }
     }
 
-    public function getRatingsById($id) {
+    public function getRatingsById($id)
+    {
         try {
             $pdo = getConnexion();
             $query = $pdo->prepare(
@@ -28,21 +31,23 @@ class Ratingc{
             $e->getMessage();
         }
     }
-    public function getUSr($id) {
+    public function getUSr($email)
+    {
         try {
             $pdo = getConnexion();
             $query = $pdo->prepare(
-                'SELECT * FROM utilisateur WHERE Id_utilisateur = :id'
+                'SELECT * FROM utilisateur WHERE Email = :email'
             );
             $query->execute([
-                'id' => $id
+                'email' => $email
             ]);
             return $query->fetchAll();
         } catch (PDOException $e) {
             $e->getMessage();
         }
     }
-    public function getRatingsByHeb($id) {
+    public function getRatingsByHeb($id)
+    {
         try {
             $pdo = getConnexion();
             $query = $pdo->prepare(
@@ -56,8 +61,34 @@ class Ratingc{
             $e->getMessage();
         }
     }
+    public function ModifyRating($rating, $id)
+    {
+        
+        try {
+            $pdo = getConnexion();
+            $query = $pdo->prepare(
+                'UPDATE rating SET 
+                        Stars = :Stars, 
+                        Comment= :Comment,
+                        User = :User,
+                        Heberg = :Heberg
+                    WHERE Id = :id'
+            );
+            $query->execute([
+                'id' =>  $id,
+                'Stars' => $rating->getStars(),
+                'Comment' => $rating->getComment(),
+                'User' => $rating->getUser(),
+                'Heberg' => $rating->getHeberg()
 
-    public function getRatingsByUser($User) {
+            ]);
+            echo $query->rowCount() . " records UPDATED successfully <br>";
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
+    public function getRatingsByUser($User)
+    {
         try {
             $pdo = getConnexion();
             $query = $pdo->prepare(
@@ -71,21 +102,36 @@ class Ratingc{
             $e->getMessage();
         }
     }
+    public function AddRating($Rating)
+    {
+        $sql = "INSERT INTO rating (Stars, Comment, User, Heberg) 
+        VALUES (:Stars, :Comment, :User, :Heberg)";
 
-    public function DeleteRating($id) {
-
+        $pdo = getConnexion();
         try {
-            $pdo = getConnexion();
-            $query = $pdo->prepare(
-                'DELETE FROM rating WHERE Heberg = :id AND User = 1'
-            );
+            $query = $pdo->prepare($sql);
+
             $query->execute([
-                'id' => $id,
+                'Stars' => $Rating->getStars(),
+                'Comment' => $Rating->getComment(),
+                'User' => $Rating->getUser(),
+                'Heberg' => $Rating->getHeberg(),
+
             ]);
-        } catch (PDOException $e) {
-            $e->getMessage();
+        } catch (Exception $e) {
+            echo 'Erreur: ' . $e->getMessage();
+        }
+    }
+    public function DeleteRating($id)
+    {
+        $sql = "DELETE FROM rating WHERE Id = :id";
+        $pdo = getConnexion();
+        $req = $pdo->prepare($sql);
+        $req->bindValue(':id', $id);
+        try {
+            $req->execute();
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
         }
     }
 }
-
-?>

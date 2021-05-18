@@ -80,7 +80,7 @@
             </div>
             
             <div class="card-body">
-              <form action="../../Controller/HebergAdmin/HebergAdd.php" method="POST" enctype="multipart/form-data" role="form text-left">
+              <form method="POST" action="">
                 <div class="mb-3">
                   <input type="text" name="name" class="form-control" placeholder="Nom" required>
                 </div>
@@ -94,15 +94,14 @@
                   <input type="text" name="prix" class="form-control" placeholder="Prix" required>
                 </div>
                 <div class="mb-3">
-                  <input type="file" name="image_link" class="form-control" accept="image/*" required>
+                <input type="file" name="image" id="photo" required>
                 </div>
                 <div class="mb-3">
-                  <textarea type="text" name="details" class="form-control" placeholder="Description" required></textarea>
+                  <textarea type="text" name="description" class="form-control" placeholder="Description" required></textarea>
                 </div>
                 <div class="text-center">
                   <button type="submit" name="AddHeb" class="btn bg-gradient-dark w-100 my-4 mb-2">Ajouter</button>
                 </div>
-                
               </form>
             </div>
           </div>
@@ -130,6 +129,5 @@
   </script>
   <!-- Github buttons -->
   <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
-
 
 </body></html>

@@ -1,27 +1,19 @@
 <?php
 require_once '../../config1.php';
+require_once '../../Model/Hebergements.php';
+require_once '../HebergClient/HebergC.php';
+$hebergC = new Hebergements();
 
-if( isset($_POST['AddHeb']))
-{
-    $Nom = $_POST['name'];
-    $Email = $_POST['email'];
-    $Adresse = $_POST['address'];
-    $Prix = $_POST['prix'];
-    $Image = $_FILES['image_link'];
-    $Description = $_POST['details'];
-    try
-    {
-        $pdo = getConnexion();
-        $query =$pdo->prepare("INSERT INTO `hebergement` (`Nom`, `Email`, `Prix`, `Adresse`, `Description`,`Image` ) VALUES (:Nom, :Email, :Prix, :Adresse, :Descriptions, :Images)");
-    
-        $query->bindValue(':Nom',$Nom);
-        $query->bindValue(':Images',$Image);
-        $query->bindValue(':Email',$Email);
-        $query->bindValue(':Prix', $Prix);
-        $query->bindValue(':Adresse', $Adresse);
-        $query->bindValue(':Descriptions',$Description);
-        $query->execute();
+        $Heberg = new Hebergs(
 
-    }catch(PDOException $error){$error->getMessage();}
-}
-    ?>
+            $_POST["name"],
+            $_POST["email"],
+            $_POST["prix"],
+            $_POST["address"],
+            $_POST["description"],
+            $_POST["image"]
+        );
+        $hebergC->AddHeberg($Heberg);
+
+
+?>

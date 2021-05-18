@@ -8,9 +8,10 @@ require_once '../../config.php';
 $var = $_GET['var'];
 $Heberg = new Hebergements();
 $list_hebergs = $Heberg->getHebergById($var);
-$Ratings = new Ratingc();
-$list_ratings = $Ratings->getRatingsByHeb($var);
+$Ratings = new Hebergements();
+$list_ratings = $Ratings->getHebergByIdRATING($var);
 $ratingc = new Ratingc();
+$IdRating = $_GET['id'];
 if (
 
     isset($_POST["Stars"]) &&
@@ -27,7 +28,7 @@ if (
             $_SESSION["user"],
             $var
         );
-        $ratingc->AddRating($ratings);
+        $ratingc->ModifyRating($ratings,$IdRating);
         $LIEN = "Heberg.php?var=$var";
         header("refresh:1;url=$LIEN");
     }
@@ -99,43 +100,49 @@ welcome("Des hebergements pour votre meilleur ami", "images/adopter.jpg");
         <h3 style="color:mediumseagreen"><?php echo $hebergement['Prix'];
                                             echo "DT"; ?></h3>
 
-        <label for="Stars">Nombre d'etoiles:</label>
-        <form method="post">
-            <input type="number" id="Stars" name="Stars" min="1" max="5">
-            <div>
-                <br>
-                <textarea name="comment" id="comments">
-</textarea>
-            </div>
-            <input type="submit" value="Submit">
-        </form>
-
     <?php endforeach; ?>
     <br>
     <?php foreach ($list_ratings as $ratings) : ?>
-        <div class="card" style="width:400px;">
-            <div class="container">
-                <font color=#393e46>
-                    <h2><?php echo $ratings['Stars'];
-                        echo ' ' ?><img src="images/star.png" width="20" height="20"></h2>
-                </font>
-
-                    <font color="Gray">
-                        <h6><?php echo $ratings['User']; ?></h6>
+        <?php if ($IdRating != $ratings['Id']) {
+        ?>
+            <div class="card" style="width:400px;">
+                <div class="container">
+                    <font color=#393e46>
+                        <h2><?php echo $ratings['Stars'];
+                            echo ' ' ?><img src="images/star.png" width="20" height="20"></h2>
                     </font>
-                    <?php if ($ratings['User'] == $_SESSION["user"]) {
-                        $IdRating = $ratings['Id'];
-                        echo "<a  class='btn btn-primary' href='modifierRating.php?id=$IdRating&var=$var'> Modifier </a>";
-                        echo "<a  class='btn btn-primary' href='deleteRating.php?id=$IdRating&var=$var'> Delete </a>";
-                    } ?>
+                    <?php $RatingUsr = new Ratingc();
+                    $usrrate = $RatingUsr->getUSr($ratings['User']);
+                    foreach ($usrrate as $usrrt) :
 
-                <font color="Gray">
-                    <h4><?php echo $ratings['Comment']; ?></h4>
-                </font>
+                    ?>
+                        <font color="Gray">
+                            <h6><?php echo $usrrt['Email']; ?></h6>
+                        </font>
+                        <?php if ($usrrt['Email'] == $_SESSION["user"]) {
+                            $IdRating = $ratings['Id'];
+                            echo "<a  class='btn btn-primary' href='modifierRating.php?id=$IdRating'> Modifier </a>";
+                        } ?>
+                    <?php endforeach; ?>
+                    <font color="Gray">
+                        <h4><?php echo $ratings['Comment']; ?></h4>
+                    </font>
+                </div>
+                <br>
             </div>
             <br>
-        </div>
-        <br>
+        <?php } else { ?>
+
+            <form method="post">
+                <input type="number" id="Stars" name="Stars" min="1" max="5" value="<?php echo $ratings['Stars'] ?>">
+                <div>
+                    <br>
+                    <textarea name="comment" id="comment" >
+                    <?php echo $ratings['Comment'] ?></textarea>
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        <?php } ?>
     <?php endforeach; ?>
     <br>
     <?php require_once 'footer.php'; ?>
