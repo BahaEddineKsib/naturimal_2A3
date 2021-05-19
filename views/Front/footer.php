@@ -70,7 +70,7 @@
                     <h2 class="ftco-heading-2">Menu</h2>
                     <ul class="list-unstyled">
                         <li><a href="afficherAccessCL.php" class="py-2 d-block">Animalerie</a></li>
-                        <li><a href="AllBotanique.php" class="py-2 d-block">Botanique</a></li>
+                        <li><a href="AfficherArticlesJardinageClient.php" class="py-2 d-block">Botanique</a></li>
                         <li><a href="#" class="py-2 d-block">Hebergement</a></li>
                         <li><a href="#" class="py-2 d-block">Adoption</a></li>
                         <li><a href="#" class="py-2 d-block">Assistance médicale</a></li>
