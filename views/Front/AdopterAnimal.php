@@ -27,13 +27,13 @@ welcome("Adoptez un nouvel ami ", "images/adopter.jpg");
 						<div class="row">
 <?php
   include_once '../../Model/animal.php';
-  $ANIMAL = new Animal($pdo, 0, 0, "", 0, "", "", "", "", "", "");
+
   if (isset($_POST['search']) && $_POST['search'] != "") {
-    $ANIMAL->Search($pdo, $_POST['search'],2 , 1);
+    Animal::Search($pdo, $_POST['search'],2 , 1);
   }
   else
   {
-    $ANIMAL->ReadAllForAdoption($pdo);
+    Animal::ReadAllForAdoption($pdo);
   }
   
 
