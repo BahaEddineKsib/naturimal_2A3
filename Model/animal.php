@@ -85,7 +85,7 @@ class Animal
         if($id_owner == 0)
         {
             try{
-                echo "d5al d5al ";
+               // echo "d5al d5al ";
                 $query =$pdo->prepare("SELECT * FROM `utilisateur` WHERE `Email` = :Email");
                 $query->bindValue(':Email',     $_SESSION['user']);
                 $query->execute();
