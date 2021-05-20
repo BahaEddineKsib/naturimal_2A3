@@ -76,32 +76,33 @@
         <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
           <div class="card z-index-0">
             <div class="card-header text-center pt-4">
-              <h5>Ajouter Hebergement</h5>
+              <h5>Ajouter Une Hebergement</h5>
             </div>
             
             <div class="card-body">
-              <form method="POST" action="">
+              <form action="../../Controller/HebergAdmin/HebergAdd.php" method="POST" enctype="multipart/form-data" role="form text-left">
                 <div class="mb-3">
-                  <input type="text" name="name" class="form-control" placeholder="Nom" required>
+                  <input type="text" name="name" class="form-control" placeholder="Nom de l'hebergement" required>
                 </div>
                 <div class="mb-3">
-                  <input type="email" name="email" class="form-control" placeholder="Email" required>
+                  <input type="text" name="email" class="form-control" placeholder="L'Email de l'hebergement" required>
                 </div>
                 <div class="mb-3">
-                  <input type="text" name="address" class="form-control" placeholder="Address" required>
+                  <input type="text" name="address" class="form-control" placeholder="L'Adresse de l'hebergement" required>
                 </div>
                 <div class="mb-3">
-                  <input type="text" name="prix" class="form-control" placeholder="Prix" required>
+                  <input type="text" name="prix" class="form-control" placeholder="Prix de l'hebergement" required>
+                </div>
+                  <div class="mb-3">
+                  <textarea type="text" name="description" class="form-control" placeholder="Description de l'hebergement" required></textarea>
                 </div>
                 <div class="mb-3">
-                <input type="file" name="image" id="photo" required>
-                </div>
-                <div class="mb-3">
-                  <textarea type="text" name="description" class="form-control" placeholder="Description" required></textarea>
+                  <input type="file" name="image" class="form-control" required>
                 </div>
                 <div class="text-center">
-                  <button type="submit" name="AddHeb" class="btn bg-gradient-dark w-100 my-4 mb-2">Ajouter</button>
+                  <button type="submit" name="Ajouter" class="btn bg-gradient-dark w-100 my-4 mb-2">Ajouter l'hebergement</button>
                 </div>
+                
               </form>
             </div>
           </div>
@@ -129,5 +130,6 @@
   </script>
   <!-- Github buttons -->
   <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+
 
 </body></html>

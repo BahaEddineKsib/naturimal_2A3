@@ -1,7 +1,9 @@
 <?php
+
 require_once '../../config1.php';
 require_once '../../Model/Hebergements.php';
 require_once '../HebergClient/HebergC.php';
+
 $hebergC = new Hebergements();
 
         $Heberg = new Hebergs(
@@ -11,9 +13,10 @@ $hebergC = new Hebergements();
             $_POST["prix"],
             $_POST["address"],
             $_POST["description"],
-            $_POST["image"]
+            $_FILES['image']['name']
         );
         $hebergC->AddHeberg($Heberg);
+        header("Location: ../../views/Back/AfficherHeb.php");
 
 
 ?>

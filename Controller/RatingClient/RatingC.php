@@ -134,4 +134,16 @@ class Ratingc
             die('Erreur: ' . $e->getMessage());
         }
     }
+    public function Delrat($id)
+    {
+        $sql = "DELETE FROM rating WHERE Heberg = :id";
+        $pdo = getConnexion();
+        $req = $pdo->prepare($sql);
+        $req->bindValue(':id', $id);
+        try {
+            $req->execute();
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
 }

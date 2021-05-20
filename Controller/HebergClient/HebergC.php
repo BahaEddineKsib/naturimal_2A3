@@ -13,6 +13,20 @@ class Hebergements{
             $e->getMessage();
         }
     }
+    public function DelHeberg($id) {
+        try {
+            $pdo = getConnexion();
+            $query = $pdo->prepare(
+                'DELETE FROM hebergement WHERE Id= :id'
+            );
+            $query->execute([
+                'id' => $id
+            ]);
+            return $query->fetchAll();
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
     public function TrierAsc() {
         try {
             $pdo = getConnexion();

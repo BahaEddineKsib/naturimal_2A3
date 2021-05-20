@@ -25,9 +25,20 @@ welcome("Des hebergements pour votre meilleur ami", "images/adopter.jpg");
 </style>
 <section class="ftco-section">
 	<div class="container">
+	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-10 mb-5 text-center">
-			<a class="button" href="HebergAsc.php">Moins Chers</a>
+				<a class="button" href="HebergAsc.php">Moins Chers</a>
+				<br>
+				<a class="button" href="HebergDesc.php">Plus Chers</a>
+			</div>
+		</div>
+		<div class="topnav">
+			<div class="search-container">
+				<form action="RechercheHeb.php" method="POST">
+					<input type="text" placeholder="Chercher.." name="search">
+					<button type="submit"><i class="fa fa-search"></i></button>
+				</form>
 			</div>
 		</div>
 		
@@ -39,7 +50,7 @@ welcome("Des hebergements pour votre meilleur ami", "images/adopter.jpg");
 
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						<a href="#" class="img-prod"><img class="img-fluid" src="images/1.png" alt="Colorlib Template">
+					<a href="#" class="img-prod"><img class="img-fluid" src="images/<?php echo $hebergement['Image']?>" alt="Colorlib Template">
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">

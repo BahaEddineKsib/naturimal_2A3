@@ -60,7 +60,7 @@ welcome("Des hebergements pour votre meilleur ami", "images/adopter.jpg");
 
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
-						<a href="#" class="img-prod"><img class="img-fluid" src="images/1.png" alt="Colorlib Template">
+						<a href="#" class="img-prod"><img class="img-fluid" src="images/<?php echo $hebergement['Image']?>" alt="Colorlib Template">
 							<div class="overlay"></div>
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
