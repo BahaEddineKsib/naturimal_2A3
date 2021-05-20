@@ -9,7 +9,7 @@ $guzzleClient = new \GuzzleHttp\Client(["curl" => [
         $google_client->setHttpClient($guzzleClient);
     $google_client->setClientId("1000027183602-hkv9k9337618tf0i29m97aotilrnlv0u.apps.googleusercontent.com");
     $google_client->setClientSecret("-ZpfoRfFAzIdBpiuQLHMJexE");
-    $google_client->setRedirectUri('http://localhost/Naturimal/Controller/User_WishlistC/google_callback.php');
+    $google_client->setRedirectUri('http://localhost:7882/Naturimal/Controller/User_WishlistC/google_callback.php');
     $google_client->setAccessType('offline');
     $google_client->addScope("email");
     $google_client->addScope("profile");

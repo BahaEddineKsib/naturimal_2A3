@@ -106,8 +106,7 @@ if(!empty($_SESSION["user"])){
 											"<td class='image-prod'>" . "<div class='img' style='background-image:url(images/$row[ImageArticle]);'>" . "</div>" . "</td>" .
 											"<td class='product-name'>" . "<h3>" . $row["NomArticle"] . "</h3>" . "<p>" . $row["DescriptionArticle"] . "</p>" . "</td>" .
 											"<td class='price'>$" . $row["PrixArticle"] . "</td>" .
-											"<td class='quantity'>" . "<div class='input-group mb-3'>" . "<input type='number' name='quantity' class='quantity form-control input-number' value='1' min='1' max='100'>" . "</td>" .
-											"<td class='product-remove'>" . "<a href='../../Controller/User_WishlistC/DeleteProductWish.php/?Email=$_SESSION[user]&ID=$row[IdArticle]&BUY=true'><span class='icon-shopping_cart'></span></a>" . "</td>" .
+											"<td class='quantity'>" . "<div class='input-group mb-3'>" . "<input type='number' name='quantity' class='quantity form-control input-number' value='1' min='1' max='100' readonly>" . "</td>" .
 											"</tr>";
 										}
 									}
@@ -118,8 +117,7 @@ if(!empty($_SESSION["user"])){
 											"<td class='image-prod'>" . "<div class='img' style='background-image:url(images/$row[image]);'>" . "</div>" . "</td>" .
 											"<td class='product-name'>" . "<h3>" . $row["nom"] . "</h3>" . "<p>" . "fdfd" . "</p>"  . "</td>" .
 											"<td class='price'>$" . $row["prix"] . "</td>" .
-											"<td class='quantity'>" . "<div class='input-group mb-3'>" . "<input type='number' name='quantity' class='quantity form-control input-number' value='1' min='1' max='100'>" . "</td>" .
-											"<td class='product-remove'>" . "<a href='../../Controller/User_WishlistC/DeleteProductWish.php/?Email=$_SESSION[user]&ID=$row[id]&BUY=true'><span class='icon-shopping_cart'></span></a>" . "</td>" .
+											"<td class='quantity'>" . "<div class='input-group mb-3'>" . "<input type='number' name='quantity' class='quantity form-control input-number' value='1' min='1' max='100' readonly>" . "</td>" .
 											"</tr>";
 										}
 									}
@@ -130,8 +128,7 @@ if(!empty($_SESSION["user"])){
 											"<td class='image-prod'>" . "<div class='img' style='background-image:url(images/$row[image]);'>" . "</div>" . "</td>" .
 											"<td class='product-name'>" . "<h3>" . $row["nom"] . "</h3>" . "<p>" . "fdfd" . "</p>"  . "</td>" .
 											"<td class='price'>$" . $row["prix"] . "</td>" .
-											"<td class='quantity'>" . "<div class='input-group mb-3'>" . "<input type='number' name='quantity' class='quantity form-control input-number' value='1' min='1' max='100'>" . "</td>" .
-											"<td class='product-remove'>" . "<a href='../../Controller/User_WishlistC/DeleteProductWish.php/?Email=$_SESSION[user]&ID=$row[id]&BUY=true'><span class='icon-shopping_cart'></span></a>" . "</td>" .
+											"<td class='quantity'>" . "<div class='input-group mb-3'>" . "<input type='number' name='quantity' class='quantity form-control input-number' value='1' min='1' max='100' readonly>" . "</td>" .
 											"</tr>";
 										}
 									}

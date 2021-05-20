@@ -73,7 +73,7 @@ include('HeaderClient.php');
                   <a href="cart.php?id=<?= $aux["IdArticle"] . " " . "jardinage"; ?>" class="buy-now d-flex justify-content-center align-items-center mx-1">
                     <span><i class="ion-ios-cart"></i></span>
                   </a>
-                  <a href="../../Controller/User_WishlistC/AjouterProduitWish/?Email=<?= $_SESSION["user"] ?>&ID=<?= $aux["IdArticle"] ?>" class="heart d-flex justify-content-center align-items-center ">
+                  <a href="../../Controller/User_WishlistC/AjouterProduitWish.php?Email=<?= $_SESSION["user"] ?>&ID=<?= $aux["IdArticle"] ?>" class="heart d-flex justify-content-center align-items-center ">
                     <span><i class="ion-ios-heart"></i></span>
                   </a>
                 </div>

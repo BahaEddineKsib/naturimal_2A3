@@ -7,19 +7,13 @@ include ("../../Controller/User_WishlistC//UserController.php");
 
  $result = $user->AfficherUtilisateur();
 
+// function decnnect(){
 
+//      unset($_SESSION["user"]); 
 
+// }
 
-
-
-function decnnect(){
-
-     unset($_SESSION["user"]); 
-
-}
-
-
-
+echo $_SESSION["user"];
 /*
 function Delete ($email){
 
@@ -62,6 +56,7 @@ function Delete ($email){
     </div>
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
+    <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">
          <li class="nav-item">
@@ -191,7 +186,7 @@ function Delete ($email){
         
         
         <li class="nav-item">
-          <a class="nav-link  " href=" ../Front/Accueil.php" onclick="<?php decnnect() ?>">
+          <a class="nav-link  " href="../../Controller/User_WishlistC/Deconnexion.php" >
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>spaceship</title>
@@ -268,7 +263,7 @@ function Delete ($email){
                                  "<td>" . $row["LastName"] . "</td>" .
                                   "<td>" . $row["Email"] . "</td>" .
                                   "<td>" . $row["Password"] . "</td>" .
-                                  "<td>" . "<a style='color:red;font-size:20px;font-weight:800;' href='../../Controller/User_WishlistC/AdminDelete/?Email=$row[Email]'>&times;</a>" . "</td>" .
+                                  "<td>" . "<a style='color:red;font-size:20px;font-weight:800;' href='../../Controller/User_WishlistC/AdminDelete.php?Email=$row[Email]'>&times;</a>" . "</td>" .
                                   "</tr>";
 
                             }
@@ -309,7 +304,7 @@ function Delete ($email){
 </script>
 
   <!--   Core JS Files   -->
-  <script src="js/users.js"></script>
+  <script src="js/tables.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>

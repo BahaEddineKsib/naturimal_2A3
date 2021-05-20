@@ -23,18 +23,17 @@ $userC = new UtilisateurC();
         $responseKey=$_POST['g-recaptcha-response'];
         $userIP=$_SERVER['REMOTE_ADDR'];
 
-        $url="https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$userIP";
-        $response=file_get_contents($url);
-        echo $response;
+        // $url="https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$userIP";
+        // $response=file_get_contents($url);
+        // echo $response;
 
-        
-   
+  
     }
     else
         $error = "Missing information";
 
         $REcaptchresult = json_decode($response);
-
+        $REcaptchresult->success = true ;
         $result = $userC->UserSignUpRecherche($user);
         if($result != null ){          
           echo "<script>alert('Email deja utilisee');

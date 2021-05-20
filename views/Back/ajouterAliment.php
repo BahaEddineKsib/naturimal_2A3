@@ -9,5 +9,5 @@ $aliment1C->ajouterAliment($aliment1);
 $email='NATURIMA votre univers vert';
 $nom=$_GET['nom'];
 $prix=$_GET['prix'];
-mail('nardine.hanfi@esprit.tn','NATURIMA: nouveau article pour vous', " On vient de publier notre nouveau article : $nom seulement à $prix DT.  Consultez le site Naturima.com pour plus de détails ! $email ! ",'From: naturima.contact@gmail.com' );
+mail('yassine.bensalha@esprit.tn','NATURIMA: nouveau article pour vous', " On vient de publier notre nouveau article : $nom seulement à $prix DT.  Consultez le site Naturima.com pour plus de détails ! $email ! ",'From: naturima.contact@gmail.com' );
 header('Location: afficher.php');
