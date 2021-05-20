@@ -39,7 +39,7 @@
 
 <body class="g-sidenav-show  bg-gray-100">
 <?php
-include_once "header_animalerie_admin.php";
+include_once "HeaderVeterinaire.php";
 ?>
   <main class="main-content mt-1 border-radius-lg">
     <!-- Navbar -->
