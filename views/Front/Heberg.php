@@ -78,7 +78,7 @@ require_once 'HeaderClient.php';
 require_once 'welcome.php';
 welcome("Des hebergements pour votre meilleur ami", "images/adopter.jpg");
 ?>
-
+<br>
 <body>
     <?php
     $i = 0;
@@ -94,7 +94,7 @@ welcome("Des hebergements pour votre meilleur ami", "images/adopter.jpg");
         QRcode::png($hebergement['Email'], $file_name); ?>
         <img src="images/qr.png" width="128" height="128"></h2>
         <h1 style="color:lightseagreen;"><?php echo $hebergement['Nom'] ?></h1>
-        <h4 style="text-align: left; display:flex; flex-direction: column; align-items: center"><?php echo $hebergement['Description']; ?></h4>
+        <h4 style="text-align: left; display:flex; flex-direction: column; align-items: left"><?php echo $hebergement['Description']; ?></h4>
         <h3 style="color:Gray"><?php echo $hebergement['Adresse'] ?></h3>
         <h3 style="color:mediumseagreen"><?php echo $hebergement['Prix'];
                                             echo "DT"; ?></h3>

@@ -128,5 +128,35 @@ class Hebergements{
             echo 'Erreur: ' . $e->getMessage();
         }
     }
+    public function ModifyHeb($heb, $id)
+    {
+        
+        try {
+            $pdo = getConnexion();
+            $query = $pdo->prepare(
+                'UPDATE hebergement SET 
+                        Nom = :Nom, 
+                        Email= :Email,
+                        Prix = :Prix,
+                        Adresse = :Adresse,
+                        Description = :Description,
+                        Image = :Image
+                    WHERE Id = :id'
+            );
+            $query->execute([
+                'id' =>  $id,
+                'Nom' => $heb->getNom(),
+                'Email' => $heb->getEmail(),
+                'Prix' => $heb->getPrix(),
+                'Adresse' => $heb->getAdresse(),
+                'Description' =>$heb->getDescription(),
+                'Image' =>$heb->getImage()
+
+            ]);
+            echo $query->rowCount() . " records UPDATED successfully <br>";
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
 }
 ?>

@@ -15,7 +15,21 @@ class Ratingc
             $e->getMessage();
         }
     }
-
+    public function AffbyStar($star)
+    {
+        try {
+            $pdo = getConnexion();
+            $query = $pdo->prepare(
+                'SELECT * FROM rating WHERE Stars =:star'
+            );
+            $query->execute([
+                'star' =>$star
+            ]);
+            return $query->fetchAll();
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
     public function getRatingsById($id)
     {
         try {

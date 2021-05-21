@@ -1,3 +1,35 @@
+<?php
+              require_once '../../config1.php';
+              $pdo=getConnexion ();
+              include_once '../../Model/Rating.php';
+              include_once '../../Controller/RatingClient/RatingC.php';
+              $x1=0;
+              $x2=0;
+              $x3=0;
+              $x4=0;
+              $x5=0;
+              $Rats1 = new Ratingc();
+              $Lista=$Rats1->AffbyStar(1); 
+              foreach ($Lista as $rowa){
+               $x1++;
+              }
+              $Lista=$Rats1->AffbyStar(2); 
+              foreach ($Lista as $rowa){
+               $x2++;
+              }
+              $Lista=$Rats1->AffbyStar(3); 
+              foreach ($Lista as $rowa){
+               $x3++;
+              }
+              $Lista=$Rats1->AffbyStar(4); 
+              foreach ($Lista as $rowa){
+               $x4++;
+              }
+              $Lista=$Rats1->AffbyStar(5); 
+              foreach ($Lista as $rowa){
+               $x5++;
+              }
+?>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -6,8 +38,44 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Hebergements
+    Ratings
   </title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    var x1 = "<?php echo $x1;?>"
+    var x2 = "<?php echo $x2;?>"
+    var x3 = "<?php echo $x3;?>"
+    var x4 = "<?php echo $x4;?>"
+    var x5 = "<?php echo $x5;?>"
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        x1 = eval(x1)
+        x2 = eval(x2)
+        x3 = eval(x3)
+        x4 = eval(x4)
+        x5 = eval(x5)
+        var data = google.visualization.arrayToDataTable([
+          ['Stars', 'Stars per Heb'],
+          ['1 étoiles',     x1],
+          ['2 étoiles',      x2],
+          ['3 étoiles',  x3],
+          ['4 étoiles', x4],
+          ['5 étoiles',    x5]
+        ]);
+
+        var options = {
+          title: 'Statistique sur la satisfaction des Hebergements'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Nucleo Icons -->
@@ -49,76 +117,71 @@ include_once "HeaderHeb.php";
       <span class="mask bg-gradient-dark opacity-6"></span>
       
     </div>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
     <div class="container-fluid py-4 row mt-lg-n10 mt-md-n11 mt-n10">
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Liste Des Hebergements</h6>
+              <h6>Liste Des Ratings</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-              <?php
-              require_once '../../config1.php';
-              $pdo=getConnexion ();
-              include_once '../../Model/Hebergements.php';
-              include_once '../../Controller/HebergClient/HebergC.php';
+           
 
-?>
 
- &nbsp;<button onClick="window.print()" class="btn btn-lg btn-info btn-block">Print List</button>
- <a href="AjouterHebergement.php" class="btn btn-lg btn-info btn-block">Ajouter Une Hebergement</a>
                 <table class="table align-items-center mb-0">
                 <colgroup>
        <col span="1" style="width: 1%;">
-       <col span="1" style="width: 10%;">
-       <col span="1" style="width: 5%;">
-       <col span="1" style="width: 5%;">
-       <col span="1" style="width: 10%;">
-       <col span="1" style="width: 10%;">
+       <col span="1" style="width: 1%;">
+       <col span="1" style="width: 1%;">
+       <col span="1" style="width: 1%;">
+       <col span="1" style="width: 3%;">
+       <col span="1" style="width: 3%;">
     </colgroup>
                   <thead>
                     <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-9">ID</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nom</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prix</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Adresse</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Stars</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Comment</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Heberg</th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
                   <tbody>
                   <?PHP
-                    $Hebs = new Hebergements();
-                    $liste=$Hebs->AfficherHeberg();
+                    $Rats = new Ratingc();
+                    $liste=$Rats->afficherRatings();
                     foreach ($liste as $row){ ?>
                         <tr>
                             <td><?PHP echo $row['Id']; ?></td>
-                            <td><?PHP echo $row['Nom']; ?></td>
-                            <td><?PHP echo $row['Email']; ?></td>
-                            <td>&nbsp;&nbsp;<?PHP echo $row['Prix']; ?></td>
-                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?PHP echo $row['Adresse']; ?></td>
-                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo substr($row['Description'], 0, 30);
-								echo "..."; ?></td>
-                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="img-fluid" src="../Front/images/<?php echo $row['Image']?>" width="64" height="64"></td>
-                            <td id="Mod">
-                                <form method="POST"
-                                      action="HebMod.php">
-                                    <input type="submit" name="modifier"
-                                           value="Modifier"  >
-                                    <input type="hidden" value="<?PHP echo $row['Id']; ?>" name="modifier" >
-                                </form>
-
-                            </td>
+                            <td><?PHP echo $row['Stars']; ?>&nbsp;<img src="../Front/images/star.png" width="20" height="20"></td>
+                            <td><?PHP echo $row['Comment']; ?></td>
+                            <td><?PHP echo $row['User']; ?></td>
+                            <td><?PHP $oy=$row['Heberg']; require_once '../../config1.php';
+                                $pdo=getConnexion ();
+                                include_once '../../Model/Hebergements.php';
+                                include_once '../../Controller/HebergClient/HebergC.php';
+                                $Hebs = new Hebergements();
+                                $liste=$Hebs->getHebergById($oy);
+                                foreach ($liste as $row){
+                                  echo $row['Nom'];
+                                };
+              ?></td>
 
 
 
                             </td>
                             <td id="delete">
                                 <form method="POST"
-                                      action="HebDel.php">
+                                      action="RateDel.php">
                                     <input type="submit" name="supprimer"
                                            value="Supprimer"  >
                                     <input type="hidden" value="<?PHP echo $row['Id']; ?>" name="id" >

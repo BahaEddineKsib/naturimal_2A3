@@ -87,7 +87,7 @@ welcome("Des hebergements pour votre meilleur ami", "images/adopter.jpg");
         if ($i != 0)
             break;
         $i++; ?>
-        <img src="images/681643.jpg" style="width:50%;">
+        <img src="images/<?php echo $hebergement['Image']?>" style="width:50%;">
         <?php include('phpqrcode/qrlib.php');
         $folder = "images/";
         $file_name = "qr.png";
