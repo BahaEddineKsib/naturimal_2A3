@@ -6,8 +6,8 @@ require "php/config.php";
     $db = getConnexion();
     
     $email =  $_SESSION['user'];
-    echo $_SESSION['user'];
-    echo " yassine";
+    // echo $_SESSION['user'];
+    // echo " yassine";
     try{
         $req = $db->prepare('SELECT * FROM users WHERE email =:em');
         $req->bindValue(':em', $email );

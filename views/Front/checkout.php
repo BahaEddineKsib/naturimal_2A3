@@ -1,6 +1,38 @@
 <?php
 require 'panier.class.php' ;
 $panier = new panier();
+
+if (isset($_POST['submit'])) {
+	$errors = [];
+	if ( empty($_POST['state']) || empty($_POST['street']) || empty( $_POST['town']) || empty( $_POST['zip']) || empty($_SESSION['total'][1])){
+		$errors['champs'] = "tous les champs sont obligatoires !";
+	}
+	else if ( !empty($_POST['zip'])){
+		$zip = $_POST['zip'];
+		echo $zip;
+		if ( is_numeric($zip) != 1){
+			$errors['zip'] = "le code postal/ZIP Doit contenir seuelement des chiffres !";
+		}
+		else if ( strlen($zip) != 4 && strlen($zip) != 5 ){
+			$errors['zip'] = "le code postal/ZIP Doit contenir seulement que 4-5 chiffres !";
+		}
+		else {
+			$state = $_POST['state'];
+        	$street = $_POST['street'];
+        	$town = $_POST['town'];
+        	$zip = $_POST['zip'];
+        	$adresse = $state . " " . $street . " " . $town . " " . $zip;
+			$_SESSION['adresse'] = $adresse;
+			header('location: ajoutcommande.php');
+		}
+	}
+	else{
+		header('location: ajoutcommande.php');
+	}}
+
+	$yass = 44;
+	echo is_numeric($yass);
+
 ?>
 
 <!DOCTYPE html>
@@ -29,19 +61,23 @@ $panier = new panier();
       <div class="container">
         <div class="row justify-content-center" >
           <div class="col-xl-7 ftco-animate">
-						<form  action="ajoutcommande.php" method="POST" >
-							<h3 class="mb-4 billing-heading">Billing Details</h3>
+						<form  action="" method="POST" >
+							<h3 class="mb-4 billing-heading">Information Adresse</h3>
+							<?php if(isset($errors['champs']) ){ ?>
+							<p style="border: 1px solid #a94442;  color: #a94442; border-radius: 5px; text-align: center;" class="mb-4 billing-heading"><?= $errors['champs']; echo "<br>";  }?></p>
+							<?php if( isset($errors['zip'])){ ?>
+							<p style="border: 1px solid #a94442;  color: #a94442; border-radius: 5px; text-align: center;" class="mb-4 billing-heading"><?= $errors['zip'];  }?></p>
 	          	<div class="row align-items-end">
 
 				<div class="col-md-6">
 	                <div class="form-group">
-	                	<label for="firstname">State</label>
+	                	<label for="firstname">Adresse Rue</label>
 	                  <input type="text" class="form-control"name="state" placeholder="">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
-	                	<label for="lastname">Street Address</label>
+	                	<label for="lastname">Adresse rue</label>
 	                  <input type="text" class="form-control" name="street" placeholder="">
 	                </div>
                 </div>
@@ -49,13 +85,13 @@ $panier = new panier();
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                	<label for="towncity">Town / City</label>
+	                	<label for="towncity">Ville</label>
 	                  <input type="text" class="form-control" name="town" placeholder="">
 	                </div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-		            		<label for="postcodezip">Postcode / ZIP *</label>
+		            		<label for="postcodezip">Code Postal</label>
 	                  <input type="text" class="form-control" name="zip" placeholder="">
 	                </div>
 		            </div>
@@ -70,7 +106,7 @@ $panier = new panier();
 	          <div class="row mt-5 pt-3">
 	          	<div class="col-md-12 d-flex mb-5">
 	          		<div class="cart-detail cart-total p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">Cart Total</h3>
+	          			<h3 class="billing-heading mb-4">Total Panier</h3>
 	          			<p class="d-flex">
 		    						
 		    					<hr>
@@ -82,11 +118,11 @@ $panier = new panier();
 	          	</div>
 	          	<div class="col-md-12">
 	          		<div class="cart-detail p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">Payment Method</h3>
+	          			<h3 class="billing-heading mb-4">Moyen de paiement</h3>
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="radio">
-											   <label><input type="radio" name="optradio" class="mr-2"> on delivery payment</label>
+											   <label><input type="radio" name="optradio" class="mr-2"> lors du livraison</label>
 											</div>
 										</div>
 									</div>
@@ -94,7 +130,7 @@ $panier = new panier();
 									<div class="form-group">
 										<div class="col-md-12">
 											<div class="checkbox">
-											   <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
+											   <label><input type="checkbox" value="" class="mr-2"> j'accepte tous les terms et conditions</label>
 											</div>
 										</div>
 									</div>
@@ -108,64 +144,7 @@ $panier = new panier();
     </section> <!-- .section -->
     
   
+    <?php include("footer.php");?>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-
-  <script>
-		$(document).ready(function(){
-
-		var quantitiy=0;
-		   $('.quantity-right-plus').click(function(e){
-		        
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		            
-		            $('#quantity').val(quantity + 1);
-
-		          
-		            // Increment
-		        
-		    });
-
-		     $('.quantity-left-minus').click(function(e){
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		      
-		            // Increment
-		            if(quantity>0){
-		            $('#quantity').val(quantity - 1);
-		            }
-		    });
-		    
-		});
-	</script>
-    
   </body>
 </html>

@@ -5,8 +5,8 @@
     </head>
 <body>
     <?PHP
-    include "C:/xampp/htdocs/GestionBotanique/Model/articles jardinage.php";
-    include_once "../../config.php";
+    include "../../Model/articles jardinage.php";
+    include_once "../../config1.php";
     include_once "../../Controller/articles jardinageC.php";
 
 if (isset($_GET['IdArticle'])){

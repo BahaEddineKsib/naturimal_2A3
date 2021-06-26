@@ -10,14 +10,14 @@ $db = getConnexion();
 if (empty($_SESSION['user'])) {
     header('location: login.php');
 } else {
-    if (isset($_POST['submit'])) {
+    
         $state = $_POST['state'];
         $street = $_POST['street'];
         $town = $_POST['town'];
         $zip = $_POST['zip'];
         $total = $_SESSION['total'][1];
 
-        $adresse = $state . " " . $street . " " . $town . " " . $zip;
+        $adresse = $_SESSION['adresse'];
 
         try {
             $req = $db->prepare('SELECT * FROM UTILISATEUR WHERE Email =:em');
@@ -121,5 +121,5 @@ if (empty($_SESSION['user'])) {
         }
         $_SESSION['total'][1] = 0;
         header('location: Accueil.php');
-    }
-}
+     }
+

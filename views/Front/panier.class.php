@@ -162,6 +162,15 @@ class panier
         else if ( $type_article == "aliment"){
             unset($_SESSION['panieraliment'][$id_produit]);
         }
+        if ( $type_article == "jardinage" ){
+            $_SESSION['total'][1] -= $_SESSION['totalindivjar'][$id_produit];
+        }
+        else if ( $type_article == "access" ){
+            $_SESSION['total'][1] -= $_SESSION['totalindivaccess'][$id_produit];
+        }
+        else if ( $type_article == "aliment" ){
+            $_SESSION['total'][1] -= $_SESSION['totalindivaliment'][$id_produit];
+        }
         // unset($_SESSION['idproduit'][$product_id]);
         // unset($_SESSION['qtproduit'][$product_id]);
         // unset($_SESSION['nomproduit'][$product_id]);

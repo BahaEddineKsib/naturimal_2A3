@@ -9,8 +9,8 @@
     $mail->Host = 'smtp.gmail.com';
     $mail->Port = '465';
     $mail->isHTML();
-    $mail->Username = 'yassine.bs125@gmail.com';
-    $mail->Password = 'Salwaghozzi10';
+    $mail->Username = 'naturimal.contact@gmail.com';
+    $mail->Password = 'Naturimal2021';
     $mail->SetFrom('no-reply@yassbass.org');
     $mail->Subject = 'hello world';
     $mail->Body = " a test ";

@@ -65,7 +65,7 @@ if(mail($VET->getEmail(),'Demande de rendez-vous','un message de http://localhos
 <?php
 require_once 'HeaderClient.php';
 require_once 'welcome.php';
-welcome("Adoptez un nouvel ami ", "images/adopter.jpg");
+welcome("Consultez un rendez vous ", "images/adopter.jpg");
 ?>
 <br>
 <form action="#" method="POST">

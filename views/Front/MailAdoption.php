@@ -30,7 +30,7 @@ if(isset($_POST['Envoyer']))
 if(mail($ANIMAL->getOwnerEmailByOwnerId($pdo),'Demande d\'adoption','un message de http://localhost/naturimal_2A3 pour vous informer que '.$ConnectingMail.' a envoyé une demande pour adopter votre animal '.$ANIMAL->getName().',
      
     ce message est écrit de '.$ConnectingMail.': 
-     '.$_POST['details'],'From: bahadingsib@gmail.com'))
+     '.$_POST['details'],'From: naturimal.contact@gmail.com'))
 {
     header('Location: AdopterAnimal.php');
 }

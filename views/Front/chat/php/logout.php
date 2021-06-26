@@ -2,8 +2,8 @@
     session_start();
     if(isset($_SESSION['unique_id'])){
         include_once "config.php";
-        include_once "C:/xampp/htdocs/panier/connection.php";
-        $db = conn();
+        include_once "../../../../config1.php";
+        $db = getConnexion();
         $admin = $_SESSION['incoming_id'];
         $client =  $_SESSION['outgoing_id'];
 
@@ -80,8 +80,8 @@
         $mail->Host = 'smtp.gmail.com';
         $mail->Port = '465';
         $mail->isHTML();
-        $mail->Username = 'yassine.bs125@gmail.com';
-        $mail->Password = 'Salwaghozzi10';
+        $mail->Username = 'naturimal.contact@gmail.com';
+        $mail->Password = 'Naturimal2021';
         $mail->SetFrom('no-reply@yassbass.org');
         $mail->Subject = "Your Chat history with our Website ";
         $mail->Body = $text_final;

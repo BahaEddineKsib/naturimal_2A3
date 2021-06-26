@@ -31,6 +31,13 @@ require "php/config.php";
   // echo $_SESSION['incoming_id'] ;
   // echo $_SESSION['outgoing_id'];
 ?>
+
+
+
+
+
+
+
 <?php include_once "header.php"; ?>
 <body>
   <div class="wrapper">
